@@ -20,7 +20,7 @@ The repository uses a Feynman-style learning loop:
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
 | Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, sharding, connection pools, ORM, migrations, pagination, caching, backup, recovery, CDC |
 | Runtime & Concurrency | CLR/runtime model, thread pools, Task, async/await, synchronization, concurrent collections, cancellation, GC, allocation, memory/resource lifetime, async streams, context flow, observability |
-| System Design | Caching, queues, replication, sharding, reliability |
+| System Design | Requirements, capacity estimation, stateless services, caching, queues, load balancing, scaling, consistency, reliability |
 
 ## Learning Standard
 
@@ -41,31 +41,27 @@ A topic is complete only when I can:
 | Networking | 30 topics prepared; mock interview pending | Review |
 | Databases | 25 topics prepared; mock interview pending | Review |
 | Runtime & Concurrency | 16 topics prepared; mock interview pending | Review |
-| System Design | Next track | Pending |
+| System Design | Load Balancing & Horizontal Scaling | Learning |
 
 ## Current Lesson
 
-- [16. Runtime & Concurrency Review — 60-second Answers](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
+- [05. Load Balancing and Horizontal Scaling](docs/system-design/05-load-balancing-horizontal-scaling.md)
+- [Knowledge Check](quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+
+## System Design Lessons
+
+1. [Requirements and Capacity Estimation](docs/system-design/01-requirements-and-capacity-estimation.md) · [Quiz](quizzes/system-design/01-requirements-and-capacity-estimation.md)
+2. [Stateless Service](docs/system-design/02-stateless-service.md) · [Quiz](quizzes/system-design/02-stateless-service.md)
+3. [Cache Design](docs/system-design/03-cache-design.md) · [Quiz](quizzes/system-design/03-cache-design.md)
+4. [Message Queue](docs/system-design/04-message-queue.md) · [Quiz](quizzes/system-design/04-message-queue.md)
+5. [Load Balancing and Horizontal Scaling](docs/system-design/05-load-balancing-horizontal-scaling.md) · [Quiz](quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+
+## Runtime & Concurrency Track
+
+The Runtime & Concurrency track contains 15 concept lessons plus one 60-second-answer review and a 40-question mock interview. It remains in review until the mock interview and re-test requirements are met.
+
+- [Runtime & Concurrency Review](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
 - [Runtime & Concurrency Mock Interview](quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
-
-## Runtime & Concurrency Lessons
-
-1. [Runtime Process Model](docs/runtime-concurrency/01-runtime-process-model.md) · [Quiz](quizzes/runtime-concurrency/01-runtime-process-model.md)
-2. [Thread Pool](docs/runtime-concurrency/02-thread-pool.md) · [Quiz](quizzes/runtime-concurrency/02-thread-pool.md)
-3. [Task / Future / Promise](docs/runtime-concurrency/03-task-future-promise.md) · [Quiz](quizzes/runtime-concurrency/03-task-future-promise.md)
-4. [async / await Internals](docs/runtime-concurrency/04-async-await-internals.md) · [Quiz](quizzes/runtime-concurrency/04-async-await-internals.md)
-5. [Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md) · [Quiz](quizzes/runtime-concurrency/05-synchronization-primitives.md)
-6. [Concurrent Collections](docs/runtime-concurrency/06-concurrent-collections.md) · [Quiz](quizzes/runtime-concurrency/06-concurrent-collections.md)
-7. [Cancellation and Timeout](docs/runtime-concurrency/07-cancellation-and-timeout.md) · [Quiz](quizzes/runtime-concurrency/07-cancellation-and-timeout.md)
-8. [GC Generations](docs/runtime-concurrency/08-gc-generations.md) · [Quiz](quizzes/runtime-concurrency/08-gc-generations.md)
-9. [Allocation and Boxing](docs/runtime-concurrency/09-allocation-and-boxing.md) · [Quiz](quizzes/runtime-concurrency/09-allocation-and-boxing.md)
-10. [Managed Memory Leak](docs/runtime-concurrency/10-managed-memory-leak.md) · [Quiz](quizzes/runtime-concurrency/10-managed-memory-leak.md)
-11. [IDisposable and Resource Lifetime](docs/runtime-concurrency/11-idisposable-resource-lifetime.md) · [Quiz](quizzes/runtime-concurrency/11-idisposable-resource-lifetime.md)
-12. [Async Streams and Channels](docs/runtime-concurrency/12-async-streams-and-channels.md) · [Quiz](quizzes/runtime-concurrency/12-async-streams-and-channels.md)
-13. [ThreadPool Starvation Diagnostics](docs/runtime-concurrency/13-threadpool-starvation-diagnostics.md) · [Quiz](quizzes/runtime-concurrency/13-threadpool-starvation-diagnostics.md)
-14. [ExecutionContext and Context Flow](docs/runtime-concurrency/14-executioncontext-context-flow.md) · [Quiz](quizzes/runtime-concurrency/14-executioncontext-context-flow.md)
-15. [Runtime Observability](docs/runtime-concurrency/15-runtime-observability.md) · [Quiz](quizzes/runtime-concurrency/15-runtime-observability.md)
-16. [Runtime & Concurrency Review — 60-second Answers](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md) · [Mock Interview](quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
 
 ## Database Track
 
@@ -89,11 +85,11 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 - [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
-## Next Track
+## Next System Design Topics
 
-System Design: requirements and capacity estimation, stateless services, caching, queues, load balancing, database scaling, consistency, availability, idempotency, rate limiting, distributed locks, observability and failure-mode reasoning.
+Database scaling and read/write patterns, consistency and availability, distributed idempotency, rate limiting, distributed locks, service boundaries, observability, graceful degradation and failure-mode reasoning.
 
-Runtime & Concurrency remains in Review until the 40-question mock interview and at least one re-test are passed.
+Existing OS, Networking, Database and Runtime topics remain Prepared until quizzes and re-tests are passed.
 
 ## Language Policy
 
