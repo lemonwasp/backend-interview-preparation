@@ -78,6 +78,11 @@
 | 2026-09-08 | Database | Database Failure Scenarios | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Transactional Outbox / CDC | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Database Review / 60-second Answers | Prepared | Pending | Pending | Review |
+| 2026-09-08 | Runtime | Runtime Process Model | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Thread Pool | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Task / Future / Promise | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | async / await Internals | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Synchronization Primitives | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -85,45 +90,33 @@
 
 - 자신의 말로 작성한 파인만 설명
 - 확인 질문 답변과 피드백
-- 코드 또는 Linux/OS/DB 도구 실험 결과
+- 코드 또는 Linux/OS/DB/.NET 도구 실험 결과
 - 60초 기술면접 답변
 - 1일·7일 후 재시험 결과
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 첫 5개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Database 마무리 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Runtime 첫 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. Replication은 가용성과 읽기 확장, Backup은 과거 상태 복구를 위한 것이며 Replica는 Backup을 대체하지 않는다.
-2. PITR은 Base Backup과 WAL/Transaction Log를 이용해 특정 시점까지 복구하는 방식이다.
-3. RPO는 허용 가능한 데이터 손실 시점, RTO는 허용 가능한 복구 시간이다.
-4. WAL은 Data Page보다 복구용 Log를 먼저 durable하게 기록하는 원칙이고 Checkpoint는 recovery 범위를 줄인다.
-5. Commit 직후 Crash가 나 Data Page가 아직 반영되지 않았더라도 durable WAL을 이용해 recovery할 수 있다.
-6. DB 장애 진단에서는 Pool wait, lock wait, slow query, CPU, I/O, replica lag, recent migration을 함께 본다.
-7. Failover에서 timeout을 받은 Transaction이 실제로 Commit됐을 수도 있으므로 Retry 전에 Idempotency가 필요하다.
-8. Logical Corruption은 Replica에도 전파될 수 있으므로 Backup/PITR이 필요하다.
-9. DB Write와 Message Broker Publish를 따로 수행하면 dual-write failure가 생길 수 있다.
-10. Transactional Outbox는 Business Data와 Event 발행 의도를 같은 Local Transaction에 저장해 dual-write 문제를 줄인다.
-11. Outbox Relay/CDC에서는 중복 발행 가능성이 있으므로 at-least-once와 Consumer Idempotency를 함께 설계해야 한다.
-12. CDC는 WAL/Binlog/Transaction Log 등 DB 변경 기록을 읽어 다른 시스템으로 전달하는 메커니즘이다.
-
-## Database Final Review
-
-- [Database 60초 답변 총정리](../docs/databases/25-database-review-60-second-answers.md)
-- [40문항 Database Mock Interview](../quizzes/databases/25-database-review-60-second-answers.md)
-
-### Database를 Completed로 올리는 최소 기준
-
-1. Mock Interview 40문항 중 최소 32개 이상 핵심 개념 혼동 없이 답변
-2. Index / Isolation / MVCC / Lock / Replication / Sharding / Backup / Outbox 비교 질문 통과
-3. 장애 시나리오에서 `지표 → 원인 가설 → 즉시 완화 → 근본 대책` 순서로 답변
-4. 틀린 항목을 해당 문서에 반영
-5. 최소 D+1 재시험 수행
+1. CLR은 OS를 대체하는 것이 아니라 OS Process/Virtual Memory/Thread 위에서 managed code, GC, JIT/AOT, ThreadPool 같은 기능을 제공한다.
+2. `new`는 매번 OS syscall을 의미하지 않고 CLR managed heap 내부에서 빠르게 할당될 수 있다.
+3. ThreadPool은 Thread 생성/종료 비용을 줄이기 위해 worker를 재사용하지만 blocking이 많으면 starvation이 발생할 수 있다.
+4. Task는 Thread가 아니라 비동기 작업의 완료와 결과를 표현하는 추상화다.
+5. `Task.WhenAll`은 여러 작업의 대기 시간을 겹칠 수 있지만 여러 OS Thread의 병렬 실행을 의미하지 않는다.
+6. C# `async/await`는 compiler-generated state machine과 continuation으로 구현되며 `await` 자체가 새 Thread를 만들지 않는다.
+7. `.Result` / `.Wait()` 같은 sync-over-async는 worker를 block해 scalability를 낮추고 ThreadPool starvation을 만들 수 있다.
+8. `lock`은 mutual exclusion, `SemaphoreSlim`은 동시 실행 개수 제한, `Interlocked`는 단순 atomic operation에 적합하다.
+9. `volatile`은 visibility/order 의미가 있지만 `counter++` 같은 compound operation을 atomic하게 만들지 않는다.
+10. process 내부 `lock`은 여러 App Instance 간 race를 막지 못하므로 DB Constraint/Transaction/Distributed Coordination이 필요하다.
 
 ## Next Action
 
-1. 새 Database 개념 추가는 일단 중단
-2. [Database Mock Interview](../quizzes/databases/25-database-review-60-second-answers.md) 진행
-3. Networking Mock Interview와 OS Quiz도 병행해 Prepared를 실제 Completed로 전환
-4. 다음 신규 학습 트랙은 Runtime & Concurrency
+1. [Runtime Process Model Quiz](../quizzes/runtime-concurrency/01-runtime-process-model.md)
+2. [Thread Pool Quiz](../quizzes/runtime-concurrency/02-thread-pool.md)
+3. [Task / Future / Promise Quiz](../quizzes/runtime-concurrency/03-task-future-promise.md)
+4. [async / await Internals Quiz](../quizzes/runtime-concurrency/04-async-await-internals.md)
+5. [Synchronization Primitives Quiz](../quizzes/runtime-concurrency/05-synchronization-primitives.md)
+6. 다음 문서: Concurrent Collections → Cancellation / Timeout → GC Generations → Allocation / Boxing → Managed Memory Leak
+7. OS / Networking / Database Mock Interview는 별도 복습 세션에서 Prepared를 Completed로 전환
