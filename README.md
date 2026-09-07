@@ -18,7 +18,7 @@ The repository uses a Feynman-style learning loop:
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
-| Databases | Relational model, keys, indexes, query execution, transactions, isolation, MVCC, locking, deadlocks |
+| Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, partitioning, sharding |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
 
@@ -39,14 +39,14 @@ A topic is complete only when I can:
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
 | Networking | 30 topics prepared; mock interview pending | Review |
-| Databases | Database Deadlocks | Learning |
+| Databases | Partitioning & Sharding | Learning |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [10. Database Deadlocks](docs/databases/10-deadlocks.md)
-- [Knowledge Check](quizzes/databases/10-deadlocks.md)
+- [15. Partitioning & Sharding](docs/databases/15-partitioning-and-sharding.md)
+- [Knowledge Check](quizzes/databases/15-partitioning-and-sharding.md)
 
 ## Database Lessons
 
@@ -60,6 +60,11 @@ A topic is complete only when I can:
 8. [MVCC](docs/databases/08-mvcc.md) · [Quiz](quizzes/databases/08-mvcc.md)
 9. [Database Locks](docs/databases/09-database-locks.md) · [Quiz](quizzes/databases/09-database-locks.md)
 10. [Database Deadlocks](docs/databases/10-deadlocks.md) · [Quiz](quizzes/databases/10-deadlocks.md)
+11. [Normalization](docs/databases/11-normalization.md) · [Quiz](quizzes/databases/11-normalization.md)
+12. [Optimistic vs Pessimistic Locking](docs/databases/12-optimistic-vs-pessimistic-locking.md) · [Quiz](quizzes/databases/12-optimistic-vs-pessimistic-locking.md)
+13. [Unique Constraint and Upsert](docs/databases/13-unique-constraint-and-upsert.md) · [Quiz](quizzes/databases/13-unique-constraint-and-upsert.md)
+14. [Replication and Read Replicas](docs/databases/14-replication-and-read-replicas.md) · [Quiz](quizzes/databases/14-replication-and-read-replicas.md)
+15. [Partitioning and Sharding](docs/databases/15-partitioning-and-sharding.md) · [Quiz](quizzes/databases/15-partitioning-and-sharding.md)
 
 ## Networking Track
 
@@ -78,7 +83,7 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 
 ## Next Database Topics
 
-Normalization, optimistic vs pessimistic locking in application design, unique constraints and upsert, replication, read replicas, partitioning/sharding, database connection pools and transaction boundaries.
+Database connection pools and transaction boundaries, ORM/N+1 behavior, schema migrations, pagination and large-data access, caching consistency, backup/PITR and database failure scenarios.
 
 ## Language Policy
 
