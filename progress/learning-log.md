@@ -53,6 +53,11 @@
 | 2026-09-08 | Network | Connection Pooling | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Network | NAT / Ephemeral Ports | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Network | Networking Review / 60-second Answers | Prepared | Pending | Pending | Review |
+| 2026-09-08 | Database | Relational Model / Keys | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | B-Tree Index | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Clustered / Non-clustered Index | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Query Execution / EXPLAIN | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Transaction / ACID | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -60,42 +65,33 @@
 
 - 자신의 말로 작성한 파인만 설명
 - 확인 질문 답변과 피드백
-- 코드 또는 Linux/OS 도구 실험 결과
+- 코드 또는 Linux/OS/DB 도구 실험 결과
 - 60초 기술면접 답변
 - 1일·7일 후 재시험 결과
 
 ## Current Checkpoint
 
-OS 문서는 19개, Networking은 29개 개념 문서 + 1개 총정리 문서까지 준비되었습니다. 대부분 Quiz와 Re-test가 Pending이므로 문서 생성 자체는 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 첫 5개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Networking 마무리 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Database 첫 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. Idempotency Key는 Timeout/Retry로 같은 비즈니스 요청이 중복 도착해도 중복 부작용을 막기 위한 요청 식별자다.
-2. 같은 Idempotency Key를 가진 동시 요청은 Unique Constraint나 Atomic Insert 등으로 최초 처리자를 하나로 정해야 한다.
-3. Backpressure는 Producer가 Consumer capacity를 초과할 때 bounded queue, concurrency limit, load shedding 등으로 upstream 속도를 조절하는 메커니즘이다.
-4. Buffer는 burst는 흡수하지만 평균 입력 속도가 평균 처리 속도보다 계속 높으면 근본 해결책이 아니다.
-5. Connection Pool은 handshake 비용을 줄이는 성능 최적화이면서 downstream concurrency를 제한하는 보호 장치이기도 하다.
-6. Pool이 너무 크면 downstream contention을 키울 수 있으므로 전체 App Instance 수와 downstream capacity를 같이 봐야 한다.
-7. Client outbound TCP connection은 ephemeral source port를 사용하고 NAT는 private tuple을 public tuple로 매핑한다.
-8. Connection churn이 크면 TIME_WAIT, ephemeral port, NAT mapping pressure가 증가할 수 있으므로 keep-alive와 pooling이 중요하다.
-9. Networking 면접에서는 개별 용어 암기보다 TCP/HTTP/TLS/Proxy/Resilience/Connection Resource를 하나의 요청 흐름으로 연결해서 설명할 수 있어야 한다.
-
-## Networking Final Review
-
-- [Networking 60초 답변 총정리](../docs/networking/30-networking-review-60-second-answers.md)
-- [40문항 Networking Mock Interview](../quizzes/networking/30-networking-review-60-second-answers.md)
-
-### Networking을 Completed로 올리는 최소 기준
-
-1. Mock Interview 40문항 중 최소 32개 이상을 핵심 개념 혼동 없이 답변
-2. TCP vs UDP, HTTP/1.1/2/3, Proxy, Load Balancer, REST/gRPC, Timeout/Circuit Breaker, Rate Limit/Backpressure 비교 질문 통과
-3. 5개 장애 시나리오에서 관찰 지표 → 원인 가설 → 보호 조치 순서로 답변
-4. 틀린 항목을 해당 문서에 반영
-5. 최소 D+1 재시험 수행
+1. Primary Key는 Row 식별 Constraint이고 Index는 검색용 Access Structure이므로 같은 개념이 아니다.
+2. Foreign Key는 다른 Table의 Key를 참조해 Referential Integrity를 유지한다.
+3. B-Tree 계열 Index는 높은 Branching Factor로 Tree 높이를 낮추고 Equality와 Range Search를 지원한다.
+4. Composite Index는 Column 순서가 중요하고 Index가 존재해도 Selectivity와 Cost에 따라 Optimizer가 사용하지 않을 수 있다.
+5. Clustered Index와 Non-clustered Index의 핵심 차이는 실제 Row 저장 구조와의 관계이며 DBMS별 구현 차이를 구분해야 한다.
+6. EXPLAIN에서는 Index 사용 여부뿐 아니라 읽은 Row 수, Join 방식, Sort/Hash Spill, Estimated vs Actual Rows를 본다.
+7. Full Table Scan은 많은 Row가 필요한 경우 Index Random Lookup보다 합리적일 수 있다.
+8. Transaction은 여러 DB 작업을 하나의 논리적 단위로 묶고 ACID는 Atomicity / Consistency / Isolation / Durability를 설명한다.
+9. WAL은 Data Page보다 복구용 Log를 먼저 안전하게 기록하는 원칙이다.
+10. Local DB Transaction으로 외부 API까지 자동으로 Atomic하게 Rollback할 수는 없다.
 
 ## Next Action
 
-1. 새 Networking 개념 추가는 일단 중단
-2. [Networking Mock Interview](../quizzes/networking/30-networking-review-60-second-answers.md) 진행
-3. OS Quiz도 병행해 Prepared를 실제 Completed로 전환
-4. 다음 신규 학습 트랙은 Database Fundamentals
+1. [Relational Model / Keys Quiz](../quizzes/databases/01-relational-model-and-keys.md)
+2. [B-Tree Index Quiz](../quizzes/databases/02-b-tree-index.md)
+3. [Clustered / Non-clustered Index Quiz](../quizzes/databases/03-clustered-vs-nonclustered-index.md)
+4. [Query Execution / EXPLAIN Quiz](../quizzes/databases/04-query-execution-and-explain.md)
+5. [Transaction / ACID Quiz](../quizzes/databases/05-transaction-and-acid.md)
+6. 다음 문서: Isolation Level → concurrency anomalies → MVCC → Lock / Deadlock
+7. Networking Mock Interview와 OS Quiz는 별도 복습 세션에서 Prepared를 Completed로 전환
