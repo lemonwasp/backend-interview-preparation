@@ -19,7 +19,7 @@
 |---|---|
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
-| 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache |
+| 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache, Backup, Recovery, CDC |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
 
@@ -39,14 +39,14 @@
 |---|---|---|
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
-| 데이터베이스 | Cache Consistency | 학습 중 |
-| 런타임·동시성 | 시작 전 | 대기 |
+| 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
+| 런타임·동시성 | 다음 트랙 | 대기 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [20. Cache Consistency](docs/databases/20-cache-consistency.md)
-- [20. 이해도 확인 문제](quizzes/databases/20-cache-consistency.md)
+- [25. Database 총정리 — 60초 답변](docs/databases/25-database-review-60-second-answers.md)
+- [Database Mock Interview](quizzes/databases/25-database-review-60-second-answers.md)
 
 ## 데이터베이스 학습 목록
 
@@ -70,6 +70,11 @@
 18. [Schema Migration](docs/databases/18-schema-migration.md) · [확인 문제](quizzes/databases/18-schema-migration.md)
 19. [Pagination / Large Data Access](docs/databases/19-pagination-large-data-access.md) · [확인 문제](quizzes/databases/19-pagination-large-data-access.md)
 20. [Cache Consistency](docs/databases/20-cache-consistency.md) · [확인 문제](quizzes/databases/20-cache-consistency.md)
+21. [Backup / PITR](docs/databases/21-backup-and-pitr.md) · [확인 문제](quizzes/databases/21-backup-and-pitr.md)
+22. [WAL / Checkpoint / Crash Recovery](docs/databases/22-wal-checkpoint-crash-recovery.md) · [확인 문제](quizzes/databases/22-wal-checkpoint-crash-recovery.md)
+23. [Database Failure Scenarios](docs/databases/23-database-failure-scenarios.md) · [확인 문제](quizzes/databases/23-database-failure-scenarios.md)
+24. [Transactional Outbox / CDC](docs/databases/24-transactional-outbox-and-cdc.md) · [확인 문제](quizzes/databases/24-transactional-outbox-and-cdc.md)
+25. [Database 총정리 — 60초 답변](docs/databases/25-database-review-60-second-answers.md) · [Mock Interview](quizzes/databases/25-database-review-60-second-answers.md)
 
 ## 네트워크 트랙
 
@@ -86,9 +91,11 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 - [OS 19번](docs/operating-systems/19-tcp-in-the-os.md)
 - [학습 기록](progress/learning-log.md)
 
-## 다음 데이터베이스 주제
+## 다음 트랙
 
-Backup / PITR → WAL / Checkpoint / Crash Recovery → DB 장애 시나리오 → Outbox / CDC → Database 총정리 순으로 진행한 뒤 Runtime & Concurrency로 넘어갑니다.
+Runtime & Concurrency로 이동합니다: Runtime Process Model → Thread Pool → Task/Future/Promise → async/await 내부 동작 → Synchronization Primitive → Concurrent Collection → Cancellation → GC Generation → Allocation/Boxing → Memory Leak → Backpressure / Runtime Observability 순으로 진행합니다.
+
+Database는 Mock Interview와 최소 1회 재시험을 통과하기 전까지 Completed로 처리하지 않습니다.
 
 - [전체 로드맵](ROADMAP.md)
 
