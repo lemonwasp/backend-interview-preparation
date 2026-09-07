@@ -20,7 +20,7 @@ The repository uses a Feynman-style learning loop:
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
 | Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, sharding, connection pools, ORM, migrations, pagination, caching, backup, recovery, CDC |
 | Runtime & Concurrency | CLR/runtime model, thread pools, Task, async/await, synchronization, concurrent collections, cancellation, GC, allocation, memory/resource lifetime, async streams, context flow, observability |
-| System Design | Requirements, capacity estimation, stateless services, caching, queues, load balancing, database scaling, consistency, idempotency, rate limiting, distributed locks, reliability |
+| System Design | Requirements, capacity estimation, stateless services, caching, queues, load balancing, database scaling, consistency, idempotency, rate limiting, distributed locks, service boundaries, SLOs, graceful degradation, failure modes, multi-region and disaster recovery |
 
 ## Learning Standard
 
@@ -41,12 +41,12 @@ A topic is complete only when I can:
 | Networking | 30 topics prepared; mock interview pending | Review |
 | Databases | 25 topics prepared; mock interview pending | Review |
 | Runtime & Concurrency | 16 topics prepared; mock interview pending | Review |
-| System Design | Distributed Lock | Learning |
+| System Design | Multi-region & Disaster Recovery | Learning |
 
 ## Current Lesson
 
-- [10. Distributed Lock](docs/system-design/10-distributed-lock.md)
-- [Knowledge Check](quizzes/system-design/10-distributed-lock.md)
+- [15. Multi-region and Disaster Recovery](docs/system-design/15-multi-region-and-disaster-recovery.md)
+- [Knowledge Check](quizzes/system-design/15-multi-region-and-disaster-recovery.md)
 
 ## System Design Lessons
 
@@ -60,6 +60,11 @@ A topic is complete only when I can:
 8. [Distributed Idempotency](docs/system-design/08-distributed-idempotency.md) · [Quiz](quizzes/system-design/08-distributed-idempotency.md)
 9. [Rate Limiting](docs/system-design/09-rate-limiting.md) · [Quiz](quizzes/system-design/09-rate-limiting.md)
 10. [Distributed Lock](docs/system-design/10-distributed-lock.md) · [Quiz](quizzes/system-design/10-distributed-lock.md)
+11. [Service Boundary and Ownership](docs/system-design/11-service-boundary-and-ownership.md) · [Quiz](quizzes/system-design/11-service-boundary-and-ownership.md)
+12. [Observability and SLO](docs/system-design/12-observability-and-slo.md) · [Quiz](quizzes/system-design/12-observability-and-slo.md)
+13. [Graceful Degradation](docs/system-design/13-graceful-degradation.md) · [Quiz](quizzes/system-design/13-graceful-degradation.md)
+14. [Failure Mode Reasoning](docs/system-design/14-failure-mode-reasoning.md) · [Quiz](quizzes/system-design/14-failure-mode-reasoning.md)
+15. [Multi-region and Disaster Recovery](docs/system-design/15-multi-region-and-disaster-recovery.md) · [Quiz](quizzes/system-design/15-multi-region-and-disaster-recovery.md)
 
 ## Runtime & Concurrency Track
 
@@ -90,9 +95,9 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 - [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
-## Next System Design Topics
+## Next System Design Topic
 
-Service boundaries and ownership, observability and SLOs, graceful degradation, failure-mode reasoning, multi-region/disaster recovery, then a System Design review checkpoint and mock interview.
+Create a System Design review checkpoint with 60-second answers, trade-off comparisons and a mock interview. New System Design concepts should pause after topic 15 until the review checkpoint is prepared.
 
 Existing OS, Networking, Database and Runtime topics remain Prepared until quizzes and re-tests are passed.
 
