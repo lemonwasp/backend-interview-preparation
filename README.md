@@ -18,7 +18,7 @@ The repository uses a Feynman-style learning loop:
 | Area | Topics |
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
-| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, CDN, caching |
+| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, CDN, caching, WebSocket, SSE, gRPC, API Gateway |
 | Databases | Indexes, transactions, isolation, locking, query execution |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
@@ -39,15 +39,15 @@ A topic is complete only when I can:
 | Area | Current topic | Status |
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
-| Networking | CDN & HTTP Cache | Learning |
+| Networking | API Gateway | Learning |
 | Databases | Not started | Pending |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [15. CDN & HTTP Cache](docs/networking/15-cdn-http-cache.md)
-- [Knowledge Check](quizzes/networking/15-cdn-http-cache.md)
+- [20. API Gateway](docs/networking/20-api-gateway.md)
+- [Knowledge Check](quizzes/networking/20-api-gateway.md)
 
 ## Networking Lessons
 
@@ -66,6 +66,11 @@ A topic is complete only when I can:
 13. [Forward Proxy & Reverse Proxy](docs/networking/13-forward-reverse-proxy.md) · [Quiz](quizzes/networking/13-forward-reverse-proxy.md)
 14. [Load Balancing](docs/networking/14-load-balancing.md) · [Quiz](quizzes/networking/14-load-balancing.md)
 15. [CDN & HTTP Cache](docs/networking/15-cdn-http-cache.md) · [Quiz](quizzes/networking/15-cdn-http-cache.md)
+16. [WebSocket](docs/networking/16-websocket.md) · [Quiz](quizzes/networking/16-websocket.md)
+17. [Server-Sent Events](docs/networking/17-server-sent-events.md) · [Quiz](quizzes/networking/17-server-sent-events.md)
+18. [gRPC](docs/networking/18-grpc.md) · [Quiz](quizzes/networking/18-grpc.md)
+19. [REST vs RPC](docs/networking/19-rest-vs-rpc.md) · [Quiz](quizzes/networking/19-rest-vs-rpc.md)
+20. [API Gateway](docs/networking/20-api-gateway.md) · [Quiz](quizzes/networking/20-api-gateway.md)
 
 ## Operating Systems Track
 
@@ -77,7 +82,7 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 
 ## Next Networking Topics
 
-WebSocket, Server-Sent Events, gRPC, REST vs RPC, API gateways, rate limiting, retries, timeouts and circuit breakers.
+Rate limiting, timeout budgets, retries and exponential backoff, circuit breakers, bulkheads, idempotency keys and resilience patterns.
 
 ## Language Policy
 
