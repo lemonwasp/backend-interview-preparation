@@ -33,6 +33,11 @@
 | 2026-09-08 | Network | HTTP/1.1 | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Network | HTTP/2 | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Network | HTTP/3 & QUIC | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | TLS / HTTPS | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | Certificate / PKI | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | Forward / Reverse Proxy | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | Load Balancing | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | CDN / HTTP Cache | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -46,24 +51,26 @@
 
 ## Current Checkpoint
 
-OS 문서는 19개, Networking 문서는 10개 주제까지 준비되었습니다. 대부분 Quiz와 Re-test가 Pending이므로 문서 생성 자체는 완료 증거가 아닙니다.
+OS 문서는 19개, Networking 문서는 15개 주제까지 준비되었습니다. 대부분 Quiz와 Re-test가 Pending이므로 문서 생성 자체는 완료 증거가 아닙니다.
 
 Networking에서 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. TCP는 reliable ordered byte stream이고 UDP는 datagram 기반이라는 차이
-2. DNS Resolver / Root / TLD / Authoritative Server와 TTL Cache의 역할
-3. HTTP/1.1 Keep-Alive가 connection churn과 handshake 비용을 줄이는 이유
-4. HTTP/1.1 pipelining의 application-level HOL Blocking
-5. HTTP/2 multiplexing이 application-level HOL을 줄이지만 TCP-level HOL은 남는 이유
-6. HTTP/3가 QUIC을 사용해 stream별 loss 영향 범위를 줄이는 방식
-7. QUIC이 UDP 기반이지만 reliability, congestion control, TLS 1.3을 자체 제공한다는 점
-8. HTTP/3가 모든 환경에서 무조건 더 빠른 것은 아니라는 점
+1. HTTPS는 HTTP + TLS이며 TLS는 기밀성·무결성·인증을 제공한다.
+2. TLS Handshake에서 인증과 키 합의를 한 뒤 Application Data는 주로 대칭키로 보호한다.
+3. Certificate Chain은 Leaf → Intermediate → Trusted Root로 검증되고 Root 신뢰는 Trust Store에서 시작한다.
+4. Forward Proxy는 Client를 대신하고 Reverse Proxy는 Server를 대신한다.
+5. L4 Load Balancer와 L7 Load Balancer는 사용하는 계층 정보와 Routing 능력이 다르다.
+6. Sticky Session은 편리하지만 Stateless Backend보다 확장성과 장애 대응에 제약이 있다.
+7. HTTP Cache에서 Freshness와 Validation은 다른 개념이며 ETag를 이용하면 304 응답으로 재검증할 수 있다.
+8. `no-cache`는 저장 금지가 아니라 재사용 전 검증을 요구하는 의미이고 `no-store`와 다르다.
+9. 사용자별 응답을 Shared Cache할 때 Cache Key와 인증 경계를 잘못 설계하면 데이터 노출 위험이 있다.
+10. Cache Stampede는 인기 Entry가 동시에 만료될 때 Origin으로 요청이 몰리는 문제다.
 
 ## Next Action
 
-1. [UDP vs TCP Quiz](../quizzes/networking/06-udp-vs-tcp.md)
-2. [DNS Quiz](../quizzes/networking/07-dns.md)
-3. [HTTP/1.1 Quiz](../quizzes/networking/08-http-1-1.md)
-4. [HTTP/2 Quiz](../quizzes/networking/09-http-2.md)
-5. [HTTP/3 & QUIC Quiz](../quizzes/networking/10-http-3-quic.md)
-6. 다음 문서: TLS/HTTPS → Certificate/PKI → Proxy/Load Balancing
+1. [TLS / HTTPS Quiz](../quizzes/networking/11-tls-https.md)
+2. [Certificate / PKI Quiz](../quizzes/networking/12-certificate-pki.md)
+3. [Forward / Reverse Proxy Quiz](../quizzes/networking/13-forward-reverse-proxy.md)
+4. [Load Balancing Quiz](../quizzes/networking/14-load-balancing.md)
+5. [CDN / HTTP Cache Quiz](../quizzes/networking/15-cdn-http-cache.md)
+6. 다음 문서: WebSocket → SSE → gRPC → REST/RPC → API Gateway
