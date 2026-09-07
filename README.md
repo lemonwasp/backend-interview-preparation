@@ -20,7 +20,7 @@ The repository uses a Feynman-style learning loop:
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
 | Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, sharding, connection pools, ORM, migrations, pagination, caching, backup, recovery, CDC |
 | Runtime & Concurrency | CLR/runtime model, thread pools, Task, async/await, synchronization, concurrent collections, cancellation, GC, allocation, memory/resource lifetime, async streams, context flow, observability |
-| System Design | Requirements, capacity estimation, stateless services, caching, queues, load balancing, scaling, consistency, reliability |
+| System Design | Requirements, capacity estimation, stateless services, caching, queues, load balancing, database scaling, consistency, idempotency, rate limiting, distributed locks, reliability |
 
 ## Learning Standard
 
@@ -41,12 +41,12 @@ A topic is complete only when I can:
 | Networking | 30 topics prepared; mock interview pending | Review |
 | Databases | 25 topics prepared; mock interview pending | Review |
 | Runtime & Concurrency | 16 topics prepared; mock interview pending | Review |
-| System Design | Load Balancing & Horizontal Scaling | Learning |
+| System Design | Distributed Lock | Learning |
 
 ## Current Lesson
 
-- [05. Load Balancing and Horizontal Scaling](docs/system-design/05-load-balancing-horizontal-scaling.md)
-- [Knowledge Check](quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+- [10. Distributed Lock](docs/system-design/10-distributed-lock.md)
+- [Knowledge Check](quizzes/system-design/10-distributed-lock.md)
 
 ## System Design Lessons
 
@@ -55,6 +55,11 @@ A topic is complete only when I can:
 3. [Cache Design](docs/system-design/03-cache-design.md) · [Quiz](quizzes/system-design/03-cache-design.md)
 4. [Message Queue](docs/system-design/04-message-queue.md) · [Quiz](quizzes/system-design/04-message-queue.md)
 5. [Load Balancing and Horizontal Scaling](docs/system-design/05-load-balancing-horizontal-scaling.md) · [Quiz](quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+6. [Database Scaling and Read/Write Patterns](docs/system-design/06-database-scaling-read-write-patterns.md) · [Quiz](quizzes/system-design/06-database-scaling-read-write-patterns.md)
+7. [Consistency and Availability](docs/system-design/07-consistency-and-availability.md) · [Quiz](quizzes/system-design/07-consistency-and-availability.md)
+8. [Distributed Idempotency](docs/system-design/08-distributed-idempotency.md) · [Quiz](quizzes/system-design/08-distributed-idempotency.md)
+9. [Rate Limiting](docs/system-design/09-rate-limiting.md) · [Quiz](quizzes/system-design/09-rate-limiting.md)
+10. [Distributed Lock](docs/system-design/10-distributed-lock.md) · [Quiz](quizzes/system-design/10-distributed-lock.md)
 
 ## Runtime & Concurrency Track
 
@@ -87,7 +92,7 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 
 ## Next System Design Topics
 
-Database scaling and read/write patterns, consistency and availability, distributed idempotency, rate limiting, distributed locks, service boundaries, observability, graceful degradation and failure-mode reasoning.
+Service boundaries and ownership, observability and SLOs, graceful degradation, failure-mode reasoning, multi-region/disaster recovery, then a System Design review checkpoint and mock interview.
 
 Existing OS, Networking, Database and Runtime topics remain Prepared until quizzes and re-tests are passed.
 
