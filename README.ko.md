@@ -20,7 +20,7 @@
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
 | 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache, Backup, Recovery, CDC |
-| 런타임·동시성 | CLR/Runtime Model, Thread Pool, Task, async/await, Synchronization, GC, Allocation, Concurrent Collection |
+| 런타임·동시성 | CLR/Runtime Model, Thread Pool, Task, async/await, Synchronization, Concurrent Collection, Cancellation, GC, Allocation, Memory Leak |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
 
 ## 완료 기준
@@ -40,13 +40,13 @@
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
 | 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
-| 런타임·동시성 | Synchronization Primitives | 학습 중 |
+| 런타임·동시성 | Managed Memory Leak | 학습 중 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [05. Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md)
-- [05. 이해도 확인 문제](quizzes/runtime-concurrency/05-synchronization-primitives.md)
+- [10. Managed Memory Leak](docs/runtime-concurrency/10-managed-memory-leak.md)
+- [10. 이해도 확인 문제](quizzes/runtime-concurrency/10-managed-memory-leak.md)
 
 ## 런타임·동시성 학습 목록
 
@@ -55,6 +55,11 @@
 3. [Task / Future / Promise](docs/runtime-concurrency/03-task-future-promise.md) · [확인 문제](quizzes/runtime-concurrency/03-task-future-promise.md)
 4. [async / await 내부 동작](docs/runtime-concurrency/04-async-await-internals.md) · [확인 문제](quizzes/runtime-concurrency/04-async-await-internals.md)
 5. [Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md) · [확인 문제](quizzes/runtime-concurrency/05-synchronization-primitives.md)
+6. [Concurrent Collections](docs/runtime-concurrency/06-concurrent-collections.md) · [확인 문제](quizzes/runtime-concurrency/06-concurrent-collections.md)
+7. [Cancellation / Timeout](docs/runtime-concurrency/07-cancellation-and-timeout.md) · [확인 문제](quizzes/runtime-concurrency/07-cancellation-and-timeout.md)
+8. [GC Generations](docs/runtime-concurrency/08-gc-generations.md) · [확인 문제](quizzes/runtime-concurrency/08-gc-generations.md)
+9. [Allocation / Boxing](docs/runtime-concurrency/09-allocation-and-boxing.md) · [확인 문제](quizzes/runtime-concurrency/09-allocation-and-boxing.md)
+10. [Managed Memory Leak](docs/runtime-concurrency/10-managed-memory-leak.md) · [확인 문제](quizzes/runtime-concurrency/10-managed-memory-leak.md)
 
 ## 데이터베이스 트랙
 
@@ -80,7 +85,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 런타임 주제
 
-Concurrent Collection → Cancellation / Timeout → GC Generation → Allocation / Boxing → Managed Memory Leak → `IDisposable` / Resource Lifetime → Async Stream / Channel → ThreadPool Starvation 진단 → Runtime Observability 순으로 진행합니다.
+`IDisposable` / Resource Lifetime → Async Stream / Channel → ThreadPool Starvation 진단 → ExecutionContext → Runtime Observability → Runtime & Concurrency 총정리 순으로 진행합니다.
 
 - [전체 로드맵](ROADMAP.md)
 
