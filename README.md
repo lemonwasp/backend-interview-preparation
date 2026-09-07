@@ -18,7 +18,7 @@ The repository uses a Feynman-style learning loop:
 | Area | Topics |
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
-| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, CDN, caching, WebSocket, SSE, gRPC, API Gateway |
+| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, CDN, caching, WebSocket, SSE, gRPC, API Gateway, resilience |
 | Databases | Indexes, transactions, isolation, locking, query execution |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
@@ -39,15 +39,15 @@ A topic is complete only when I can:
 | Area | Current topic | Status |
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
-| Networking | API Gateway | Learning |
+| Networking | Bulkhead & Resilience Patterns | Learning |
 | Databases | Not started | Pending |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [20. API Gateway](docs/networking/20-api-gateway.md)
-- [Knowledge Check](quizzes/networking/20-api-gateway.md)
+- [25. Bulkhead & Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md)
+- [Knowledge Check](quizzes/networking/25-bulkhead-resilience-patterns.md)
 
 ## Networking Lessons
 
@@ -71,6 +71,11 @@ A topic is complete only when I can:
 18. [gRPC](docs/networking/18-grpc.md) · [Quiz](quizzes/networking/18-grpc.md)
 19. [REST vs RPC](docs/networking/19-rest-vs-rpc.md) · [Quiz](quizzes/networking/19-rest-vs-rpc.md)
 20. [API Gateway](docs/networking/20-api-gateway.md) · [Quiz](quizzes/networking/20-api-gateway.md)
+21. [Rate Limiting](docs/networking/21-rate-limiting.md) · [Quiz](quizzes/networking/21-rate-limiting.md)
+22. [Timeout Budget](docs/networking/22-timeout-budget.md) · [Quiz](quizzes/networking/22-timeout-budget.md)
+23. [Retry, Exponential Backoff & Jitter](docs/networking/23-retry-backoff-jitter.md) · [Quiz](quizzes/networking/23-retry-backoff-jitter.md)
+24. [Circuit Breaker](docs/networking/24-circuit-breaker.md) · [Quiz](quizzes/networking/24-circuit-breaker.md)
+25. [Bulkhead & Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md) · [Quiz](quizzes/networking/25-bulkhead-resilience-patterns.md)
 
 ## Operating Systems Track
 
@@ -82,7 +87,7 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 
 ## Next Networking Topics
 
-Rate limiting, timeout budgets, retries and exponential backoff, circuit breakers, bulkheads, idempotency keys and resilience patterns.
+Idempotency keys, backpressure in depth, connection pooling, NAT and ephemeral ports, and a networking review checkpoint before moving into databases.
 
 ## Language Policy
 
