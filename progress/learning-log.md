@@ -73,6 +73,11 @@
 | 2026-09-08 | Database | Schema Migration | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Pagination / Large Data Access | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Cache Consistency | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Backup / PITR | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | WAL / Checkpoint / Crash Recovery | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Database Failure Scenarios | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Transactional Outbox / CDC | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Database Review / 60-second Answers | Prepared | Pending | Pending | Review |
 
 ## Evidence Rules
 
@@ -86,29 +91,39 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 20개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Database 운영·애플리케이션 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Database 마무리 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. DB Connection Pool은 연결 재사용 최적화이면서 DB 동시성을 제한하는 보호 장치이며 Pool Size는 전체 App Instance 수와 DB capacity를 함께 봐야 한다.
-2. Long Transaction은 Lock, MVCC version, Connection을 오래 점유해 Pool Exhaustion과 Deadlock을 키울 수 있다.
-3. 외부 API 호출처럼 느리고 불확실한 Network I/O를 Local DB Transaction 안에 오래 포함하지 않는 것이 기본 원칙이다.
-4. ORM은 SQL을 없애지 않으며 N+1은 부모 1회 조회 뒤 연관 데이터를 N회 추가 조회하는 전형적 성능 문제다.
-5. N+1은 Fetch Join/Eager Loading, Batch Loading, Projection으로 줄일 수 있지만 무조건 JOIN하면 Cartesian Explosion이 생길 수 있다.
-6. 안전한 Schema Migration은 Expand → Migrate → Contract로 구버전/신버전 App의 동시 운영을 고려해야 한다.
-7. 큰 Table의 DDL과 Backfill은 Lock, I/O, WAL/Redo, Replica Lag을 키울 수 있으므로 batch와 monitoring이 필요하다.
-8. 깊은 OFFSET Pagination은 많은 Row를 읽고 버릴 수 있고 Keyset Pagination은 마지막 정렬 Key 이후부터 탐색해 비용 증가를 줄인다.
-9. Keyset Pagination에서는 stable ordering을 위해 created_at과 unique id 같은 tie-breaker를 함께 사용하는 것이 중요하다.
-10. Cache-Aside는 Cache miss 시 DB에서 읽어 채우고 Write 시 DB 변경 후 Cache invalidate를 수행하는 대표 패턴이다.
-11. DB와 외부 Cache는 하나의 Atomic Transaction이 아니므로 invalidation 실패와 stale data를 TTL, retry, Outbox/Event, reconciliation 등으로 관리해야 한다.
-12. Cache Stampede는 인기 Key 동시 만료로 DB에 요청이 몰리는 현상이며 single-flight, TTL jitter, stale-while-revalidate 등으로 완화할 수 있다.
+1. Replication은 가용성과 읽기 확장, Backup은 과거 상태 복구를 위한 것이며 Replica는 Backup을 대체하지 않는다.
+2. PITR은 Base Backup과 WAL/Transaction Log를 이용해 특정 시점까지 복구하는 방식이다.
+3. RPO는 허용 가능한 데이터 손실 시점, RTO는 허용 가능한 복구 시간이다.
+4. WAL은 Data Page보다 복구용 Log를 먼저 durable하게 기록하는 원칙이고 Checkpoint는 recovery 범위를 줄인다.
+5. Commit 직후 Crash가 나 Data Page가 아직 반영되지 않았더라도 durable WAL을 이용해 recovery할 수 있다.
+6. DB 장애 진단에서는 Pool wait, lock wait, slow query, CPU, I/O, replica lag, recent migration을 함께 본다.
+7. Failover에서 timeout을 받은 Transaction이 실제로 Commit됐을 수도 있으므로 Retry 전에 Idempotency가 필요하다.
+8. Logical Corruption은 Replica에도 전파될 수 있으므로 Backup/PITR이 필요하다.
+9. DB Write와 Message Broker Publish를 따로 수행하면 dual-write failure가 생길 수 있다.
+10. Transactional Outbox는 Business Data와 Event 발행 의도를 같은 Local Transaction에 저장해 dual-write 문제를 줄인다.
+11. Outbox Relay/CDC에서는 중복 발행 가능성이 있으므로 at-least-once와 Consumer Idempotency를 함께 설계해야 한다.
+12. CDC는 WAL/Binlog/Transaction Log 등 DB 변경 기록을 읽어 다른 시스템으로 전달하는 메커니즘이다.
+
+## Database Final Review
+
+- [Database 60초 답변 총정리](../docs/databases/25-database-review-60-second-answers.md)
+- [40문항 Database Mock Interview](../quizzes/databases/25-database-review-60-second-answers.md)
+
+### Database를 Completed로 올리는 최소 기준
+
+1. Mock Interview 40문항 중 최소 32개 이상 핵심 개념 혼동 없이 답변
+2. Index / Isolation / MVCC / Lock / Replication / Sharding / Backup / Outbox 비교 질문 통과
+3. 장애 시나리오에서 `지표 → 원인 가설 → 즉시 완화 → 근본 대책` 순서로 답변
+4. 틀린 항목을 해당 문서에 반영
+5. 최소 D+1 재시험 수행
 
 ## Next Action
 
-1. [DB Connection Pool / Transaction Boundary Quiz](../quizzes/databases/16-db-connection-pool-transaction-boundary.md)
-2. [ORM / N+1 Quiz](../quizzes/databases/17-orm-n-plus-one.md)
-3. [Schema Migration Quiz](../quizzes/databases/18-schema-migration.md)
-4. [Pagination / Large Data Access Quiz](../quizzes/databases/19-pagination-large-data-access.md)
-5. [Cache Consistency Quiz](../quizzes/databases/20-cache-consistency.md)
-6. 다음 문서: Backup / PITR → WAL / Checkpoint / Crash Recovery → DB Failure Scenarios → Outbox / CDC → Database Review
-7. Networking Mock Interview와 OS Quiz는 별도 복습 세션에서 Prepared를 Completed로 전환
+1. 새 Database 개념 추가는 일단 중단
+2. [Database Mock Interview](../quizzes/databases/25-database-review-60-second-answers.md) 진행
+3. Networking Mock Interview와 OS Quiz도 병행해 Prepared를 실제 Completed로 전환
+4. 다음 신규 학습 트랙은 Runtime & Concurrency
