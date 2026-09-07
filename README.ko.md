@@ -19,7 +19,7 @@
 |---|---|
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
-| 데이터베이스 | 관계형 모델, Key, Index, Query 실행, Transaction, Isolation, MVCC, Lock |
+| 데이터베이스 | 관계형 모델, Key, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Deadlock |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
 
@@ -39,14 +39,14 @@
 |---|---|---|
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
-| 데이터베이스 | Transaction / ACID | 학습 중 |
+| 데이터베이스 | Database Deadlock | 학습 중 |
 | 런타임·동시성 | 시작 전 | 대기 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [05. Transaction / ACID](docs/databases/05-transaction-and-acid.md)
-- [05. 이해도 확인 문제](quizzes/databases/05-transaction-and-acid.md)
+- [10. Database Deadlock](docs/databases/10-deadlocks.md)
+- [10. 이해도 확인 문제](quizzes/databases/10-deadlocks.md)
 
 ## 데이터베이스 학습 목록
 
@@ -55,6 +55,11 @@
 3. [Clustered / Non-clustered Index](docs/databases/03-clustered-vs-nonclustered-index.md) · [확인 문제](quizzes/databases/03-clustered-vs-nonclustered-index.md)
 4. [Query Execution / EXPLAIN](docs/databases/04-query-execution-and-explain.md) · [확인 문제](quizzes/databases/04-query-execution-and-explain.md)
 5. [Transaction / ACID](docs/databases/05-transaction-and-acid.md) · [확인 문제](quizzes/databases/05-transaction-and-acid.md)
+6. [Transaction Isolation Level](docs/databases/06-isolation-levels.md) · [확인 문제](quizzes/databases/06-isolation-levels.md)
+7. [동시성 이상 현상](docs/databases/07-concurrency-anomalies.md) · [확인 문제](quizzes/databases/07-concurrency-anomalies.md)
+8. [MVCC](docs/databases/08-mvcc.md) · [확인 문제](quizzes/databases/08-mvcc.md)
+9. [Database Lock](docs/databases/09-database-locks.md) · [확인 문제](quizzes/databases/09-database-locks.md)
+10. [Database Deadlock](docs/databases/10-deadlocks.md) · [확인 문제](quizzes/databases/10-deadlocks.md)
 
 ## 네트워크 트랙
 
@@ -73,7 +78,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 데이터베이스 주제
 
-Isolation Level → 동시성 이상 현상 → MVCC → Row/Table Lock → Deadlock → Normalization → Optimistic/Pessimistic Lock → Replication → Partitioning → DB Connection/Transaction 동작 순으로 진행합니다.
+Normalization → Application-level Optimistic/Pessimistic Lock → Unique Constraint / Upsert → Replication / Read Replica → Partitioning / Sharding → DB Connection Pool / Transaction Boundary 순으로 진행합니다.
 
 - [전체 로드맵](ROADMAP.md)
 
