@@ -18,6 +18,11 @@
 | 2026-09-08 | OS | Paging / Page Fault | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | OS | Page Cache / File I/O | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | OS | I/O Multiplexing | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | File Descriptor | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | Interrupt / DMA | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | Zero-copy / sendfile | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | Socket Internals | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | TCP Processing Inside the OS | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -29,19 +34,23 @@
 - 60초 기술면접 답변
 - 1일·7일 후 재시험 결과
 
+## Current Checkpoint
+
+OS 문서는 19개 주제까지 준비되었습니다. 아직 대부분 Quiz와 Re-test가 Pending이므로 문서 생성 자체를 학습 완료로 간주하지 않습니다.
+
+다음 다섯 문장을 자료 없이 설명할 수 있어야 OS → Networking 전환이 가능합니다.
+
+1. File Descriptor는 Process-local integer handle이며 Kernel resource 자체가 아니다.
+2. DMA는 NIC/Storage와 RAM 사이의 데이터 전송에서 CPU의 직접 복사 부담을 줄인다.
+3. Zero-copy는 물리적 데이터 이동이 0이라는 뜻이 아니라 불필요한 CPU-mediated copy를 줄이는 최적화다.
+4. `send()` 성공은 상대 애플리케이션의 수신 완료와 같은 의미가 아니다.
+5. TCP 수신 경로는 크게 NIC → DMA → Kernel TCP/IP stack → Socket buffer → Application으로 설명할 수 있다.
+
 ## Next Action
 
-현재는 문서가 준비된 상태이며 완료 상태가 아닙니다. 다음 순서로 자료 없이 설명합니다.
-
-1. Memory Visibility에서 Atomicity / Visibility / Ordering 차이
-2. Virtual Address → TLB / Page Table / MMU → Physical Address 흐름
-3. Page Fault가 항상 오류가 아닌 이유와 Minor / Major Fault 차이
-4. Page Cache에서 read/write가 Physical Storage와 분리될 수 있는 이유
-5. I/O Multiplexing이 Thread-per-connection보다 유리한 이유
-
-특히 다음 문장을 자신의 말로 설명할 수 있어야 합니다.
-
-- `volatile`은 복합 연산을 자동으로 Atomic하게 만들지 않는다.
-- Virtual Memory는 Swap보다 훨씬 넓은 주소 추상화와 보호 메커니즘이다.
-- `write()` 성공은 Storage durability 완료와 같은 의미가 아닐 수 있다.
-- I/O Multiplexing은 CPU Parallelism이 아니라 많은 I/O 대기를 효율적으로 관리하는 기술이다.
+1. [File Descriptor Quiz](../quizzes/operating-systems/15-file-descriptor.md)
+2. [Interrupt / DMA Quiz](../quizzes/operating-systems/16-interrupt-and-dma.md)
+3. [Zero-copy / sendfile Quiz](../quizzes/operating-systems/17-zero-copy-and-sendfile.md)
+4. [Socket Internals Quiz](../quizzes/operating-systems/18-socket-internals.md)
+5. [TCP Processing Quiz](../quizzes/operating-systems/19-tcp-in-the-os.md)
+6. 이후 Networking Fundamentals로 진행
