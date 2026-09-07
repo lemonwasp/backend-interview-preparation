@@ -13,7 +13,7 @@
 2. 실제 백엔드 사례와 연결한다.
 3. 자료를 보지 않고 자신의 말로 설명한다.
 4. 확인 질문과 면접 꼬리 질문에 답한다.
-5. 필요하면 C 코드나 Linux 명령어로 현상을 재현한다.
+5. 필요하면 코드나 운영체제 도구로 현상을 재현한다.
 6. 틀린 답과 부족한 부분을 문서에 다시 반영한다.
 
 ## 학습 범위
@@ -21,7 +21,7 @@
 | 영역 | 주요 주제 |
 |---|---|
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
-| 네트워크 | TCP/IP, HTTP, DNS, Socket, Load Balancing |
+| 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing |
 | 데이터베이스 | Index, Transaction, Isolation, Lock, Query |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
@@ -41,15 +41,15 @@
 | 영역 | 현재 주제 | 상태 |
 |---|---|---|
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
-| 네트워크 | Flow Control / Congestion Control | 학습 중 |
+| 네트워크 | HTTP/3 & QUIC | 학습 중 |
 | 데이터베이스 | 시작 전 | 대기 |
 | 런타임·동시성 | 시작 전 | 대기 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [05. TCP Flow Control과 Congestion Control](docs/networking/05-flow-congestion-control.md)
-- [05. 이해도 확인 문제](quizzes/networking/05-flow-congestion-control.md)
+- [10. HTTP/3 & QUIC](docs/networking/10-http-3-quic.md)
+- [10. 이해도 확인 문제](quizzes/networking/10-http-3-quic.md)
 
 ## 네트워크 학습 목록
 
@@ -58,10 +58,15 @@
 3. [TCP 종료와 TIME_WAIT](docs/networking/03-tcp-termination-time-wait.md) · [확인 문제](quizzes/networking/03-tcp-termination-time-wait.md)
 4. [TCP Retransmission / RTO](docs/networking/04-tcp-retransmission-rto.md) · [확인 문제](quizzes/networking/04-tcp-retransmission-rto.md)
 5. [TCP Flow Control / Congestion Control](docs/networking/05-flow-congestion-control.md) · [확인 문제](quizzes/networking/05-flow-congestion-control.md)
+6. [UDP vs TCP](docs/networking/06-udp-vs-tcp.md) · [확인 문제](quizzes/networking/06-udp-vs-tcp.md)
+7. [DNS](docs/networking/07-dns.md) · [확인 문제](quizzes/networking/07-dns.md)
+8. [HTTP/1.1](docs/networking/08-http-1-1.md) · [확인 문제](quizzes/networking/08-http-1-1.md)
+9. [HTTP/2](docs/networking/09-http-2.md) · [확인 문제](quizzes/networking/09-http-2.md)
+10. [HTTP/3 & QUIC](docs/networking/10-http-3-quic.md) · [확인 문제](quizzes/networking/10-http-3-quic.md)
 
 ## 운영체제 트랙
 
-OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket Internals, OS 내부 TCP 처리까지 19개 주제가 준비되어 있습니다. 다만 문서 생성 자체를 학습 완료로 처리하지 않으며 대부분 Quiz와 Re-test가 남아 있습니다.
+OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket Internals, OS 내부 TCP 처리까지 19개 주제가 준비되어 있습니다. 다만 대부분 Quiz와 Re-test가 남아 있어 아직 완료 상태는 아닙니다.
 
 - [OS 첫 주제](docs/operating-systems/01-os-and-kernel.md)
 - [OS 19번](docs/operating-systems/19-tcp-in-the-os.md)
@@ -69,7 +74,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 네트워크 주제
 
-UDP vs TCP, DNS, HTTP/1.1, HTTP/2, HTTP/3와 QUIC, TLS, Proxy, Reverse Proxy, Load Balancing 순으로 진행합니다.
+TLS/HTTPS → 인증서와 PKI → Proxy / Reverse Proxy → Load Balancing → CDN / Cache → WebSocket / gRPC 순으로 진행합니다.
 
 - [전체 로드맵](ROADMAP.md)
 
