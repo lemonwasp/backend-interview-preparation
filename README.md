@@ -41,12 +41,12 @@ A topic is complete only when I can:
 | Networking | 30 topics prepared; mock interview pending | Review |
 | Databases | 25 topics prepared; mock interview pending | Review |
 | Runtime & Concurrency | 16 topics prepared; mock interview pending | Review |
-| System Design | Multi-region & Disaster Recovery | Learning |
+| System Design | 16 topics prepared; mock interview pending | Review |
 
 ## Current Lesson
 
-- [15. Multi-region and Disaster Recovery](docs/system-design/15-multi-region-and-disaster-recovery.md)
-- [Knowledge Check](quizzes/system-design/15-multi-region-and-disaster-recovery.md)
+- [16. System Design Review — 60-second Answers & Trade-offs](docs/system-design/16-system-design-review-60-second-answers.md)
+- [System Design Mock Interview](quizzes/system-design/16-system-design-review-60-second-answers.md)
 
 ## System Design Lessons
 
@@ -65,6 +65,7 @@ A topic is complete only when I can:
 13. [Graceful Degradation](docs/system-design/13-graceful-degradation.md) · [Quiz](quizzes/system-design/13-graceful-degradation.md)
 14. [Failure Mode Reasoning](docs/system-design/14-failure-mode-reasoning.md) · [Quiz](quizzes/system-design/14-failure-mode-reasoning.md)
 15. [Multi-region and Disaster Recovery](docs/system-design/15-multi-region-and-disaster-recovery.md) · [Quiz](quizzes/system-design/15-multi-region-and-disaster-recovery.md)
+16. [System Design Review — 60-second Answers & Trade-offs](docs/system-design/16-system-design-review-60-second-answers.md) · [Mock Interview](quizzes/system-design/16-system-design-review-60-second-answers.md)
 
 ## Runtime & Concurrency Track
 
@@ -95,11 +96,9 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 - [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
-## Next System Design Topic
+## Review Phase
 
-Create a System Design review checkpoint with 60-second answers, trade-off comparisons and a mock interview. New System Design concepts should pause after topic 15 until the review checkpoint is prepared.
-
-Existing OS, Networking, Database and Runtime topics remain Prepared until quizzes and re-tests are passed.
+New concept expansion is paused. The repository now moves into evidence-based review: quizzes, mock interviews, explanation without notes, and D+1/D+7 re-tests. Prepared material is not treated as Completed until those checks are passed.
 
 ## Language Policy
 
