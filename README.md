@@ -43,10 +43,12 @@ A topic is complete only when I can:
 ├── ROADMAP.md
 ├── docs/
 │   └── operating-systems/
-│       └── 01-os-and-kernel.md
+│       ├── 01-os-and-kernel.md
+│       └── 02-user-kernel-mode-system-call.md
 ├── quizzes/
 │   └── operating-systems/
-│       └── 01-os-and-kernel.md
+│       ├── 01-os-and-kernel.md
+│       └── 02-user-kernel-mode-system-call.md
 └── progress/
     └── learning-log.md
 ```
@@ -55,13 +57,18 @@ A topic is complete only when I can:
 
 | Area | Current topic | Status |
 |---|---|---|
-| Operating Systems | OS and Kernel | Learning |
+| Operating Systems | User/Kernel Mode & System Calls | Learning |
 | Networking | Not started | Pending |
 | Databases | Not started | Pending |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
+
+- [02. User Mode, Kernel Mode and System Calls](docs/operating-systems/02-user-kernel-mode-system-call.md)
+- [Knowledge Check](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
+
+### Previous Lesson
 
 - [01. Operating System and Kernel](docs/operating-systems/01-os-and-kernel.md)
 - [Knowledge Check](quizzes/operating-systems/01-os-and-kernel.md)
