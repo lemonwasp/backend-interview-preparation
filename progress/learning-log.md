@@ -93,6 +93,7 @@
 | 2026-09-08 | Runtime | ThreadPool Starvation Diagnostics | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Runtime | ExecutionContext / Context Flow | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Runtime | Runtime Observability | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Runtime & Concurrency Review / 60-second Answers | Prepared | Pending | Pending | Review |
 
 ## Evidence Rules
 
@@ -106,30 +107,42 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 15개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 15개 개념 + 1개 총정리까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Runtime 세 번째 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Runtime 최종 복습에서는 다음을 자료 없이 연결해서 설명할 수 있어야 합니다.
 
-1. GC는 managed memory를 회수하지만 file handle, socket, DB connection 같은 제한된 외부 자원의 적시 해제를 대신하지 않으므로 `IDisposable`과 `using`이 필요하다.
-2. `Dispose()`는 object memory를 직접 없애는 것이 아니라 owned resource를 deterministic하게 반환하는 것이다.
-3. `HttpClient`는 매 요청마다 생성/폐기하면 connection churn을 만들 수 있으므로 일반적인 서버에서는 factory나 장수명 재사용 전략을 고려한다.
-4. `IAsyncEnumerable<T>`는 전체 결과를 materialize하지 않고 항목을 준비되는 대로 비동기적으로 전달하며 자동 병렬 처리를 의미하지 않는다.
-5. `Channel<T>`은 in-process producer/consumer coordination 도구이며 bounded capacity를 사용하면 backpressure를 걸 수 있다.
-6. ThreadPool Starvation은 CPU Saturation과 다르며 sync-over-async, blocking I/O, 긴 lock wait로 CPU가 남아도 queue가 밀릴 수 있다.
-7. Starvation 진단에서는 ThreadPool queue/thread count, completed work rate, CPU, request latency, lock/connection wait을 함께 본다.
-8. `ExecutionContext`는 async 흐름을 넘어 logical context를 전달하고 `SynchronizationContext`는 continuation scheduling과 관련된 별도 개념이다.
-9. ASP.NET Core에서는 classic UI/ASP.NET식 SynchronizationContext deadlock과 조건이 다르지만 `.Result` / `.Wait()`는 여전히 blocking과 scalability 문제를 만든다.
-10. trace/correlation context는 `Activity`, OpenTelemetry와 연결되며 ambient context는 tenant/user 정보와 결합될 때 보안상 신중히 다뤄야 한다.
-11. Runtime Observability는 metrics, logs, traces와 CPU, GC, allocation, ThreadPool, lock 지표를 연결해 병목을 찾는 과정이다.
-12. memory 문제에서는 RSS와 managed heap을 구분하고, latency 문제에서는 평균뿐 아니라 p95/p99와 queueing을 확인한 뒤 profile-before-optimize 원칙을 따른다.
+1. CLR은 OS 위에서 JIT, GC, ThreadPool, Task 같은 managed runtime 기능을 제공한다.
+2. Thread는 실행 resource이고 Task는 작업 완료 abstraction이다.
+3. `async/await`는 새 Thread를 만드는 것이 아니라 state machine과 continuation으로 비동기 흐름을 표현한다.
+4. Blocking과 async suspension의 차이를 설명하고 `.Result` / `.Wait()`가 scalability를 낮출 수 있는 이유를 설명한다.
+5. `lock`, `SemaphoreSlim`, `Interlocked`, `volatile`의 역할과 한계를 구분한다.
+6. Concurrent Collection의 thread safety와 business atomicity, distributed safety를 구분한다.
+7. Timeout은 기다림 정책이고 Cancellation은 cooperative 중단 요청이며 side effect rollback과는 다르다.
+8. GC Generation, LOH, allocation rate, boxing이 latency/CPU에 미치는 영향을 설명한다.
+9. GC가 있어도 managed memory leak이 가능하며 heap dump의 retention path로 원인을 찾을 수 있다.
+10. GC와 `IDisposable`의 역할을 구분하고 resource ownership/lifetime을 설명한다.
+11. `IAsyncEnumerable<T>`와 `Channel<T>`을 streaming과 producer-consumer/backpressure 관점에서 비교한다.
+12. ThreadPool Starvation과 CPU Saturation을 지표로 구분한다.
+13. ExecutionContext와 SynchronizationContext의 차이와 `AsyncLocal<T>`/Activity context flow를 설명한다.
+14. Runtime 장애 진단에서는 request p95/p99, CPU, ThreadPool, GC, allocation, RSS, managed heap, lock contention, downstream trace를 연결한다.
+15. 최적화는 추측이 아니라 metric → trace/profile → 원인 검증 → 변경 → 재측정 순으로 수행한다.
+
+## Runtime Final Review
+
+- [Runtime & Concurrency 60초 답변 총정리](../docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
+- [40문항 Runtime & Concurrency Mock Interview](../quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
+
+### Runtime & Concurrency를 Completed로 올리는 최소 기준
+
+1. Mock Interview 40문항 중 최소 32개 이상 핵심 개념 혼동 없이 답변
+2. Thread / Task, Blocking / Async, lock / SemaphoreSlim, Timeout / Cancellation, GC / Dispose 비교 질문 통과
+3. ThreadPool Starvation, Managed Memory Leak, GC Pressure 시나리오에서 `증상 → 지표 → 원인 가설 → 검증 → 조치` 순서로 답변
+4. 틀린 항목을 해당 문서에 반영
+5. 최소 D+1 재시험 수행
 
 ## Next Action
 
-1. [IDisposable / Resource Lifetime Quiz](../quizzes/runtime-concurrency/11-idisposable-resource-lifetime.md)
-2. [Async Stream / Channel Quiz](../quizzes/runtime-concurrency/12-async-streams-and-channels.md)
-3. [ThreadPool Starvation Diagnostics Quiz](../quizzes/runtime-concurrency/13-threadpool-starvation-diagnostics.md)
-4. [ExecutionContext / Context Flow Quiz](../quizzes/runtime-concurrency/14-executioncontext-context-flow.md)
-5. [Runtime Observability Quiz](../quizzes/runtime-concurrency/15-runtime-observability.md)
-6. 다음 문서: Runtime & Concurrency 60초 답변 총정리 + Mock Interview
-7. 이후 신규 개념 준비는 System Design으로 이동
-8. OS / Networking / Database / Runtime은 Quiz와 Re-test를 통해 Prepared를 실제 Completed로 전환
+1. 새 Runtime & Concurrency 개념 추가는 일단 중단
+2. [Runtime & Concurrency Mock Interview](../quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md) 진행
+3. OS / Networking / Database Mock Interview도 병행해 Prepared를 실제 Completed로 전환
+4. 다음 신규 학습 트랙은 System Design
