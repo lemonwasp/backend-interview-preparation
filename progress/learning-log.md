@@ -63,6 +63,11 @@
 | 2026-09-08 | Database | MVCC | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Database Locks | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Deadlocks | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Normalization | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Optimistic / Pessimistic Locking | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Unique Constraint / Upsert | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Replication / Read Replica | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Partitioning / Sharding | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -76,29 +81,29 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 10개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 15개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Database 동시성 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Database 설계·확장 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. Isolation Level은 동시에 실행되는 Transaction이 서로의 변경을 어느 정도까지 보게 할지 정하는 보장 수준이다.
-2. Dirty Read는 Uncommitted Data를 읽는 것, Non-repeatable Read는 같은 Row 값이 바뀌는 것, Phantom Read는 같은 조건의 Row 집합이 바뀌는 것이다.
-3. Lost Update와 Write Skew는 대표 세 Read Anomaly 외에도 Backend에서 중요한 동시성 문제다.
-4. Isolation Level은 보장이고 MVCC는 여러 Version과 Snapshot을 이용해 그 보장을 구현할 수 있는 메커니즘이다.
-5. MVCC가 있어도 Writer-Writer 충돌과 Explicit Lock은 남으며 Long Transaction은 오래된 Version 정리를 방해할 수 있다.
-6. Pessimistic Lock은 먼저 Lock을 잡고, Optimistic Lock은 Version Check로 마지막에 충돌을 감지한다.
-7. `SELECT ... FOR UPDATE`는 강력하지만 Lock Wait, 긴 Transaction, Deadlock 비용이 있으므로 필요한 범위에만 사용한다.
-8. Lock Contention은 Query latency뿐 아니라 DB Connection Pool exhaustion으로 번질 수 있다.
-9. Deadlock은 Circular Wait이며 일반적으로 DBMS가 Victim Transaction 하나를 abort해 cycle을 해소한다.
-10. Deadlock 예방의 핵심은 일관된 Lock Ordering, 짧은 Transaction, 적절한 Index와 작은 Lock 범위다.
-11. Deadlock Retry 전에 Idempotency와 외부 Side Effect 여부를 확인해야 한다.
-12. Local DB Transaction으로 외부 API Side Effect를 자동으로 Rollback할 수 없으므로 Retry 설계와 Transaction 경계를 함께 봐야 한다.
+1. Normalization은 Functional Dependency에 따라 중복과 Insert/Update/Delete Anomaly를 줄이는 설계 원칙이며, Denormalization은 읽기 성능을 위해 의도적으로 중복을 허용하는 trade-off다.
+2. 주문 당시 가격처럼 역사적 Snapshot은 현재 Product 가격과 다른 사실이므로 단순 중복으로 보고 제거하면 안 된다.
+3. Optimistic Lock은 Version Check로 마지막에 충돌을 감지하고 Pessimistic Lock은 먼저 Lock을 잡아 충돌을 차단한다.
+4. Hot Row에서는 Optimistic Retry Storm과 Pessimistic Lock Wait/Deadlock 중 어떤 비용이 더 큰지 판단해야 한다.
+5. `SELECT 후 INSERT`는 Check-then-act Race가 있으므로 Unique Constraint 같은 DB invariant가 최종 방어선이 되어야 한다.
+6. Upsert는 존재 여부 확인과 변경을 DB 동시성 제어 안에서 처리하지만 모든 복잡한 invariant를 해결하는 것은 아니다.
+7. Async Read Replica는 Replication Lag 때문에 stale read가 가능하므로 read-after-write consistency가 필요한 요청은 별도 Routing 정책이 필요하다.
+8. Replica는 논리적 삭제와 잘못된 변경도 복제할 수 있으므로 Backup/PITR을 대체하지 않는다.
+9. Partitioning은 보통 한 DB 시스템 안에서 데이터를 나누고 Sharding은 여러 독립 DB Node에 데이터를 분산한다.
+10. Shard Key는 데이터와 트래픽을 고르게 분산하면서 자주 함께 접근하는 데이터를 같은 Shard에 두도록 설계해야 한다.
+11. Sharding의 가장 큰 비용은 Cross-shard Join, Aggregate, Transaction, Unique Constraint와 Rebalancing 복잡도다.
+12. Replication은 같은 데이터를 복사하고 Sharding은 데이터를 분할하며 실제 시스템에서는 Shard별 Replica 구조로 함께 사용할 수 있다.
 
 ## Next Action
 
-1. [Isolation Levels Quiz](../quizzes/databases/06-isolation-levels.md)
-2. [Concurrency Anomalies Quiz](../quizzes/databases/07-concurrency-anomalies.md)
-3. [MVCC Quiz](../quizzes/databases/08-mvcc.md)
-4. [Database Locks Quiz](../quizzes/databases/09-database-locks.md)
-5. [Database Deadlocks Quiz](../quizzes/databases/10-deadlocks.md)
-6. 다음 문서: Normalization → Optimistic/Pessimistic Lock 응용 → Unique Constraint / Upsert → Replication / Read Replica
+1. [Normalization Quiz](../quizzes/databases/11-normalization.md)
+2. [Optimistic / Pessimistic Locking Quiz](../quizzes/databases/12-optimistic-vs-pessimistic-locking.md)
+3. [Unique Constraint / Upsert Quiz](../quizzes/databases/13-unique-constraint-and-upsert.md)
+4. [Replication / Read Replica Quiz](../quizzes/databases/14-replication-and-read-replicas.md)
+5. [Partitioning / Sharding Quiz](../quizzes/databases/15-partitioning-and-sharding.md)
+6. 다음 문서: DB Connection Pool / Transaction Boundary → ORM / N+1 → Schema Migration → Pagination / Large Data Access → Cache Consistency
 7. Networking Mock Interview와 OS Quiz는 별도 복습 세션에서 Prepared를 Completed로 전환
