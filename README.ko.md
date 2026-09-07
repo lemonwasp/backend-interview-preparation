@@ -19,7 +19,7 @@
 |---|---|
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
-| 데이터베이스 | 관계형 모델, Key, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Deadlock |
+| 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Partitioning, Sharding |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
 
@@ -39,14 +39,14 @@
 |---|---|---|
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
-| 데이터베이스 | Database Deadlock | 학습 중 |
+| 데이터베이스 | Partitioning / Sharding | 학습 중 |
 | 런타임·동시성 | 시작 전 | 대기 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [10. Database Deadlock](docs/databases/10-deadlocks.md)
-- [10. 이해도 확인 문제](quizzes/databases/10-deadlocks.md)
+- [15. Partitioning / Sharding](docs/databases/15-partitioning-and-sharding.md)
+- [15. 이해도 확인 문제](quizzes/databases/15-partitioning-and-sharding.md)
 
 ## 데이터베이스 학습 목록
 
@@ -60,6 +60,11 @@
 8. [MVCC](docs/databases/08-mvcc.md) · [확인 문제](quizzes/databases/08-mvcc.md)
 9. [Database Lock](docs/databases/09-database-locks.md) · [확인 문제](quizzes/databases/09-database-locks.md)
 10. [Database Deadlock](docs/databases/10-deadlocks.md) · [확인 문제](quizzes/databases/10-deadlocks.md)
+11. [Normalization](docs/databases/11-normalization.md) · [확인 문제](quizzes/databases/11-normalization.md)
+12. [Optimistic / Pessimistic Locking](docs/databases/12-optimistic-vs-pessimistic-locking.md) · [확인 문제](quizzes/databases/12-optimistic-vs-pessimistic-locking.md)
+13. [Unique Constraint / Upsert](docs/databases/13-unique-constraint-and-upsert.md) · [확인 문제](quizzes/databases/13-unique-constraint-and-upsert.md)
+14. [Replication / Read Replica](docs/databases/14-replication-and-read-replicas.md) · [확인 문제](quizzes/databases/14-replication-and-read-replicas.md)
+15. [Partitioning / Sharding](docs/databases/15-partitioning-and-sharding.md) · [확인 문제](quizzes/databases/15-partitioning-and-sharding.md)
 
 ## 네트워크 트랙
 
@@ -78,7 +83,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 데이터베이스 주제
 
-Normalization → Application-level Optimistic/Pessimistic Lock → Unique Constraint / Upsert → Replication / Read Replica → Partitioning / Sharding → DB Connection Pool / Transaction Boundary 순으로 진행합니다.
+DB Connection Pool / Transaction Boundary → ORM / N+1 → Schema Migration → Pagination / Large Data Access → Cache Consistency → Backup / PITR → DB 장애 시나리오 순으로 진행합니다.
 
 - [전체 로드맵](ROADMAP.md)
 
