@@ -2,8 +2,7 @@
 
 [한국어](README.ko.md)
 
-A structured repository for building the computer science foundations required
-for backend engineering interviews.
+A structured repository for building the computer science foundations required for backend engineering interviews.
 
 The repository uses a Feynman-style learning loop:
 
@@ -18,8 +17,8 @@ The repository uses a Feynman-style learning loop:
 | Area | Topics |
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
-| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, CDN, realtime transport, RPC, gateways, resilience, connection management |
-| Databases | Indexes, transactions, isolation, locking, query execution |
+| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
+| Databases | Relational model, keys, indexes, query execution, transactions, isolation, MVCC, locking |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
 
@@ -40,63 +39,42 @@ A topic is complete only when I can:
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
 | Networking | 30 topics prepared; mock interview pending | Review |
-| Databases | Next track | Pending |
+| Databases | Transaction & ACID | Learning |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [30. Networking Review — 60-second Answer Checkpoint](docs/networking/30-networking-review-60-second-answers.md)
+- [05. Transaction and ACID](docs/databases/05-transaction-and-acid.md)
+- [Knowledge Check](quizzes/databases/05-transaction-and-acid.md)
+
+## Database Lessons
+
+1. [Relational Model and Keys](docs/databases/01-relational-model-and-keys.md) · [Quiz](quizzes/databases/01-relational-model-and-keys.md)
+2. [B-Tree Index](docs/databases/02-b-tree-index.md) · [Quiz](quizzes/databases/02-b-tree-index.md)
+3. [Clustered vs Non-clustered Index](docs/databases/03-clustered-vs-nonclustered-index.md) · [Quiz](quizzes/databases/03-clustered-vs-nonclustered-index.md)
+4. [Query Execution and EXPLAIN](docs/databases/04-query-execution-and-explain.md) · [Quiz](quizzes/databases/04-query-execution-and-explain.md)
+5. [Transaction and ACID](docs/databases/05-transaction-and-acid.md) · [Quiz](quizzes/databases/05-transaction-and-acid.md)
+
+## Networking Track
+
+The Networking track contains 29 concept lessons plus one 60-second-answer review and a 40-question mock interview. It remains in review until the mock interview and re-test requirements are met.
+
+- [Networking Review](docs/networking/30-networking-review-60-second-answers.md)
 - [Networking Mock Interview](quizzes/networking/30-networking-review-60-second-answers.md)
-
-## Networking Lessons
-
-1. [TCP/IP Layers](docs/networking/01-tcp-ip-layers.md) · [Quiz](quizzes/networking/01-tcp-ip-layers.md)
-2. [TCP 3-way Handshake](docs/networking/02-tcp-three-way-handshake.md) · [Quiz](quizzes/networking/02-tcp-three-way-handshake.md)
-3. [TCP Termination and TIME_WAIT](docs/networking/03-tcp-termination-time-wait.md) · [Quiz](quizzes/networking/03-tcp-termination-time-wait.md)
-4. [TCP Retransmission and RTO](docs/networking/04-tcp-retransmission-rto.md) · [Quiz](quizzes/networking/04-tcp-retransmission-rto.md)
-5. [TCP Flow Control and Congestion Control](docs/networking/05-flow-congestion-control.md) · [Quiz](quizzes/networking/05-flow-congestion-control.md)
-6. [UDP vs TCP](docs/networking/06-udp-vs-tcp.md) · [Quiz](quizzes/networking/06-udp-vs-tcp.md)
-7. [DNS](docs/networking/07-dns.md) · [Quiz](quizzes/networking/07-dns.md)
-8. [HTTP/1.1](docs/networking/08-http-1-1.md) · [Quiz](quizzes/networking/08-http-1-1.md)
-9. [HTTP/2](docs/networking/09-http-2.md) · [Quiz](quizzes/networking/09-http-2.md)
-10. [HTTP/3 & QUIC](docs/networking/10-http-3-quic.md) · [Quiz](quizzes/networking/10-http-3-quic.md)
-11. [TLS & HTTPS](docs/networking/11-tls-https.md) · [Quiz](quizzes/networking/11-tls-https.md)
-12. [Certificates & PKI](docs/networking/12-certificate-pki.md) · [Quiz](quizzes/networking/12-certificate-pki.md)
-13. [Forward Proxy & Reverse Proxy](docs/networking/13-forward-reverse-proxy.md) · [Quiz](quizzes/networking/13-forward-reverse-proxy.md)
-14. [Load Balancing](docs/networking/14-load-balancing.md) · [Quiz](quizzes/networking/14-load-balancing.md)
-15. [CDN & HTTP Cache](docs/networking/15-cdn-http-cache.md) · [Quiz](quizzes/networking/15-cdn-http-cache.md)
-16. [WebSocket](docs/networking/16-websocket.md) · [Quiz](quizzes/networking/16-websocket.md)
-17. [Server-Sent Events](docs/networking/17-server-sent-events.md) · [Quiz](quizzes/networking/17-server-sent-events.md)
-18. [gRPC](docs/networking/18-grpc.md) · [Quiz](quizzes/networking/18-grpc.md)
-19. [REST vs RPC](docs/networking/19-rest-vs-rpc.md) · [Quiz](quizzes/networking/19-rest-vs-rpc.md)
-20. [API Gateway](docs/networking/20-api-gateway.md) · [Quiz](quizzes/networking/20-api-gateway.md)
-21. [Rate Limiting](docs/networking/21-rate-limiting.md) · [Quiz](quizzes/networking/21-rate-limiting.md)
-22. [Timeout Budget](docs/networking/22-timeout-budget.md) · [Quiz](quizzes/networking/22-timeout-budget.md)
-23. [Retry, Exponential Backoff & Jitter](docs/networking/23-retry-backoff-jitter.md) · [Quiz](quizzes/networking/23-retry-backoff-jitter.md)
-24. [Circuit Breaker](docs/networking/24-circuit-breaker.md) · [Quiz](quizzes/networking/24-circuit-breaker.md)
-25. [Bulkhead & Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md) · [Quiz](quizzes/networking/25-bulkhead-resilience-patterns.md)
-26. [Idempotency Key](docs/networking/26-idempotency-key.md) · [Quiz](quizzes/networking/26-idempotency-key.md)
-27. [Backpressure Deep Dive](docs/networking/27-backpressure-deep-dive.md) · [Quiz](quizzes/networking/27-backpressure-deep-dive.md)
-28. [Connection Pooling](docs/networking/28-connection-pooling.md) · [Quiz](quizzes/networking/28-connection-pooling.md)
-29. [NAT & Ephemeral Ports](docs/networking/29-nat-ephemeral-ports.md) · [Quiz](quizzes/networking/29-nat-ephemeral-ports.md)
-30. [Networking Review — 60-second Answers](docs/networking/30-networking-review-60-second-answers.md) · [Mock Interview](quizzes/networking/30-networking-review-60-second-answers.md)
 
 ## Operating Systems Track
 
-The OS track contains 19 prepared topics from OS/kernel fundamentals through file descriptors, DMA, zero-copy, socket internals and TCP processing inside the OS. Most quizzes and re-tests are still pending, so the track remains in review rather than complete.
+The OS track contains 19 prepared topics from OS/kernel fundamentals through file descriptors, DMA, zero-copy, socket internals and TCP processing inside the OS. Most quizzes and re-tests are still pending.
 
 - [OS first topic](docs/operating-systems/01-os-and-kernel.md)
 - [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
-## Next Track
+## Next Database Topics
 
-Database fundamentals: relational model and keys, B-tree indexes, query execution, transactions and ACID, isolation levels, MVCC, locking/deadlocks, normalization, replication, partitioning and connection/transaction behavior.
-
-Before marking Networking complete, answer the review mock interview and perform at least one re-test.
+Isolation levels, concurrency anomalies, MVCC, row/table locks, deadlocks, normalization, optimistic/pessimistic locking, replication, partitioning and database connection/transaction behavior.
 
 ## Language Policy
 
-Detailed learning notes are written in Korean first for accurate understanding.
-Concise English interview answers will be added after each topic is understood.
+Detailed learning notes are written in Korean first for accurate understanding. Concise English interview answers will be added after each topic is understood.
