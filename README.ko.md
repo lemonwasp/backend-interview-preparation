@@ -21,7 +21,7 @@
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
 | 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache, Backup, Recovery, CDC |
 | 런타임·동시성 | CLR/Runtime Model, Thread Pool, Task, async/await, Synchronization, Concurrent Collection, Cancellation, GC, Allocation, Memory/Resource Lifetime, Async Stream, Context Flow, Observability |
-| 시스템 설계 | 요구사항, Capacity Estimation, Stateless Service, Cache, Queue, Load Balancing, DB Scaling, Consistency, Idempotency, Rate Limiting, Distributed Lock, Reliability |
+| 시스템 설계 | 요구사항, Capacity Estimation, Stateless Service, Cache, Queue, Load Balancing, DB Scaling, Consistency, Idempotency, Rate Limiting, Distributed Lock, Service Boundary, SLO, Graceful Degradation, Failure Mode, Multi-region, DR |
 
 ## 완료 기준
 
@@ -41,12 +41,12 @@
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
 | 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
 | 런타임·동시성 | 16개 주제 준비, Mock Interview 대기 | 복습 |
-| 시스템 설계 | Distributed Lock | 학습 중 |
+| 시스템 설계 | Multi-region / Disaster Recovery | 학습 중 |
 
 ## 현재 학습
 
-- [10. Distributed Lock](docs/system-design/10-distributed-lock.md)
-- [10. 이해도 확인 문제](quizzes/system-design/10-distributed-lock.md)
+- [15. Multi-region / Disaster Recovery](docs/system-design/15-multi-region-and-disaster-recovery.md)
+- [15. 이해도 확인 문제](quizzes/system-design/15-multi-region-and-disaster-recovery.md)
 
 ## 시스템 설계 학습 목록
 
@@ -60,6 +60,11 @@
 8. [Distributed Idempotency](docs/system-design/08-distributed-idempotency.md) · [확인 문제](quizzes/system-design/08-distributed-idempotency.md)
 9. [Rate Limiting](docs/system-design/09-rate-limiting.md) · [확인 문제](quizzes/system-design/09-rate-limiting.md)
 10. [Distributed Lock](docs/system-design/10-distributed-lock.md) · [확인 문제](quizzes/system-design/10-distributed-lock.md)
+11. [Service Boundary / Ownership](docs/system-design/11-service-boundary-and-ownership.md) · [확인 문제](quizzes/system-design/11-service-boundary-and-ownership.md)
+12. [Observability / SLO](docs/system-design/12-observability-and-slo.md) · [확인 문제](quizzes/system-design/12-observability-and-slo.md)
+13. [Graceful Degradation](docs/system-design/13-graceful-degradation.md) · [확인 문제](quizzes/system-design/13-graceful-degradation.md)
+14. [Failure Mode Reasoning](docs/system-design/14-failure-mode-reasoning.md) · [확인 문제](quizzes/system-design/14-failure-mode-reasoning.md)
+15. [Multi-region / Disaster Recovery](docs/system-design/15-multi-region-and-disaster-recovery.md) · [확인 문제](quizzes/system-design/15-multi-region-and-disaster-recovery.md)
 
 ## 런타임·동시성 트랙
 
@@ -92,7 +97,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 시스템 설계 주제
 
-Service Boundary / Ownership → Observability / SLO → Graceful Degradation → Failure Mode 추론 → Multi-region / Disaster Recovery → System Design 총정리 / Mock Interview 순으로 진행합니다.
+System Design 60초 답변 총정리 + Trade-off 비교 + Mock Interview를 만든 뒤 신규 System Design 개념 추가는 일단 중단합니다.
 
 기존 OS / Networking / Database / Runtime은 Quiz와 Re-test를 통과하기 전까지 Prepared 상태를 유지합니다.
 
