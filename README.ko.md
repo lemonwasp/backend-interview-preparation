@@ -20,7 +20,7 @@
 
 | 영역 | 주요 주제 |
 |---|---|
-| 운영체제 | 프로세스, 스레드, 메모리, 스케줄링, 동시성, I/O |
+| 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O |
 | 네트워크 | TCP/IP, HTTP, DNS, Socket, Load Balancing |
 | 데이터베이스 | Index, Transaction, Isolation, Lock, Query |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
@@ -40,8 +40,8 @@
 
 ## 현재 학습
 
-- [09. Race Condition, Lock, Deadlock](docs/operating-systems/09-race-lock-deadlock.md)
-- [09. 이해도 확인 문제](quizzes/operating-systems/09-race-lock-deadlock.md)
+- [14. I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md)
+- [14. 이해도 확인 문제](quizzes/operating-systems/14-io-multiplexing.md)
 
 ## OS 학습 목록
 
@@ -53,7 +53,12 @@
 6. [CPU Scheduling](docs/operating-systems/06-cpu-scheduling.md) · [확인 문제](quizzes/operating-systems/06-cpu-scheduling.md)
 7. [Blocking / Non-blocking / Sync / Async](docs/operating-systems/07-blocking-nonblocking-sync-async.md) · [확인 문제](quizzes/operating-systems/07-blocking-nonblocking-sync-async.md)
 8. [Concurrency vs Parallelism](docs/operating-systems/08-concurrency-vs-parallelism.md) · [확인 문제](quizzes/operating-systems/08-concurrency-vs-parallelism.md)
-9. [Race Condition, Lock, Deadlock](docs/operating-systems/09-race-lock-deadlock.md) · [확인 문제](quizzes/operating-systems/09-race-lock-deadlock.md)
+9. [Race Condition / Lock / Deadlock](docs/operating-systems/09-race-condition-lock-deadlock.md) · [확인 문제](quizzes/operating-systems/09-race-condition-lock-deadlock.md)
+10. [Memory Visibility / Memory Barrier](docs/operating-systems/10-memory-visibility-memory-barrier.md) · [확인 문제](quizzes/operating-systems/10-memory-visibility-memory-barrier.md)
+11. [Virtual Memory 심화](docs/operating-systems/11-virtual-memory-deep-dive.md) · [확인 문제](quizzes/operating-systems/11-virtual-memory-deep-dive.md)
+12. [Paging / Page Fault](docs/operating-systems/12-paging-page-fault.md) · [확인 문제](quizzes/operating-systems/12-paging-page-fault.md)
+13. [Page Cache / File I/O](docs/operating-systems/13-page-cache-file-io.md) · [확인 문제](quizzes/operating-systems/13-page-cache-file-io.md)
+14. [I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md) · [확인 문제](quizzes/operating-systems/14-io-multiplexing.md)
 
 - [전체 로드맵](ROADMAP.md)
 - [학습 기록](progress/learning-log.md)
