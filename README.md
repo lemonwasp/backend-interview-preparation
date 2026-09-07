@@ -17,7 +17,7 @@ The repository uses a Feynman-style learning loop:
 
 | Area | Topics |
 |---|---|
-| Operating Systems | Processes, threads, memory, concurrency, I/O |
+| Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
 | Networking | TCP/IP, HTTP, DNS, sockets, load balancing |
 | Databases | Indexes, transactions, isolation, locking, query execution |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
@@ -38,16 +38,16 @@ A topic is complete only when I can:
 
 | Area | Current topic | Status |
 |---|---|---|
-| Operating Systems | I/O Multiplexing | Learning |
-| Networking | Not started | Pending |
+| Operating Systems | TCP processing inside the OS | Learning |
+| Networking | Next | Pending |
 | Databases | Not started | Pending |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [14. I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md)
-- [Knowledge Check](quizzes/operating-systems/14-io-multiplexing.md)
+- [19. TCP Processing Inside the OS](docs/operating-systems/19-tcp-in-the-os.md)
+- [Knowledge Check](quizzes/operating-systems/19-tcp-in-the-os.md)
 
 ## OS Lessons
 
@@ -65,6 +65,15 @@ A topic is complete only when I can:
 12. [Paging and Page Faults](docs/operating-systems/12-paging-page-fault.md) · [Quiz](quizzes/operating-systems/12-paging-page-fault.md)
 13. [Page Cache and File I/O](docs/operating-systems/13-page-cache-file-io.md) · [Quiz](quizzes/operating-systems/13-page-cache-file-io.md)
 14. [I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md) · [Quiz](quizzes/operating-systems/14-io-multiplexing.md)
+15. [File Descriptor](docs/operating-systems/15-file-descriptor.md) · [Quiz](quizzes/operating-systems/15-file-descriptor.md)
+16. [Interrupt and DMA](docs/operating-systems/16-interrupt-and-dma.md) · [Quiz](quizzes/operating-systems/16-interrupt-and-dma.md)
+17. [Zero-copy and sendfile](docs/operating-systems/17-zero-copy-and-sendfile.md) · [Quiz](quizzes/operating-systems/17-zero-copy-and-sendfile.md)
+18. [Socket Internals](docs/operating-systems/18-socket-internals.md) · [Quiz](quizzes/operating-systems/18-socket-internals.md)
+19. [TCP Processing Inside the OS](docs/operating-systems/19-tcp-in-the-os.md) · [Quiz](quizzes/operating-systems/19-tcp-in-the-os.md)
+
+## Next Track
+
+Networking Fundamentals: TCP/IP layers, TCP handshake and teardown, retransmission and congestion control, DNS, HTTP/1.1–HTTP/3, TLS, proxies and load balancing.
 
 ## Language Policy
 
