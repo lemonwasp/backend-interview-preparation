@@ -20,7 +20,7 @@
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
 | 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache, Backup, Recovery, CDC |
-| 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
+| 런타임·동시성 | CLR/Runtime Model, Thread Pool, Task, async/await, Synchronization, GC, Allocation, Concurrent Collection |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
 
 ## 완료 기준
@@ -40,41 +40,28 @@
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
 | 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
-| 런타임·동시성 | 다음 트랙 | 대기 |
+| 런타임·동시성 | Synchronization Primitives | 학습 중 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [25. Database 총정리 — 60초 답변](docs/databases/25-database-review-60-second-answers.md)
+- [05. Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md)
+- [05. 이해도 확인 문제](quizzes/runtime-concurrency/05-synchronization-primitives.md)
+
+## 런타임·동시성 학습 목록
+
+1. [Runtime Process Model](docs/runtime-concurrency/01-runtime-process-model.md) · [확인 문제](quizzes/runtime-concurrency/01-runtime-process-model.md)
+2. [Thread Pool](docs/runtime-concurrency/02-thread-pool.md) · [확인 문제](quizzes/runtime-concurrency/02-thread-pool.md)
+3. [Task / Future / Promise](docs/runtime-concurrency/03-task-future-promise.md) · [확인 문제](quizzes/runtime-concurrency/03-task-future-promise.md)
+4. [async / await 내부 동작](docs/runtime-concurrency/04-async-await-internals.md) · [확인 문제](quizzes/runtime-concurrency/04-async-await-internals.md)
+5. [Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md) · [확인 문제](quizzes/runtime-concurrency/05-synchronization-primitives.md)
+
+## 데이터베이스 트랙
+
+Database는 24개 개념 문서 + 1개 60초 답변 총정리 + 40문항 Mock Interview까지 준비되어 있습니다. Mock Interview와 재시험을 통과하기 전까지 Completed로 처리하지 않습니다.
+
+- [Database 총정리](docs/databases/25-database-review-60-second-answers.md)
 - [Database Mock Interview](quizzes/databases/25-database-review-60-second-answers.md)
-
-## 데이터베이스 학습 목록
-
-1. [관계형 모델과 Key](docs/databases/01-relational-model-and-keys.md) · [확인 문제](quizzes/databases/01-relational-model-and-keys.md)
-2. [B-Tree Index](docs/databases/02-b-tree-index.md) · [확인 문제](quizzes/databases/02-b-tree-index.md)
-3. [Clustered / Non-clustered Index](docs/databases/03-clustered-vs-nonclustered-index.md) · [확인 문제](quizzes/databases/03-clustered-vs-nonclustered-index.md)
-4. [Query Execution / EXPLAIN](docs/databases/04-query-execution-and-explain.md) · [확인 문제](quizzes/databases/04-query-execution-and-explain.md)
-5. [Transaction / ACID](docs/databases/05-transaction-and-acid.md) · [확인 문제](quizzes/databases/05-transaction-and-acid.md)
-6. [Transaction Isolation Level](docs/databases/06-isolation-levels.md) · [확인 문제](quizzes/databases/06-isolation-levels.md)
-7. [동시성 이상 현상](docs/databases/07-concurrency-anomalies.md) · [확인 문제](quizzes/databases/07-concurrency-anomalies.md)
-8. [MVCC](docs/databases/08-mvcc.md) · [확인 문제](quizzes/databases/08-mvcc.md)
-9. [Database Lock](docs/databases/09-database-locks.md) · [확인 문제](quizzes/databases/09-database-locks.md)
-10. [Database Deadlock](docs/databases/10-deadlocks.md) · [확인 문제](quizzes/databases/10-deadlocks.md)
-11. [Normalization](docs/databases/11-normalization.md) · [확인 문제](quizzes/databases/11-normalization.md)
-12. [Optimistic / Pessimistic Locking](docs/databases/12-optimistic-vs-pessimistic-locking.md) · [확인 문제](quizzes/databases/12-optimistic-vs-pessimistic-locking.md)
-13. [Unique Constraint / Upsert](docs/databases/13-unique-constraint-and-upsert.md) · [확인 문제](quizzes/databases/13-unique-constraint-and-upsert.md)
-14. [Replication / Read Replica](docs/databases/14-replication-and-read-replicas.md) · [확인 문제](quizzes/databases/14-replication-and-read-replicas.md)
-15. [Partitioning / Sharding](docs/databases/15-partitioning-and-sharding.md) · [확인 문제](quizzes/databases/15-partitioning-and-sharding.md)
-16. [DB Connection Pool / Transaction Boundary](docs/databases/16-db-connection-pool-transaction-boundary.md) · [확인 문제](quizzes/databases/16-db-connection-pool-transaction-boundary.md)
-17. [ORM / N+1](docs/databases/17-orm-n-plus-one.md) · [확인 문제](quizzes/databases/17-orm-n-plus-one.md)
-18. [Schema Migration](docs/databases/18-schema-migration.md) · [확인 문제](quizzes/databases/18-schema-migration.md)
-19. [Pagination / Large Data Access](docs/databases/19-pagination-large-data-access.md) · [확인 문제](quizzes/databases/19-pagination-large-data-access.md)
-20. [Cache Consistency](docs/databases/20-cache-consistency.md) · [확인 문제](quizzes/databases/20-cache-consistency.md)
-21. [Backup / PITR](docs/databases/21-backup-and-pitr.md) · [확인 문제](quizzes/databases/21-backup-and-pitr.md)
-22. [WAL / Checkpoint / Crash Recovery](docs/databases/22-wal-checkpoint-crash-recovery.md) · [확인 문제](quizzes/databases/22-wal-checkpoint-crash-recovery.md)
-23. [Database Failure Scenarios](docs/databases/23-database-failure-scenarios.md) · [확인 문제](quizzes/databases/23-database-failure-scenarios.md)
-24. [Transactional Outbox / CDC](docs/databases/24-transactional-outbox-and-cdc.md) · [확인 문제](quizzes/databases/24-transactional-outbox-and-cdc.md)
-25. [Database 총정리 — 60초 답변](docs/databases/25-database-review-60-second-answers.md) · [Mock Interview](quizzes/databases/25-database-review-60-second-answers.md)
 
 ## 네트워크 트랙
 
@@ -91,11 +78,9 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 - [OS 19번](docs/operating-systems/19-tcp-in-the-os.md)
 - [학습 기록](progress/learning-log.md)
 
-## 다음 트랙
+## 다음 런타임 주제
 
-Runtime & Concurrency로 이동합니다: Runtime Process Model → Thread Pool → Task/Future/Promise → async/await 내부 동작 → Synchronization Primitive → Concurrent Collection → Cancellation → GC Generation → Allocation/Boxing → Memory Leak → Backpressure / Runtime Observability 순으로 진행합니다.
-
-Database는 Mock Interview와 최소 1회 재시험을 통과하기 전까지 Completed로 처리하지 않습니다.
+Concurrent Collection → Cancellation / Timeout → GC Generation → Allocation / Boxing → Managed Memory Leak → `IDisposable` / Resource Lifetime → Async Stream / Channel → ThreadPool Starvation 진단 → Runtime Observability 순으로 진행합니다.
 
 - [전체 로드맵](ROADMAP.md)
 
