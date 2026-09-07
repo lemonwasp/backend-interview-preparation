@@ -40,6 +40,11 @@
 
 ## 현재 학습
 
+- [02. 사용자 모드, 커널 모드, System Call](docs/operating-systems/02-user-kernel-mode-system-call.md)
+- [02. 이해도 확인 문제](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
+
+### 이전 학습
+
 - [01. 운영체제와 커널](docs/operating-systems/01-os-and-kernel.md)
 - [01. 이해도 확인 문제](quizzes/operating-systems/01-os-and-kernel.md)
 - [전체 로드맵](ROADMAP.md)
