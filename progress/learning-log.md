@@ -38,6 +38,11 @@
 | 2026-09-08 | Network | Forward / Reverse Proxy | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Network | Load Balancing | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Network | CDN / HTTP Cache | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | WebSocket | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | Server-Sent Events | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | gRPC | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | REST vs RPC | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | API Gateway | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -51,26 +56,24 @@
 
 ## Current Checkpoint
 
-OS 문서는 19개, Networking 문서는 15개 주제까지 준비되었습니다. 대부분 Quiz와 Re-test가 Pending이므로 문서 생성 자체는 완료 증거가 아닙니다.
+OS 문서는 19개, Networking 문서는 20개 주제까지 준비되었습니다. 대부분 Quiz와 Re-test가 Pending이므로 문서 생성 자체는 완료 증거가 아닙니다.
 
 Networking에서 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. HTTPS는 HTTP + TLS이며 TLS는 기밀성·무결성·인증을 제공한다.
-2. TLS Handshake에서 인증과 키 합의를 한 뒤 Application Data는 주로 대칭키로 보호한다.
-3. Certificate Chain은 Leaf → Intermediate → Trusted Root로 검증되고 Root 신뢰는 Trust Store에서 시작한다.
-4. Forward Proxy는 Client를 대신하고 Reverse Proxy는 Server를 대신한다.
-5. L4 Load Balancer와 L7 Load Balancer는 사용하는 계층 정보와 Routing 능력이 다르다.
-6. Sticky Session은 편리하지만 Stateless Backend보다 확장성과 장애 대응에 제약이 있다.
-7. HTTP Cache에서 Freshness와 Validation은 다른 개념이며 ETag를 이용하면 304 응답으로 재검증할 수 있다.
-8. `no-cache`는 저장 금지가 아니라 재사용 전 검증을 요구하는 의미이고 `no-store`와 다르다.
-9. 사용자별 응답을 Shared Cache할 때 Cache Key와 인증 경계를 잘못 설계하면 데이터 노출 위험이 있다.
-10. Cache Stampede는 인기 Entry가 동시에 만료될 때 Origin으로 요청이 몰리는 문제다.
+1. WebSocket은 장기 연결 위에서 양방향 통신을 제공하고 scale-out 시 연결 위치와 cross-node message delivery를 고려해야 한다.
+2. SSE는 HTTP 기반 Server → Client 단방향 stream이며 자동 재연결이 exactly-once delivery를 의미하지 않는다.
+3. gRPC는 Protobuf 자체가 아니라 RPC framework이며 HTTP/2, code generation, streaming, deadline을 활용한다.
+4. REST와 RPC의 핵심 차이는 JSON vs Binary가 아니라 Resource-oriented vs Action/Method-oriented 추상화다.
+5. Public API에는 REST, 내부 service-to-service에는 gRPC를 함께 사용하는 구조가 자연스러울 수 있다.
+6. API Gateway는 Routing, Authentication, Rate Limiting 등 공통 정책을 적용하지만 domain authorization까지 모두 대신하는 것은 아니다.
+7. Gateway도 bottleneck/SPOF가 될 수 있으므로 horizontal scaling, health check와 observability가 필요하다.
+8. Client/Gateway/Service가 각각 독립적으로 Retry하면 Retry Amplification이 발생할 수 있다.
 
 ## Next Action
 
-1. [TLS / HTTPS Quiz](../quizzes/networking/11-tls-https.md)
-2. [Certificate / PKI Quiz](../quizzes/networking/12-certificate-pki.md)
-3. [Forward / Reverse Proxy Quiz](../quizzes/networking/13-forward-reverse-proxy.md)
-4. [Load Balancing Quiz](../quizzes/networking/14-load-balancing.md)
-5. [CDN / HTTP Cache Quiz](../quizzes/networking/15-cdn-http-cache.md)
-6. 다음 문서: WebSocket → SSE → gRPC → REST/RPC → API Gateway
+1. [WebSocket Quiz](../quizzes/networking/16-websocket.md)
+2. [SSE Quiz](../quizzes/networking/17-server-sent-events.md)
+3. [gRPC Quiz](../quizzes/networking/18-grpc.md)
+4. [REST vs RPC Quiz](../quizzes/networking/19-rest-vs-rpc.md)
+5. [API Gateway Quiz](../quizzes/networking/20-api-gateway.md)
+6. 다음 문서: Rate Limiting → Timeout Budget → Retry / Backoff → Circuit Breaker
