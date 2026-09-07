@@ -104,6 +104,11 @@
 | 2026-09-08 | System Design | Distributed Idempotency | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | System Design | Rate Limiting | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | System Design | Distributed Lock | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Service Boundary / Ownership | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Observability / SLO | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Graceful Degradation | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Failure Mode Reasoning | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Multi-region / Disaster Recovery | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -117,33 +122,32 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 15개 개념 + 1개 총정리, System Design은 10개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 15개 개념 + 1개 총정리, System Design은 15개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-System Design 두 번째 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+System Design 세 번째 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. Database Scaling은 Read/Write pattern, peak load, query latency, hot row, storage growth를 먼저 측정하고 병목에 맞게 확장한다.
-2. Read Replica는 read throughput을 늘릴 수 있지만 replication lag과 stale read 때문에 read-after-write routing을 별도로 고려해야 한다.
-3. Write Scaling은 read scaling보다 어렵고 transaction 최적화, batching, queue, partitioning, sharding을 trade-off와 함께 검토한다.
-4. App Horizontal Scaling 시 `instance count × DB pool size`가 DB capacity를 넘지 않는지 확인한다.
-5. CAP의 핵심은 network partition 상황에서 consistency와 availability를 동시에 완벽히 보장할 수 없다는 것이며 단순히 평소 세 항목 중 두 개를 고르는 문제가 아니다.
-6. Strong / Eventual / Read-after-write Consistency는 데이터와 operation별 요구사항에 따라 다르게 선택할 수 있다.
-7. Eventual Consistency를 선택하면 retry, deduplication, ordering, reconciliation과 중간 상태 UX까지 설계해야 한다.
-8. Distributed Idempotency는 ambiguous timeout과 retry로 같은 operation이 반복되어도 side effect가 중복되지 않게 만드는 설계다.
-9. Idempotency Key는 UNIQUE Constraint나 conditional insert 같은 atomic ownership과 request payload 검증이 함께 필요하다.
-10. At-least-once message delivery에서는 consumer idempotency가 필요하며 Idempotency와 Distributed Lock은 해결하는 문제가 다르다.
-11. Rate Limiting은 quota/fairness/downstream 보호를 위해 사용하며 Token Bucket은 burst capacity와 장기 refill rate를 분리할 수 있다.
-12. 여러 App Instance의 local counter만으로는 global rate limit이 깨질 수 있으므로 distributed coordination이나 gateway가 필요하다.
-13. Rate Limiting, Backpressure, Load Shedding은 모두 보호 장치지만 quota 정책, 처리 능력 피드백, 실제 과부하 대응이라는 서로 다른 역할을 가진다.
-14. Distributed Lock은 process-local lock과 달리 여러 instance를 조정하지만 먼저 DB constraint, conditional update, optimistic locking 같은 단순한 대안을 검토해야 한다.
-15. Lease/TTL 기반 Distributed Lock에서는 stale owner가 다시 작업할 수 있으므로 중요한 side effect에는 fencing token 같은 보호가 필요할 수 있다.
-16. Distributed Lock은 transaction이나 exactly-once를 자동 제공하지 않으므로 idempotency와 failure recovery를 별도로 설계한다.
+1. Service Boundary는 Business Capability, Data Ownership, Transaction Boundary를 기준으로 나누며 Microservice 자체가 목표가 아니다.
+2. Source of Truth를 명확히 하고 다른 서비스가 Owner의 DB를 직접 수정하지 않도록 경계를 유지한다.
+3. Shared DB는 단순성과 Local Transaction 장점이 있지만 Schema Coupling과 독립 배포 비용이 있고 Database per Service는 반대로 Distributed Consistency 비용이 생긴다.
+4. 강한 Transaction이 자주 필요한 데이터는 같은 서비스 경계에 둘 이유가 있으며 작은 팀/불안정한 도메인에서는 Modular Monolith가 더 적절할 수 있다.
+5. Observability는 Metrics, Logs, Traces를 통해 내부 상태와 장애 원인을 추론하는 능력이며 RED/USE 관점으로 서비스와 자원 병목을 본다.
+6. SLI는 측정값, SLO는 내부 신뢰성 목표, SLA는 외부 계약이며 Error Budget으로 reliability와 delivery speed를 균형 있게 운영한다.
+7. 평균 latency만 보지 않고 p95/p99와 saturation을 보며 Metric cardinality, sampling, retention 비용도 고려한다.
+8. Graceful Degradation은 Critical path를 보호하기 위해 optional 기능을 fallback, stale cache, partial response, feature/load shedding으로 줄이는 전략이다.
+9. Retry는 bounded backoff/jitter와 함께 사용해야 하며 dependency가 이미 과부하일 때는 circuit breaker와 fallback이 더 중요할 수 있다.
+10. Failure Mode Reasoning은 down뿐 아니라 slow/partial failure와 cascading failure를 보고 `증상 → 지표 → 원인 가설 → 즉시 완화 → 정합성 확인 → 복구/재처리 → 재발 방지` 순서로 사고한다.
+11. Redundancy는 서로 다른 Failure Domain에 분산되어야 하며 Cache failure가 DB failure로 이어지거나 Retry Storm이 장애를 확대하는 연쇄를 고려한다.
+12. Write timeout은 server commit 여부가 불명확한 ambiguous state일 수 있으므로 idempotency와 reconciliation이 필요하다.
+13. Multi-region은 Region 장애, latency, data residency 요구를 해결할 수 있지만 replication, routing, consistency, conflict 비용이 커서 RPO/RTO에서 역산해야 한다.
+14. Active-Passive는 비교적 단순하지만 failover 시간이 있고 Active-Active는 낮은 latency/상시 활용 장점 대신 multi-writer conflict와 split brain 문제가 생긴다.
+15. DR은 Backup만 보유하는 것이 아니라 restore, promotion, traffic switch, configuration/secrets, failback까지 포함하며 실제 Drill로 RTO를 검증해야 한다.
 
 ## Next Action
 
-1. [Database Scaling / Read-Write Patterns Quiz](../quizzes/system-design/06-database-scaling-read-write-patterns.md)
-2. [Consistency / Availability Quiz](../quizzes/system-design/07-consistency-and-availability.md)
-3. [Distributed Idempotency Quiz](../quizzes/system-design/08-distributed-idempotency.md)
-4. [Rate Limiting Quiz](../quizzes/system-design/09-rate-limiting.md)
-5. [Distributed Lock Quiz](../quizzes/system-design/10-distributed-lock.md)
-6. 다음 문서: Service Boundary / Ownership → Observability / SLO → Graceful Degradation → Failure Mode 추론 → Multi-region / Disaster Recovery
+1. [Service Boundary / Ownership Quiz](../quizzes/system-design/11-service-boundary-and-ownership.md)
+2. [Observability / SLO Quiz](../quizzes/system-design/12-observability-and-slo.md)
+3. [Graceful Degradation Quiz](../quizzes/system-design/13-graceful-degradation.md)
+4. [Failure Mode Reasoning Quiz](../quizzes/system-design/14-failure-mode-reasoning.md)
+5. [Multi-region / Disaster Recovery Quiz](../quizzes/system-design/15-multi-region-and-disaster-recovery.md)
+6. 다음 문서: System Design 60초 답변 총정리 + Trade-off 비교 + Mock Interview
 7. OS / Networking / Database / Runtime은 Quiz와 Re-test를 통해 Prepared를 실제 Completed로 전환
