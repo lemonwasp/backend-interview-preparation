@@ -38,42 +38,38 @@ A topic is complete only when I can:
 
 | Area | Current topic | Status |
 |---|---|---|
-| Operating Systems | TCP processing inside the OS | Learning |
-| Networking | Next | Pending |
+| Operating Systems | 19 topics prepared; quizzes pending | Review |
+| Networking | Flow Control & Congestion Control | Learning |
 | Databases | Not started | Pending |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
+- [05. TCP Flow Control and Congestion Control](docs/networking/05-flow-congestion-control.md)
+- [Knowledge Check](quizzes/networking/05-flow-congestion-control.md)
+
+## Networking Lessons
+
+1. [TCP/IP Layers](docs/networking/01-tcp-ip-layers.md) · [Quiz](quizzes/networking/01-tcp-ip-layers.md)
+2. [TCP 3-way Handshake](docs/networking/02-tcp-three-way-handshake.md) · [Quiz](quizzes/networking/02-tcp-three-way-handshake.md)
+3. [TCP Termination and TIME_WAIT](docs/networking/03-tcp-termination-time-wait.md) · [Quiz](quizzes/networking/03-tcp-termination-time-wait.md)
+4. [TCP Retransmission and RTO](docs/networking/04-tcp-retransmission-rto.md) · [Quiz](quizzes/networking/04-tcp-retransmission-rto.md)
+5. [TCP Flow Control and Congestion Control](docs/networking/05-flow-congestion-control.md) · [Quiz](quizzes/networking/05-flow-congestion-control.md)
+
+## Operating Systems Track
+
+The OS track currently contains 19 prepared topics from OS/kernel fundamentals through file descriptors, DMA, zero-copy, socket internals and TCP processing inside the OS. The documents are prepared, but most quizzes and re-tests are still pending, so the track is not marked complete.
+
+Start review from:
+
+- [01. Operating System and Kernel](docs/operating-systems/01-os-and-kernel.md)
 - [19. TCP Processing Inside the OS](docs/operating-systems/19-tcp-in-the-os.md)
-- [Knowledge Check](quizzes/operating-systems/19-tcp-in-the-os.md)
+- [Learning Log](progress/learning-log.md)
 
-## OS Lessons
+## Next Networking Topics
 
-1. [Operating System and Kernel](docs/operating-systems/01-os-and-kernel.md) · [Quiz](quizzes/operating-systems/01-os-and-kernel.md)
-2. [User Mode, Kernel Mode and System Calls](docs/operating-systems/02-user-kernel-mode-system-call.md) · [Quiz](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
-3. [Process vs Thread](docs/operating-systems/03-process-vs-thread.md) · [Quiz](quizzes/operating-systems/03-process-vs-thread.md)
-4. [Process Address Space](docs/operating-systems/04-process-address-space.md) · [Quiz](quizzes/operating-systems/04-process-address-space.md)
-5. [Context Switching](docs/operating-systems/05-context-switching.md) · [Quiz](quizzes/operating-systems/05-context-switching.md)
-6. [CPU Scheduling](docs/operating-systems/06-cpu-scheduling.md) · [Quiz](quizzes/operating-systems/06-cpu-scheduling.md)
-7. [Blocking, Non-blocking, Sync and Async](docs/operating-systems/07-blocking-nonblocking-sync-async.md) · [Quiz](quizzes/operating-systems/07-blocking-nonblocking-sync-async.md)
-8. [Concurrency vs Parallelism](docs/operating-systems/08-concurrency-vs-parallelism.md) · [Quiz](quizzes/operating-systems/08-concurrency-vs-parallelism.md)
-9. [Race Condition, Lock and Deadlock](docs/operating-systems/09-race-condition-lock-deadlock.md) · [Quiz](quizzes/operating-systems/09-race-condition-lock-deadlock.md)
-10. [Memory Visibility and Memory Barriers](docs/operating-systems/10-memory-visibility-memory-barrier.md) · [Quiz](quizzes/operating-systems/10-memory-visibility-memory-barrier.md)
-11. [Virtual Memory Deep Dive](docs/operating-systems/11-virtual-memory-deep-dive.md) · [Quiz](quizzes/operating-systems/11-virtual-memory-deep-dive.md)
-12. [Paging and Page Faults](docs/operating-systems/12-paging-page-fault.md) · [Quiz](quizzes/operating-systems/12-paging-page-fault.md)
-13. [Page Cache and File I/O](docs/operating-systems/13-page-cache-file-io.md) · [Quiz](quizzes/operating-systems/13-page-cache-file-io.md)
-14. [I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md) · [Quiz](quizzes/operating-systems/14-io-multiplexing.md)
-15. [File Descriptor](docs/operating-systems/15-file-descriptor.md) · [Quiz](quizzes/operating-systems/15-file-descriptor.md)
-16. [Interrupt and DMA](docs/operating-systems/16-interrupt-and-dma.md) · [Quiz](quizzes/operating-systems/16-interrupt-and-dma.md)
-17. [Zero-copy and sendfile](docs/operating-systems/17-zero-copy-and-sendfile.md) · [Quiz](quizzes/operating-systems/17-zero-copy-and-sendfile.md)
-18. [Socket Internals](docs/operating-systems/18-socket-internals.md) · [Quiz](quizzes/operating-systems/18-socket-internals.md)
-19. [TCP Processing Inside the OS](docs/operating-systems/19-tcp-in-the-os.md) · [Quiz](quizzes/operating-systems/19-tcp-in-the-os.md)
-
-## Next Track
-
-Networking Fundamentals: TCP/IP layers, TCP handshake and teardown, retransmission and congestion control, DNS, HTTP/1.1–HTTP/3, TLS, proxies and load balancing.
+UDP vs TCP, DNS, HTTP/1.1, HTTP/2, HTTP/3 and QUIC, TLS, proxies, reverse proxies and load balancing.
 
 ## Language Policy
 
