@@ -40,13 +40,13 @@ A topic is complete only when I can:
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
 | Networking | 30 topics prepared; mock interview pending | Review |
 | Databases | 25 topics prepared; mock interview pending | Review |
-| Runtime & Concurrency | Runtime Observability | Learning |
-| System Design | Not started | Pending |
+| Runtime & Concurrency | 16 topics prepared; mock interview pending | Review |
+| System Design | Next track | Pending |
 
 ## Current Lesson
 
-- [15. Runtime Observability](docs/runtime-concurrency/15-runtime-observability.md)
-- [Knowledge Check](quizzes/runtime-concurrency/15-runtime-observability.md)
+- [16. Runtime & Concurrency Review — 60-second Answers](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
+- [Runtime & Concurrency Mock Interview](quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
 
 ## Runtime & Concurrency Lessons
 
@@ -65,6 +65,7 @@ A topic is complete only when I can:
 13. [ThreadPool Starvation Diagnostics](docs/runtime-concurrency/13-threadpool-starvation-diagnostics.md) · [Quiz](quizzes/runtime-concurrency/13-threadpool-starvation-diagnostics.md)
 14. [ExecutionContext and Context Flow](docs/runtime-concurrency/14-executioncontext-context-flow.md) · [Quiz](quizzes/runtime-concurrency/14-executioncontext-context-flow.md)
 15. [Runtime Observability](docs/runtime-concurrency/15-runtime-observability.md) · [Quiz](quizzes/runtime-concurrency/15-runtime-observability.md)
+16. [Runtime & Concurrency Review — 60-second Answers](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md) · [Mock Interview](quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
 
 ## Database Track
 
@@ -88,9 +89,11 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 - [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
-## Next Runtime Topic
+## Next Track
 
-Create a Runtime & Concurrency review checkpoint and mock interview, then move new-topic preparation to System Design. Existing OS, Networking, Database and Runtime topics remain Prepared until quizzes and re-tests are passed.
+System Design: requirements and capacity estimation, stateless services, caching, queues, load balancing, database scaling, consistency, availability, idempotency, rate limiting, distributed locks, observability and failure-mode reasoning.
+
+Runtime & Concurrency remains in Review until the 40-question mock interview and at least one re-test are passed.
 
 ## Language Policy
 
