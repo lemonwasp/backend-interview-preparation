@@ -19,7 +19,7 @@ The repository uses a Feynman-style learning loop:
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
 | Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, sharding, connection pools, ORM, migrations, pagination, caching, backup, recovery, CDC |
-| Runtime & Concurrency | CLR/runtime model, thread pools, Task, async/await, synchronization, GC, allocation, concurrent collections |
+| Runtime & Concurrency | CLR/runtime model, thread pools, Task, async/await, synchronization, concurrent collections, cancellation, GC, allocation, memory leaks |
 | System Design | Caching, queues, replication, sharding, reliability |
 
 ## Learning Standard
@@ -40,13 +40,13 @@ A topic is complete only when I can:
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
 | Networking | 30 topics prepared; mock interview pending | Review |
 | Databases | 25 topics prepared; mock interview pending | Review |
-| Runtime & Concurrency | Synchronization Primitives | Learning |
+| Runtime & Concurrency | Managed Memory Leak | Learning |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [05. Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md)
-- [Knowledge Check](quizzes/runtime-concurrency/05-synchronization-primitives.md)
+- [10. Managed Memory Leak](docs/runtime-concurrency/10-managed-memory-leak.md)
+- [Knowledge Check](quizzes/runtime-concurrency/10-managed-memory-leak.md)
 
 ## Runtime & Concurrency Lessons
 
@@ -55,6 +55,11 @@ A topic is complete only when I can:
 3. [Task / Future / Promise](docs/runtime-concurrency/03-task-future-promise.md) · [Quiz](quizzes/runtime-concurrency/03-task-future-promise.md)
 4. [async / await Internals](docs/runtime-concurrency/04-async-await-internals.md) · [Quiz](quizzes/runtime-concurrency/04-async-await-internals.md)
 5. [Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md) · [Quiz](quizzes/runtime-concurrency/05-synchronization-primitives.md)
+6. [Concurrent Collections](docs/runtime-concurrency/06-concurrent-collections.md) · [Quiz](quizzes/runtime-concurrency/06-concurrent-collections.md)
+7. [Cancellation and Timeout](docs/runtime-concurrency/07-cancellation-and-timeout.md) · [Quiz](quizzes/runtime-concurrency/07-cancellation-and-timeout.md)
+8. [GC Generations](docs/runtime-concurrency/08-gc-generations.md) · [Quiz](quizzes/runtime-concurrency/08-gc-generations.md)
+9. [Allocation and Boxing](docs/runtime-concurrency/09-allocation-and-boxing.md) · [Quiz](quizzes/runtime-concurrency/09-allocation-and-boxing.md)
+10. [Managed Memory Leak](docs/runtime-concurrency/10-managed-memory-leak.md) · [Quiz](quizzes/runtime-concurrency/10-managed-memory-leak.md)
 
 ## Database Track
 
@@ -80,7 +85,7 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 
 ## Next Runtime Topics
 
-Concurrent collections, cancellation and timeouts, GC generations, allocation/boxing, managed memory leaks, `IDisposable` and resource lifetime, async streams/channels, ThreadPool starvation diagnostics and runtime observability.
+`IDisposable` and resource lifetime, async streams and channels, ThreadPool starvation diagnostics, execution context, runtime observability, and a Runtime & Concurrency review checkpoint.
 
 ## Language Policy
 
