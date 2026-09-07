@@ -20,7 +20,7 @@
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
 | 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache, Backup, Recovery, CDC |
-| 런타임·동시성 | CLR/Runtime Model, Thread Pool, Task, async/await, Synchronization, Concurrent Collection, Cancellation, GC, Allocation, Memory Leak |
+| 런타임·동시성 | CLR/Runtime Model, Thread Pool, Task, async/await, Synchronization, Concurrent Collection, Cancellation, GC, Allocation, Memory/Resource Lifetime, Async Stream, Context Flow, Observability |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
 
 ## 완료 기준
@@ -40,13 +40,13 @@
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
 | 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
-| 런타임·동시성 | Managed Memory Leak | 학습 중 |
+| 런타임·동시성 | Runtime Observability | 학습 중 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [10. Managed Memory Leak](docs/runtime-concurrency/10-managed-memory-leak.md)
-- [10. 이해도 확인 문제](quizzes/runtime-concurrency/10-managed-memory-leak.md)
+- [15. Runtime Observability](docs/runtime-concurrency/15-runtime-observability.md)
+- [15. 이해도 확인 문제](quizzes/runtime-concurrency/15-runtime-observability.md)
 
 ## 런타임·동시성 학습 목록
 
@@ -60,6 +60,11 @@
 8. [GC Generations](docs/runtime-concurrency/08-gc-generations.md) · [확인 문제](quizzes/runtime-concurrency/08-gc-generations.md)
 9. [Allocation / Boxing](docs/runtime-concurrency/09-allocation-and-boxing.md) · [확인 문제](quizzes/runtime-concurrency/09-allocation-and-boxing.md)
 10. [Managed Memory Leak](docs/runtime-concurrency/10-managed-memory-leak.md) · [확인 문제](quizzes/runtime-concurrency/10-managed-memory-leak.md)
+11. [IDisposable / Resource Lifetime](docs/runtime-concurrency/11-idisposable-resource-lifetime.md) · [확인 문제](quizzes/runtime-concurrency/11-idisposable-resource-lifetime.md)
+12. [Async Stream / Channel](docs/runtime-concurrency/12-async-streams-and-channels.md) · [확인 문제](quizzes/runtime-concurrency/12-async-streams-and-channels.md)
+13. [ThreadPool Starvation 진단](docs/runtime-concurrency/13-threadpool-starvation-diagnostics.md) · [확인 문제](quizzes/runtime-concurrency/13-threadpool-starvation-diagnostics.md)
+14. [ExecutionContext / Context Flow](docs/runtime-concurrency/14-executioncontext-context-flow.md) · [확인 문제](quizzes/runtime-concurrency/14-executioncontext-context-flow.md)
+15. [Runtime Observability](docs/runtime-concurrency/15-runtime-observability.md) · [확인 문제](quizzes/runtime-concurrency/15-runtime-observability.md)
 
 ## 데이터베이스 트랙
 
@@ -85,7 +90,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 런타임 주제
 
-`IDisposable` / Resource Lifetime → Async Stream / Channel → ThreadPool Starvation 진단 → ExecutionContext → Runtime Observability → Runtime & Concurrency 총정리 순으로 진행합니다.
+Runtime & Concurrency 총정리와 Mock Interview를 만든 뒤 신규 주제 준비는 System Design으로 이동합니다. 기존 OS / Networking / Database / Runtime은 Quiz와 Re-test를 통과하기 전까지 Prepared 상태를 유지합니다.
 
 - [전체 로드맵](ROADMAP.md)
 
