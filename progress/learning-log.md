@@ -9,6 +9,10 @@
 | 2026-09-07 | OS | Process vs Thread | Prepared | Pending | Pending | Learning |
 | 2026-09-07 | OS | Process Address Space | Prepared | Pending | Pending | Learning |
 | 2026-09-07 | OS | Context Switching | Prepared | Pending | Pending | Learning |
+| 2026-09-07 | OS | CPU Scheduling | Prepared | Pending | Pending | Learning |
+| 2026-09-07 | OS | Blocking / Non-blocking / Sync / Async | Prepared | Pending | Pending | Learning |
+| 2026-09-07 | OS | Concurrency vs Parallelism | Prepared | Pending | Pending | Learning |
+| 2026-09-07 | OS | Race Condition / Lock / Deadlock | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -29,9 +33,16 @@
 3. [Process와 Thread](../quizzes/operating-systems/03-process-vs-thread.md)
 4. [Process Address Space](../quizzes/operating-systems/04-process-address-space.md)
 5. [Context Switching](../quizzes/operating-systems/05-context-switching.md)
+6. [CPU Scheduling](../quizzes/operating-systems/06-cpu-scheduling.md)
+7. [Blocking / Non-blocking / Sync / Async](../quizzes/operating-systems/07-blocking-nonblocking-sync-async.md)
+8. [Concurrency vs Parallelism](../quizzes/operating-systems/08-concurrency-vs-parallelism.md)
+9. [Race Condition / Lock / Deadlock](../quizzes/operating-systems/09-race-lock-deadlock.md)
 
-특히 다음 세 문장을 자신의 말로 설명할 수 있는지 확인합니다.
+특히 다음 문장을 자신의 말로 설명할 수 있는지 확인합니다.
 
-- 같은 Process의 Thread는 Heap을 공유하지만 Stack은 각자 가진다.
-- 같은 Virtual Address라도 Process마다 다른 Physical Page에 매핑될 수 있다.
-- System Call의 Mode Switch와 Thread 간 Context Switch는 같은 개념이 아니다.
+- 많은 Runnable Thread는 CPU Core 수를 늘리지 않고 Scheduling 비용만 늘릴 수 있다.
+- async I/O의 핵심은 I/O 자체를 마법처럼 빠르게 만드는 것이 아니라 대기 중 Thread 점유를 줄이는 것이다.
+- Concurrency와 Parallelism은 같은 개념이 아니다.
+- Shared Mutable State는 Race Condition의 핵심 원인이다.
+- In-process Lock은 여러 서버 Instance 사이의 DB Race Condition을 직접 해결하지 못한다.
+- Deadlock의 네 조건 중 하나를 깨면 Deadlock을 예방할 수 있다.
