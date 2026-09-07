@@ -18,7 +18,7 @@ The repository uses a Feynman-style learning loop:
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
-| Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, partitioning, sharding |
+| Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, sharding, connection pools, ORM, migrations, pagination, caching |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
 
@@ -39,14 +39,14 @@ A topic is complete only when I can:
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
 | Networking | 30 topics prepared; mock interview pending | Review |
-| Databases | Partitioning & Sharding | Learning |
+| Databases | Cache Consistency | Learning |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [15. Partitioning & Sharding](docs/databases/15-partitioning-and-sharding.md)
-- [Knowledge Check](quizzes/databases/15-partitioning-and-sharding.md)
+- [20. Cache Consistency](docs/databases/20-cache-consistency.md)
+- [Knowledge Check](quizzes/databases/20-cache-consistency.md)
 
 ## Database Lessons
 
@@ -65,6 +65,11 @@ A topic is complete only when I can:
 13. [Unique Constraint and Upsert](docs/databases/13-unique-constraint-and-upsert.md) · [Quiz](quizzes/databases/13-unique-constraint-and-upsert.md)
 14. [Replication and Read Replicas](docs/databases/14-replication-and-read-replicas.md) · [Quiz](quizzes/databases/14-replication-and-read-replicas.md)
 15. [Partitioning and Sharding](docs/databases/15-partitioning-and-sharding.md) · [Quiz](quizzes/databases/15-partitioning-and-sharding.md)
+16. [DB Connection Pool and Transaction Boundary](docs/databases/16-db-connection-pool-transaction-boundary.md) · [Quiz](quizzes/databases/16-db-connection-pool-transaction-boundary.md)
+17. [ORM and N+1](docs/databases/17-orm-n-plus-one.md) · [Quiz](quizzes/databases/17-orm-n-plus-one.md)
+18. [Schema Migration](docs/databases/18-schema-migration.md) · [Quiz](quizzes/databases/18-schema-migration.md)
+19. [Pagination and Large Data Access](docs/databases/19-pagination-large-data-access.md) · [Quiz](quizzes/databases/19-pagination-large-data-access.md)
+20. [Cache Consistency](docs/databases/20-cache-consistency.md) · [Quiz](quizzes/databases/20-cache-consistency.md)
 
 ## Networking Track
 
@@ -83,7 +88,7 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 
 ## Next Database Topics
 
-Database connection pools and transaction boundaries, ORM/N+1 behavior, schema migrations, pagination and large-data access, caching consistency, backup/PITR and database failure scenarios.
+Backup and point-in-time recovery, WAL/checkpoints and crash recovery, database failure scenarios, Outbox/CDC, and a database review checkpoint before moving to Runtime & Concurrency.
 
 ## Language Policy
 
