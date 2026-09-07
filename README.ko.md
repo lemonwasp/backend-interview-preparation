@@ -41,12 +41,12 @@
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
 | 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
 | 런타임·동시성 | 16개 주제 준비, Mock Interview 대기 | 복습 |
-| 시스템 설계 | Multi-region / Disaster Recovery | 학습 중 |
+| 시스템 설계 | 16개 주제 준비, Mock Interview 대기 | 복습 |
 
 ## 현재 학습
 
-- [15. Multi-region / Disaster Recovery](docs/system-design/15-multi-region-and-disaster-recovery.md)
-- [15. 이해도 확인 문제](quizzes/system-design/15-multi-region-and-disaster-recovery.md)
+- [16. System Design 총정리 — 60초 답변 / Trade-off](docs/system-design/16-system-design-review-60-second-answers.md)
+- [System Design Mock Interview](quizzes/system-design/16-system-design-review-60-second-answers.md)
 
 ## 시스템 설계 학습 목록
 
@@ -65,6 +65,7 @@
 13. [Graceful Degradation](docs/system-design/13-graceful-degradation.md) · [확인 문제](quizzes/system-design/13-graceful-degradation.md)
 14. [Failure Mode Reasoning](docs/system-design/14-failure-mode-reasoning.md) · [확인 문제](quizzes/system-design/14-failure-mode-reasoning.md)
 15. [Multi-region / Disaster Recovery](docs/system-design/15-multi-region-and-disaster-recovery.md) · [확인 문제](quizzes/system-design/15-multi-region-and-disaster-recovery.md)
+16. [System Design 총정리 — 60초 답변 / Trade-off](docs/system-design/16-system-design-review-60-second-answers.md) · [Mock Interview](quizzes/system-design/16-system-design-review-60-second-answers.md)
 
 ## 런타임·동시성 트랙
 
@@ -95,11 +96,9 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 - [OS 19번](docs/operating-systems/19-tcp-in-the-os.md)
 - [학습 기록](progress/learning-log.md)
 
-## 다음 시스템 설계 주제
+## 복습 단계
 
-System Design 60초 답변 총정리 + Trade-off 비교 + Mock Interview를 만든 뒤 신규 System Design 개념 추가는 일단 중단합니다.
-
-기존 OS / Networking / Database / Runtime은 Quiz와 Re-test를 통과하기 전까지 Prepared 상태를 유지합니다.
+신규 개념 추가는 일단 중단합니다. 이제 Quiz, Mock Interview, 자료 없이 설명, D+1/D+7 재시험을 통해 Prepared를 실제 Completed로 전환합니다. 문서가 존재한다는 이유만으로 완료 처리하지 않습니다.
 
 - [전체 로드맵](ROADMAP.md)
 
