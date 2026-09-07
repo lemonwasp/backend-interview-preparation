@@ -28,8 +28,6 @@
 
 ## 완료 기준
 
-다음 조건을 모두 만족해야 해당 개념을 학습 완료로 처리합니다.
-
 - 전문용어 없이 쉽게 설명할 수 있다.
 - 왜 필요한지 설명할 수 있다.
 - 내부 동작의 인과관계를 설명할 수 있다.
@@ -38,39 +36,42 @@
 - 자료 없이 꼬리 질문에 답할 수 있다.
 - 필요한 경우 코드나 운영체제 도구로 현상을 재현할 수 있다.
 
+## 진행 상황
+
+| 영역 | 현재 주제 | 상태 |
+|---|---|---|
+| 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
+| 네트워크 | Flow Control / Congestion Control | 학습 중 |
+| 데이터베이스 | 시작 전 | 대기 |
+| 런타임·동시성 | 시작 전 | 대기 |
+| 시스템 설계 | 시작 전 | 대기 |
+
 ## 현재 학습
 
-- [19. TCP가 OS에서 처리되는 과정](docs/operating-systems/19-tcp-in-the-os.md)
-- [19. 이해도 확인 문제](quizzes/operating-systems/19-tcp-in-the-os.md)
+- [05. TCP Flow Control과 Congestion Control](docs/networking/05-flow-congestion-control.md)
+- [05. 이해도 확인 문제](quizzes/networking/05-flow-congestion-control.md)
 
-## OS 학습 목록
+## 네트워크 학습 목록
 
-1. [운영체제와 커널](docs/operating-systems/01-os-and-kernel.md) · [확인 문제](quizzes/operating-systems/01-os-and-kernel.md)
-2. [사용자 모드, 커널 모드, System Call](docs/operating-systems/02-user-kernel-mode-system-call.md) · [확인 문제](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
-3. [Process와 Thread](docs/operating-systems/03-process-vs-thread.md) · [확인 문제](quizzes/operating-systems/03-process-vs-thread.md)
-4. [Process Address Space](docs/operating-systems/04-process-address-space.md) · [확인 문제](quizzes/operating-systems/04-process-address-space.md)
-5. [Context Switching](docs/operating-systems/05-context-switching.md) · [확인 문제](quizzes/operating-systems/05-context-switching.md)
-6. [CPU Scheduling](docs/operating-systems/06-cpu-scheduling.md) · [확인 문제](quizzes/operating-systems/06-cpu-scheduling.md)
-7. [Blocking / Non-blocking / Sync / Async](docs/operating-systems/07-blocking-nonblocking-sync-async.md) · [확인 문제](quizzes/operating-systems/07-blocking-nonblocking-sync-async.md)
-8. [Concurrency vs Parallelism](docs/operating-systems/08-concurrency-vs-parallelism.md) · [확인 문제](quizzes/operating-systems/08-concurrency-vs-parallelism.md)
-9. [Race Condition / Lock / Deadlock](docs/operating-systems/09-race-condition-lock-deadlock.md) · [확인 문제](quizzes/operating-systems/09-race-condition-lock-deadlock.md)
-10. [Memory Visibility / Memory Barrier](docs/operating-systems/10-memory-visibility-memory-barrier.md) · [확인 문제](quizzes/operating-systems/10-memory-visibility-memory-barrier.md)
-11. [Virtual Memory 심화](docs/operating-systems/11-virtual-memory-deep-dive.md) · [확인 문제](quizzes/operating-systems/11-virtual-memory-deep-dive.md)
-12. [Paging / Page Fault](docs/operating-systems/12-paging-page-fault.md) · [확인 문제](quizzes/operating-systems/12-paging-page-fault.md)
-13. [Page Cache / File I/O](docs/operating-systems/13-page-cache-file-io.md) · [확인 문제](quizzes/operating-systems/13-page-cache-file-io.md)
-14. [I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md) · [확인 문제](quizzes/operating-systems/14-io-multiplexing.md)
-15. [File Descriptor](docs/operating-systems/15-file-descriptor.md) · [확인 문제](quizzes/operating-systems/15-file-descriptor.md)
-16. [Interrupt / DMA](docs/operating-systems/16-interrupt-and-dma.md) · [확인 문제](quizzes/operating-systems/16-interrupt-and-dma.md)
-17. [Zero-copy / sendfile](docs/operating-systems/17-zero-copy-and-sendfile.md) · [확인 문제](quizzes/operating-systems/17-zero-copy-and-sendfile.md)
-18. [Socket Internals](docs/operating-systems/18-socket-internals.md) · [확인 문제](quizzes/operating-systems/18-socket-internals.md)
-19. [TCP가 OS에서 처리되는 과정](docs/operating-systems/19-tcp-in-the-os.md) · [확인 문제](quizzes/operating-systems/19-tcp-in-the-os.md)
+1. [TCP/IP 계층](docs/networking/01-tcp-ip-layers.md) · [확인 문제](quizzes/networking/01-tcp-ip-layers.md)
+2. [TCP 3-way Handshake](docs/networking/02-tcp-three-way-handshake.md) · [확인 문제](quizzes/networking/02-tcp-three-way-handshake.md)
+3. [TCP 종료와 TIME_WAIT](docs/networking/03-tcp-termination-time-wait.md) · [확인 문제](quizzes/networking/03-tcp-termination-time-wait.md)
+4. [TCP Retransmission / RTO](docs/networking/04-tcp-retransmission-rto.md) · [확인 문제](quizzes/networking/04-tcp-retransmission-rto.md)
+5. [TCP Flow Control / Congestion Control](docs/networking/05-flow-congestion-control.md) · [확인 문제](quizzes/networking/05-flow-congestion-control.md)
 
-## 다음 파트
+## 운영체제 트랙
 
-Networking Fundamentals로 넘어갑니다: TCP/IP 계층, TCP handshake/teardown, retransmission/congestion control, DNS, HTTP/1.1~HTTP/3, TLS, Proxy와 Load Balancing.
+OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket Internals, OS 내부 TCP 처리까지 19개 주제가 준비되어 있습니다. 다만 문서 생성 자체를 학습 완료로 처리하지 않으며 대부분 Quiz와 Re-test가 남아 있습니다.
+
+- [OS 첫 주제](docs/operating-systems/01-os-and-kernel.md)
+- [OS 19번](docs/operating-systems/19-tcp-in-the-os.md)
+- [학습 기록](progress/learning-log.md)
+
+## 다음 네트워크 주제
+
+UDP vs TCP, DNS, HTTP/1.1, HTTP/2, HTTP/3와 QUIC, TLS, Proxy, Reverse Proxy, Load Balancing 순으로 진행합니다.
 
 - [전체 로드맵](ROADMAP.md)
-- [학습 기록](progress/learning-log.md)
 
 ## 언어 운영
 
