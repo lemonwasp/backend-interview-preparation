@@ -18,7 +18,7 @@ The repository uses a Feynman-style learning loop:
 | Area | Topics |
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
-| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, CDN, caching, WebSocket, SSE, gRPC, API Gateway, resilience |
+| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, CDN, realtime transport, RPC, gateways, resilience, connection management |
 | Databases | Indexes, transactions, isolation, locking, query execution |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
@@ -39,15 +39,15 @@ A topic is complete only when I can:
 | Area | Current topic | Status |
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
-| Networking | Bulkhead & Resilience Patterns | Learning |
-| Databases | Not started | Pending |
+| Networking | 30 topics prepared; mock interview pending | Review |
+| Databases | Next track | Pending |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [25. Bulkhead & Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md)
-- [Knowledge Check](quizzes/networking/25-bulkhead-resilience-patterns.md)
+- [30. Networking Review — 60-second Answer Checkpoint](docs/networking/30-networking-review-60-second-answers.md)
+- [Networking Mock Interview](quizzes/networking/30-networking-review-60-second-answers.md)
 
 ## Networking Lessons
 
@@ -76,6 +76,11 @@ A topic is complete only when I can:
 23. [Retry, Exponential Backoff & Jitter](docs/networking/23-retry-backoff-jitter.md) · [Quiz](quizzes/networking/23-retry-backoff-jitter.md)
 24. [Circuit Breaker](docs/networking/24-circuit-breaker.md) · [Quiz](quizzes/networking/24-circuit-breaker.md)
 25. [Bulkhead & Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md) · [Quiz](quizzes/networking/25-bulkhead-resilience-patterns.md)
+26. [Idempotency Key](docs/networking/26-idempotency-key.md) · [Quiz](quizzes/networking/26-idempotency-key.md)
+27. [Backpressure Deep Dive](docs/networking/27-backpressure-deep-dive.md) · [Quiz](quizzes/networking/27-backpressure-deep-dive.md)
+28. [Connection Pooling](docs/networking/28-connection-pooling.md) · [Quiz](quizzes/networking/28-connection-pooling.md)
+29. [NAT & Ephemeral Ports](docs/networking/29-nat-ephemeral-ports.md) · [Quiz](quizzes/networking/29-nat-ephemeral-ports.md)
+30. [Networking Review — 60-second Answers](docs/networking/30-networking-review-60-second-answers.md) · [Mock Interview](quizzes/networking/30-networking-review-60-second-answers.md)
 
 ## Operating Systems Track
 
@@ -85,9 +90,11 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 - [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
-## Next Networking Topics
+## Next Track
 
-Idempotency keys, backpressure in depth, connection pooling, NAT and ephemeral ports, and a networking review checkpoint before moving into databases.
+Database fundamentals: relational model and keys, B-tree indexes, query execution, transactions and ACID, isolation levels, MVCC, locking/deadlocks, normalization, replication, partitioning and connection/transaction behavior.
+
+Before marking Networking complete, answer the review mock interview and perform at least one re-test.
 
 ## Language Policy
 
