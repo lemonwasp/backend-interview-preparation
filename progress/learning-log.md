@@ -58,6 +58,11 @@
 | 2026-09-08 | Database | Clustered / Non-clustered Index | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Query Execution / EXPLAIN | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Transaction / ACID | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Isolation Levels | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Concurrency Anomalies | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | MVCC | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Database Locks | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Deadlocks | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -71,27 +76,29 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 첫 5개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 10개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Database 첫 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Database 동시성 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. Primary Key는 Row 식별 Constraint이고 Index는 검색용 Access Structure이므로 같은 개념이 아니다.
-2. Foreign Key는 다른 Table의 Key를 참조해 Referential Integrity를 유지한다.
-3. B-Tree 계열 Index는 높은 Branching Factor로 Tree 높이를 낮추고 Equality와 Range Search를 지원한다.
-4. Composite Index는 Column 순서가 중요하고 Index가 존재해도 Selectivity와 Cost에 따라 Optimizer가 사용하지 않을 수 있다.
-5. Clustered Index와 Non-clustered Index의 핵심 차이는 실제 Row 저장 구조와의 관계이며 DBMS별 구현 차이를 구분해야 한다.
-6. EXPLAIN에서는 Index 사용 여부뿐 아니라 읽은 Row 수, Join 방식, Sort/Hash Spill, Estimated vs Actual Rows를 본다.
-7. Full Table Scan은 많은 Row가 필요한 경우 Index Random Lookup보다 합리적일 수 있다.
-8. Transaction은 여러 DB 작업을 하나의 논리적 단위로 묶고 ACID는 Atomicity / Consistency / Isolation / Durability를 설명한다.
-9. WAL은 Data Page보다 복구용 Log를 먼저 안전하게 기록하는 원칙이다.
-10. Local DB Transaction으로 외부 API까지 자동으로 Atomic하게 Rollback할 수는 없다.
+1. Isolation Level은 동시에 실행되는 Transaction이 서로의 변경을 어느 정도까지 보게 할지 정하는 보장 수준이다.
+2. Dirty Read는 Uncommitted Data를 읽는 것, Non-repeatable Read는 같은 Row 값이 바뀌는 것, Phantom Read는 같은 조건의 Row 집합이 바뀌는 것이다.
+3. Lost Update와 Write Skew는 대표 세 Read Anomaly 외에도 Backend에서 중요한 동시성 문제다.
+4. Isolation Level은 보장이고 MVCC는 여러 Version과 Snapshot을 이용해 그 보장을 구현할 수 있는 메커니즘이다.
+5. MVCC가 있어도 Writer-Writer 충돌과 Explicit Lock은 남으며 Long Transaction은 오래된 Version 정리를 방해할 수 있다.
+6. Pessimistic Lock은 먼저 Lock을 잡고, Optimistic Lock은 Version Check로 마지막에 충돌을 감지한다.
+7. `SELECT ... FOR UPDATE`는 강력하지만 Lock Wait, 긴 Transaction, Deadlock 비용이 있으므로 필요한 범위에만 사용한다.
+8. Lock Contention은 Query latency뿐 아니라 DB Connection Pool exhaustion으로 번질 수 있다.
+9. Deadlock은 Circular Wait이며 일반적으로 DBMS가 Victim Transaction 하나를 abort해 cycle을 해소한다.
+10. Deadlock 예방의 핵심은 일관된 Lock Ordering, 짧은 Transaction, 적절한 Index와 작은 Lock 범위다.
+11. Deadlock Retry 전에 Idempotency와 외부 Side Effect 여부를 확인해야 한다.
+12. Local DB Transaction으로 외부 API Side Effect를 자동으로 Rollback할 수 없으므로 Retry 설계와 Transaction 경계를 함께 봐야 한다.
 
 ## Next Action
 
-1. [Relational Model / Keys Quiz](../quizzes/databases/01-relational-model-and-keys.md)
-2. [B-Tree Index Quiz](../quizzes/databases/02-b-tree-index.md)
-3. [Clustered / Non-clustered Index Quiz](../quizzes/databases/03-clustered-vs-nonclustered-index.md)
-4. [Query Execution / EXPLAIN Quiz](../quizzes/databases/04-query-execution-and-explain.md)
-5. [Transaction / ACID Quiz](../quizzes/databases/05-transaction-and-acid.md)
-6. 다음 문서: Isolation Level → concurrency anomalies → MVCC → Lock / Deadlock
+1. [Isolation Levels Quiz](../quizzes/databases/06-isolation-levels.md)
+2. [Concurrency Anomalies Quiz](../quizzes/databases/07-concurrency-anomalies.md)
+3. [MVCC Quiz](../quizzes/databases/08-mvcc.md)
+4. [Database Locks Quiz](../quizzes/databases/09-database-locks.md)
+5. [Database Deadlocks Quiz](../quizzes/databases/10-deadlocks.md)
+6. 다음 문서: Normalization → Optimistic/Pessimistic Lock 응용 → Unique Constraint / Upsert → Replication / Read Replica
 7. Networking Mock Interview와 OS Quiz는 별도 복습 세션에서 Prepared를 Completed로 전환
