@@ -94,6 +94,11 @@
 | 2026-09-08 | Runtime | ExecutionContext / Context Flow | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Runtime | Runtime Observability | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Runtime | Runtime & Concurrency Review / 60-second Answers | Prepared | Pending | Pending | Review |
+| 2026-09-08 | System Design | Requirements / Capacity Estimation | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Stateless Service | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Cache Design | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Message Queue | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | System Design | Load Balancing / Horizontal Scaling | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -107,42 +112,32 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 15개 개념 + 1개 총정리까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 15개 개념 + 1개 총정리, System Design은 첫 5개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Runtime 최종 복습에서는 다음을 자료 없이 연결해서 설명할 수 있어야 합니다.
+System Design 첫 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. CLR은 OS 위에서 JIT, GC, ThreadPool, Task 같은 managed runtime 기능을 제공한다.
-2. Thread는 실행 resource이고 Task는 작업 완료 abstraction이다.
-3. `async/await`는 새 Thread를 만드는 것이 아니라 state machine과 continuation으로 비동기 흐름을 표현한다.
-4. Blocking과 async suspension의 차이를 설명하고 `.Result` / `.Wait()`가 scalability를 낮출 수 있는 이유를 설명한다.
-5. `lock`, `SemaphoreSlim`, `Interlocked`, `volatile`의 역할과 한계를 구분한다.
-6. Concurrent Collection의 thread safety와 business atomicity, distributed safety를 구분한다.
-7. Timeout은 기다림 정책이고 Cancellation은 cooperative 중단 요청이며 side effect rollback과는 다르다.
-8. GC Generation, LOH, allocation rate, boxing이 latency/CPU에 미치는 영향을 설명한다.
-9. GC가 있어도 managed memory leak이 가능하며 heap dump의 retention path로 원인을 찾을 수 있다.
-10. GC와 `IDisposable`의 역할을 구분하고 resource ownership/lifetime을 설명한다.
-11. `IAsyncEnumerable<T>`와 `Channel<T>`을 streaming과 producer-consumer/backpressure 관점에서 비교한다.
-12. ThreadPool Starvation과 CPU Saturation을 지표로 구분한다.
-13. ExecutionContext와 SynchronizationContext의 차이와 `AsyncLocal<T>`/Activity context flow를 설명한다.
-14. Runtime 장애 진단에서는 request p95/p99, CPU, ThreadPool, GC, allocation, RSS, managed heap, lock contention, downstream trace를 연결한다.
-15. 최적화는 추측이 아니라 metric → trace/profile → 원인 검증 → 변경 → 재측정 순으로 수행한다.
-
-## Runtime Final Review
-
-- [Runtime & Concurrency 60초 답변 총정리](../docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
-- [40문항 Runtime & Concurrency Mock Interview](../quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
-
-### Runtime & Concurrency를 Completed로 올리는 최소 기준
-
-1. Mock Interview 40문항 중 최소 32개 이상 핵심 개념 혼동 없이 답변
-2. Thread / Task, Blocking / Async, lock / SemaphoreSlim, Timeout / Cancellation, GC / Dispose 비교 질문 통과
-3. ThreadPool Starvation, Managed Memory Leak, GC Pressure 시나리오에서 `증상 → 지표 → 원인 가설 → 검증 → 조치` 순서로 답변
-4. 틀린 항목을 해당 문서에 반영
-5. 최소 D+1 재시험 수행
+1. 설계는 기술 선택보다 Functional / Non-functional Requirement 확인과 규모 추정에서 시작한다.
+2. 평균 RPS와 Peak RPS를 구분하고 Read/Write ratio, payload, storage growth, bandwidth를 architecture decision에 연결한다.
+3. Latency, Availability, Consistency는 서로 비용과 trade-off가 있으므로 모든 요구사항을 무조건 최대로 잡지 않는다.
+4. Stateless Service는 durable/shared state를 특정 App Instance의 local memory에 의존하지 않아 Load Balancer와 Horizontal Scaling에 유리하다.
+5. Sticky Session은 현실적인 선택일 수 있지만 load imbalance와 failure/scaling 유연성 비용이 있다.
+6. Cache는 반복되는 비싼 원본 조회를 줄이지만 stale data, invalidation failure, stampede, hot key 같은 consistency/operation 비용을 만든다.
+7. Cache-Aside, TTL, single-flight, TTL jitter, local/distributed cache의 trade-off를 설명할 수 있다.
+8. Message Queue는 producer/consumer를 시간적으로 분리하고 spike를 흡수하지만 eventual consistency, duplicate, ordering, retry 문제가 생긴다.
+9. At-least-once delivery에서는 idempotent consumer가 중요하고 retry에는 backoff, limit, DLQ가 필요하다.
+10. Queue backlog가 늘었다고 consumer를 무작정 늘리면 downstream DB를 과부하시킬 수 있으므로 queue depth와 oldest message age, downstream capacity를 함께 본다.
+11. Load Balancer는 traffic distribution과 health check를 담당하며 L4/L7의 차이를 설명할 수 있다.
+12. Horizontal Scaling은 App tier를 늘리는 것이며 DB/cache/external API 같은 shared dependency가 다음 병목이 될 수 있다.
+13. `instance count × DB connection pool size`가 downstream capacity를 넘지 않는지 확인해야 한다.
+14. Readiness, connection draining, graceful shutdown은 배포/scale-in 중 in-flight request 손실을 줄이는 데 중요하다.
+15. 좋은 System Design 답변은 `요구사항 → 규모 → 병목 → 설계 → trade-off → failure mode` 순으로 진행한다.
 
 ## Next Action
 
-1. 새 Runtime & Concurrency 개념 추가는 일단 중단
-2. [Runtime & Concurrency Mock Interview](../quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md) 진행
-3. OS / Networking / Database Mock Interview도 병행해 Prepared를 실제 Completed로 전환
-4. 다음 신규 학습 트랙은 System Design
+1. [Requirements / Capacity Estimation Quiz](../quizzes/system-design/01-requirements-and-capacity-estimation.md)
+2. [Stateless Service Quiz](../quizzes/system-design/02-stateless-service.md)
+3. [Cache Design Quiz](../quizzes/system-design/03-cache-design.md)
+4. [Message Queue Quiz](../quizzes/system-design/04-message-queue.md)
+5. [Load Balancing / Horizontal Scaling Quiz](../quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+6. 다음 문서: DB Scaling / Read-Write Pattern → Consistency / Availability → Distributed Idempotency → Rate Limiting → Distributed Lock
+7. OS / Networking / Database / Runtime은 Quiz와 Re-test를 통해 Prepared를 실제 Completed로 전환
