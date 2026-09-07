@@ -21,7 +21,7 @@
 | 영역 | 주요 주제 |
 |---|---|
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
-| 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, CDN, Cache, WebSocket, SSE, gRPC, API Gateway, Resilience |
+| 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, CDN, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
 | 데이터베이스 | Index, Transaction, Isolation, Lock, Query |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
@@ -41,15 +41,15 @@
 | 영역 | 현재 주제 | 상태 |
 |---|---|---|
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
-| 네트워크 | Bulkhead / Resilience Patterns | 학습 중 |
-| 데이터베이스 | 시작 전 | 대기 |
+| 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
+| 데이터베이스 | 다음 트랙 | 대기 |
 | 런타임·동시성 | 시작 전 | 대기 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [25. Bulkhead / Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md)
-- [25. 이해도 확인 문제](quizzes/networking/25-bulkhead-resilience-patterns.md)
+- [30. Networking 총정리 — 60초 답변 체크포인트](docs/networking/30-networking-review-60-second-answers.md)
+- [Networking Mock Interview](quizzes/networking/30-networking-review-60-second-answers.md)
 
 ## 네트워크 학습 목록
 
@@ -78,6 +78,11 @@
 23. [Retry / Exponential Backoff / Jitter](docs/networking/23-retry-backoff-jitter.md) · [확인 문제](quizzes/networking/23-retry-backoff-jitter.md)
 24. [Circuit Breaker](docs/networking/24-circuit-breaker.md) · [확인 문제](quizzes/networking/24-circuit-breaker.md)
 25. [Bulkhead / Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md) · [확인 문제](quizzes/networking/25-bulkhead-resilience-patterns.md)
+26. [Idempotency Key](docs/networking/26-idempotency-key.md) · [확인 문제](quizzes/networking/26-idempotency-key.md)
+27. [Backpressure 심화](docs/networking/27-backpressure-deep-dive.md) · [확인 문제](quizzes/networking/27-backpressure-deep-dive.md)
+28. [Connection Pooling](docs/networking/28-connection-pooling.md) · [확인 문제](quizzes/networking/28-connection-pooling.md)
+29. [NAT / Ephemeral Port](docs/networking/29-nat-ephemeral-ports.md) · [확인 문제](quizzes/networking/29-nat-ephemeral-ports.md)
+30. [Networking 총정리 — 60초 답변](docs/networking/30-networking-review-60-second-answers.md) · [Mock Interview](quizzes/networking/30-networking-review-60-second-answers.md)
 
 ## 운영체제 트랙
 
@@ -87,9 +92,11 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 - [OS 19번](docs/operating-systems/19-tcp-in-the-os.md)
 - [학습 기록](progress/learning-log.md)
 
-## 다음 네트워크 주제
+## 다음 트랙
 
-Idempotency Key → Backpressure 심화 → Connection Pooling → NAT / Ephemeral Port를 정리한 뒤, Networking 복습 체크포인트를 두고 Database로 넘어갑니다.
+Database Fundamentals로 이동합니다: 관계형 모델과 Key → B-tree Index → Query Execution → Transaction / ACID → Isolation Level → MVCC → Lock / Deadlock → Normalization → Replication → Partitioning 순으로 진행합니다.
+
+Networking은 Mock Interview와 최소 1회 재시험을 통과하기 전까지 Completed로 처리하지 않습니다.
 
 - [전체 로드맵](ROADMAP.md)
 
