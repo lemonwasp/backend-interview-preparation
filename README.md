@@ -18,7 +18,7 @@ The repository uses a Feynman-style learning loop:
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
-| Databases | Relational model, keys, indexes, query execution, transactions, isolation, MVCC, locking |
+| Databases | Relational model, keys, indexes, query execution, transactions, isolation, MVCC, locking, deadlocks |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
 
@@ -39,14 +39,14 @@ A topic is complete only when I can:
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
 | Networking | 30 topics prepared; mock interview pending | Review |
-| Databases | Transaction & ACID | Learning |
+| Databases | Database Deadlocks | Learning |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [05. Transaction and ACID](docs/databases/05-transaction-and-acid.md)
-- [Knowledge Check](quizzes/databases/05-transaction-and-acid.md)
+- [10. Database Deadlocks](docs/databases/10-deadlocks.md)
+- [Knowledge Check](quizzes/databases/10-deadlocks.md)
 
 ## Database Lessons
 
@@ -55,6 +55,11 @@ A topic is complete only when I can:
 3. [Clustered vs Non-clustered Index](docs/databases/03-clustered-vs-nonclustered-index.md) · [Quiz](quizzes/databases/03-clustered-vs-nonclustered-index.md)
 4. [Query Execution and EXPLAIN](docs/databases/04-query-execution-and-explain.md) · [Quiz](quizzes/databases/04-query-execution-and-explain.md)
 5. [Transaction and ACID](docs/databases/05-transaction-and-acid.md) · [Quiz](quizzes/databases/05-transaction-and-acid.md)
+6. [Transaction Isolation Levels](docs/databases/06-isolation-levels.md) · [Quiz](quizzes/databases/06-isolation-levels.md)
+7. [Concurrency Anomalies](docs/databases/07-concurrency-anomalies.md) · [Quiz](quizzes/databases/07-concurrency-anomalies.md)
+8. [MVCC](docs/databases/08-mvcc.md) · [Quiz](quizzes/databases/08-mvcc.md)
+9. [Database Locks](docs/databases/09-database-locks.md) · [Quiz](quizzes/databases/09-database-locks.md)
+10. [Database Deadlocks](docs/databases/10-deadlocks.md) · [Quiz](quizzes/databases/10-deadlocks.md)
 
 ## Networking Track
 
@@ -73,7 +78,7 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 
 ## Next Database Topics
 
-Isolation levels, concurrency anomalies, MVCC, row/table locks, deadlocks, normalization, optimistic/pessimistic locking, replication, partitioning and database connection/transaction behavior.
+Normalization, optimistic vs pessimistic locking in application design, unique constraints and upsert, replication, read replicas, partitioning/sharding, database connection pools and transaction boundaries.
 
 ## Language Policy
 
