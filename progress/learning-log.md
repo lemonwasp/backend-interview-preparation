@@ -13,6 +13,11 @@
 | 2026-09-07 | OS | Blocking / Non-blocking / Sync / Async | Prepared | Pending | Pending | Learning |
 | 2026-09-07 | OS | Concurrency vs Parallelism | Prepared | Pending | Pending | Learning |
 | 2026-09-07 | OS | Race Condition / Lock / Deadlock | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | Memory Visibility / Memory Barrier | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | Virtual Memory Deep Dive | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | Paging / Page Fault | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | Page Cache / File I/O | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | OS | I/O Multiplexing | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -26,23 +31,17 @@
 
 ## Next Action
 
-순서대로 자료 없이 답합니다.
+현재는 문서가 준비된 상태이며 완료 상태가 아닙니다. 다음 순서로 자료 없이 설명합니다.
 
-1. [OS와 Kernel](../quizzes/operating-systems/01-os-and-kernel.md)
-2. [User/Kernel Mode와 System Call](../quizzes/operating-systems/02-user-kernel-mode-system-call.md)
-3. [Process와 Thread](../quizzes/operating-systems/03-process-vs-thread.md)
-4. [Process Address Space](../quizzes/operating-systems/04-process-address-space.md)
-5. [Context Switching](../quizzes/operating-systems/05-context-switching.md)
-6. [CPU Scheduling](../quizzes/operating-systems/06-cpu-scheduling.md)
-7. [Blocking / Non-blocking / Sync / Async](../quizzes/operating-systems/07-blocking-nonblocking-sync-async.md)
-8. [Concurrency vs Parallelism](../quizzes/operating-systems/08-concurrency-vs-parallelism.md)
-9. [Race Condition / Lock / Deadlock](../quizzes/operating-systems/09-race-lock-deadlock.md)
+1. Memory Visibility에서 Atomicity / Visibility / Ordering 차이
+2. Virtual Address → TLB / Page Table / MMU → Physical Address 흐름
+3. Page Fault가 항상 오류가 아닌 이유와 Minor / Major Fault 차이
+4. Page Cache에서 read/write가 Physical Storage와 분리될 수 있는 이유
+5. I/O Multiplexing이 Thread-per-connection보다 유리한 이유
 
-특히 다음 문장을 자신의 말로 설명할 수 있는지 확인합니다.
+특히 다음 문장을 자신의 말로 설명할 수 있어야 합니다.
 
-- 많은 Runnable Thread는 CPU Core 수를 늘리지 않고 Scheduling 비용만 늘릴 수 있다.
-- async I/O의 핵심은 I/O 자체를 마법처럼 빠르게 만드는 것이 아니라 대기 중 Thread 점유를 줄이는 것이다.
-- Concurrency와 Parallelism은 같은 개념이 아니다.
-- Shared Mutable State는 Race Condition의 핵심 원인이다.
-- In-process Lock은 여러 서버 Instance 사이의 DB Race Condition을 직접 해결하지 못한다.
-- Deadlock의 네 조건 중 하나를 깨면 Deadlock을 예방할 수 있다.
+- `volatile`은 복합 연산을 자동으로 Atomic하게 만들지 않는다.
+- Virtual Memory는 Swap보다 훨씬 넓은 주소 추상화와 보호 메커니즘이다.
+- `write()` 성공은 Storage durability 완료와 같은 의미가 아닐 수 있다.
+- I/O Multiplexing은 CPU Parallelism이 아니라 많은 I/O 대기를 효율적으로 관리하는 기술이다.
