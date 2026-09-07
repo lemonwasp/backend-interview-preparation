@@ -17,7 +17,7 @@ The repository uses a Feynman-style learning loop:
 
 | Area | Topics |
 |---|---|
-| Operating Systems | Processes, threads, memory, scheduling, concurrency, I/O |
+| Operating Systems | Processes, threads, memory, concurrency, I/O |
 | Networking | TCP/IP, HTTP, DNS, sockets, load balancing |
 | Databases | Indexes, transactions, isolation, locking, query execution |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
@@ -34,44 +34,11 @@ A topic is complete only when I can:
 - answer follow-up questions without notes;
 - reproduce the key behavior with code or system tools when appropriate.
 
-## Repository Structure
-
-```text
-.
-├── README.md
-├── README.ko.md
-├── ROADMAP.md
-├── docs/
-│   └── operating-systems/
-│       ├── 01-os-and-kernel.md
-│       ├── 02-user-kernel-mode-system-call.md
-│       ├── 03-process-vs-thread.md
-│       ├── 04-process-address-space.md
-│       ├── 05-context-switching.md
-│       ├── 06-cpu-scheduling.md
-│       ├── 07-blocking-nonblocking-sync-async.md
-│       ├── 08-concurrency-vs-parallelism.md
-│       └── 09-race-lock-deadlock.md
-├── quizzes/
-│   └── operating-systems/
-│       ├── 01-os-and-kernel.md
-│       ├── 02-user-kernel-mode-system-call.md
-│       ├── 03-process-vs-thread.md
-│       ├── 04-process-address-space.md
-│       ├── 05-context-switching.md
-│       ├── 06-cpu-scheduling.md
-│       ├── 07-blocking-nonblocking-sync-async.md
-│       ├── 08-concurrency-vs-parallelism.md
-│       └── 09-race-lock-deadlock.md
-└── progress/
-    └── learning-log.md
-```
-
 ## Progress
 
 | Area | Current topic | Status |
 |---|---|---|
-| Operating Systems | Race Conditions, Locks & Deadlocks | Learning |
+| Operating Systems | I/O Multiplexing | Learning |
 | Networking | Not started | Pending |
 | Databases | Not started | Pending |
 | Runtime & Concurrency | Not started | Pending |
@@ -79,10 +46,10 @@ A topic is complete only when I can:
 
 ## Current Lesson
 
-- [09. Race Condition, Lock and Deadlock](docs/operating-systems/09-race-lock-deadlock.md)
-- [Knowledge Check](quizzes/operating-systems/09-race-lock-deadlock.md)
+- [14. I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md)
+- [Knowledge Check](quizzes/operating-systems/14-io-multiplexing.md)
 
-### OS Lessons
+## OS Lessons
 
 1. [Operating System and Kernel](docs/operating-systems/01-os-and-kernel.md) · [Quiz](quizzes/operating-systems/01-os-and-kernel.md)
 2. [User Mode, Kernel Mode and System Calls](docs/operating-systems/02-user-kernel-mode-system-call.md) · [Quiz](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
@@ -90,9 +57,14 @@ A topic is complete only when I can:
 4. [Process Address Space](docs/operating-systems/04-process-address-space.md) · [Quiz](quizzes/operating-systems/04-process-address-space.md)
 5. [Context Switching](docs/operating-systems/05-context-switching.md) · [Quiz](quizzes/operating-systems/05-context-switching.md)
 6. [CPU Scheduling](docs/operating-systems/06-cpu-scheduling.md) · [Quiz](quizzes/operating-systems/06-cpu-scheduling.md)
-7. [Blocking / Non-blocking / Sync / Async](docs/operating-systems/07-blocking-nonblocking-sync-async.md) · [Quiz](quizzes/operating-systems/07-blocking-nonblocking-sync-async.md)
+7. [Blocking, Non-blocking, Sync and Async](docs/operating-systems/07-blocking-nonblocking-sync-async.md) · [Quiz](quizzes/operating-systems/07-blocking-nonblocking-sync-async.md)
 8. [Concurrency vs Parallelism](docs/operating-systems/08-concurrency-vs-parallelism.md) · [Quiz](quizzes/operating-systems/08-concurrency-vs-parallelism.md)
-9. [Race Condition, Lock and Deadlock](docs/operating-systems/09-race-lock-deadlock.md) · [Quiz](quizzes/operating-systems/09-race-lock-deadlock.md)
+9. [Race Condition, Lock and Deadlock](docs/operating-systems/09-race-condition-lock-deadlock.md) · [Quiz](quizzes/operating-systems/09-race-condition-lock-deadlock.md)
+10. [Memory Visibility and Memory Barriers](docs/operating-systems/10-memory-visibility-memory-barrier.md) · [Quiz](quizzes/operating-systems/10-memory-visibility-memory-barrier.md)
+11. [Virtual Memory Deep Dive](docs/operating-systems/11-virtual-memory-deep-dive.md) · [Quiz](quizzes/operating-systems/11-virtual-memory-deep-dive.md)
+12. [Paging and Page Faults](docs/operating-systems/12-paging-page-fault.md) · [Quiz](quizzes/operating-systems/12-paging-page-fault.md)
+13. [Page Cache and File I/O](docs/operating-systems/13-page-cache-file-io.md) · [Quiz](quizzes/operating-systems/13-page-cache-file-io.md)
+14. [I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md) · [Quiz](quizzes/operating-systems/14-io-multiplexing.md)
 
 ## Language Policy
 
