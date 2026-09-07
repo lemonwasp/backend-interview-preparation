@@ -19,7 +19,7 @@
 |---|---|
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
-| 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Partitioning, Sharding |
+| 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
 
@@ -39,14 +39,14 @@
 |---|---|---|
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
-| 데이터베이스 | Partitioning / Sharding | 학습 중 |
+| 데이터베이스 | Cache Consistency | 학습 중 |
 | 런타임·동시성 | 시작 전 | 대기 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [15. Partitioning / Sharding](docs/databases/15-partitioning-and-sharding.md)
-- [15. 이해도 확인 문제](quizzes/databases/15-partitioning-and-sharding.md)
+- [20. Cache Consistency](docs/databases/20-cache-consistency.md)
+- [20. 이해도 확인 문제](quizzes/databases/20-cache-consistency.md)
 
 ## 데이터베이스 학습 목록
 
@@ -65,6 +65,11 @@
 13. [Unique Constraint / Upsert](docs/databases/13-unique-constraint-and-upsert.md) · [확인 문제](quizzes/databases/13-unique-constraint-and-upsert.md)
 14. [Replication / Read Replica](docs/databases/14-replication-and-read-replicas.md) · [확인 문제](quizzes/databases/14-replication-and-read-replicas.md)
 15. [Partitioning / Sharding](docs/databases/15-partitioning-and-sharding.md) · [확인 문제](quizzes/databases/15-partitioning-and-sharding.md)
+16. [DB Connection Pool / Transaction Boundary](docs/databases/16-db-connection-pool-transaction-boundary.md) · [확인 문제](quizzes/databases/16-db-connection-pool-transaction-boundary.md)
+17. [ORM / N+1](docs/databases/17-orm-n-plus-one.md) · [확인 문제](quizzes/databases/17-orm-n-plus-one.md)
+18. [Schema Migration](docs/databases/18-schema-migration.md) · [확인 문제](quizzes/databases/18-schema-migration.md)
+19. [Pagination / Large Data Access](docs/databases/19-pagination-large-data-access.md) · [확인 문제](quizzes/databases/19-pagination-large-data-access.md)
+20. [Cache Consistency](docs/databases/20-cache-consistency.md) · [확인 문제](quizzes/databases/20-cache-consistency.md)
 
 ## 네트워크 트랙
 
@@ -83,7 +88,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 데이터베이스 주제
 
-DB Connection Pool / Transaction Boundary → ORM / N+1 → Schema Migration → Pagination / Large Data Access → Cache Consistency → Backup / PITR → DB 장애 시나리오 순으로 진행합니다.
+Backup / PITR → WAL / Checkpoint / Crash Recovery → DB 장애 시나리오 → Outbox / CDC → Database 총정리 순으로 진행한 뒤 Runtime & Concurrency로 넘어갑니다.
 
 - [전체 로드맵](ROADMAP.md)
 
