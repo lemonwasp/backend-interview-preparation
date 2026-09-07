@@ -21,7 +21,7 @@
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
 | 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache, Backup, Recovery, CDC |
 | 런타임·동시성 | CLR/Runtime Model, Thread Pool, Task, async/await, Synchronization, Concurrent Collection, Cancellation, GC, Allocation, Memory/Resource Lifetime, Async Stream, Context Flow, Observability |
-| 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
+| 시스템 설계 | 요구사항, Capacity Estimation, Stateless Service, Cache, Queue, Load Balancing, Scaling, Consistency, Reliability |
 
 ## 완료 기준
 
@@ -41,31 +41,27 @@
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
 | 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
 | 런타임·동시성 | 16개 주제 준비, Mock Interview 대기 | 복습 |
-| 시스템 설계 | 다음 트랙 | 대기 |
+| 시스템 설계 | Load Balancing / Horizontal Scaling | 학습 중 |
 
 ## 현재 학습
 
-- [16. Runtime & Concurrency 총정리 — 60초 답변](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
+- [05. Load Balancing / Horizontal Scaling](docs/system-design/05-load-balancing-horizontal-scaling.md)
+- [05. 이해도 확인 문제](quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+
+## 시스템 설계 학습 목록
+
+1. [Requirements / Capacity Estimation](docs/system-design/01-requirements-and-capacity-estimation.md) · [확인 문제](quizzes/system-design/01-requirements-and-capacity-estimation.md)
+2. [Stateless Service](docs/system-design/02-stateless-service.md) · [확인 문제](quizzes/system-design/02-stateless-service.md)
+3. [Cache Design](docs/system-design/03-cache-design.md) · [확인 문제](quizzes/system-design/03-cache-design.md)
+4. [Message Queue](docs/system-design/04-message-queue.md) · [확인 문제](quizzes/system-design/04-message-queue.md)
+5. [Load Balancing / Horizontal Scaling](docs/system-design/05-load-balancing-horizontal-scaling.md) · [확인 문제](quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+
+## 런타임·동시성 트랙
+
+Runtime & Concurrency는 15개 개념 문서 + 1개 60초 답변 총정리 + 40문항 Mock Interview까지 준비되어 있습니다. Mock Interview와 재시험을 통과하기 전까지 Completed로 처리하지 않습니다.
+
+- [Runtime & Concurrency 총정리](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
 - [Runtime & Concurrency Mock Interview](quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
-
-## 런타임·동시성 학습 목록
-
-1. [Runtime Process Model](docs/runtime-concurrency/01-runtime-process-model.md) · [확인 문제](quizzes/runtime-concurrency/01-runtime-process-model.md)
-2. [Thread Pool](docs/runtime-concurrency/02-thread-pool.md) · [확인 문제](quizzes/runtime-concurrency/02-thread-pool.md)
-3. [Task / Future / Promise](docs/runtime-concurrency/03-task-future-promise.md) · [확인 문제](quizzes/runtime-concurrency/03-task-future-promise.md)
-4. [async / await 내부 동작](docs/runtime-concurrency/04-async-await-internals.md) · [확인 문제](quizzes/runtime-concurrency/04-async-await-internals.md)
-5. [Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md) · [확인 문제](quizzes/runtime-concurrency/05-synchronization-primitives.md)
-6. [Concurrent Collections](docs/runtime-concurrency/06-concurrent-collections.md) · [확인 문제](quizzes/runtime-concurrency/06-concurrent-collections.md)
-7. [Cancellation / Timeout](docs/runtime-concurrency/07-cancellation-and-timeout.md) · [확인 문제](quizzes/runtime-concurrency/07-cancellation-and-timeout.md)
-8. [GC Generations](docs/runtime-concurrency/08-gc-generations.md) · [확인 문제](quizzes/runtime-concurrency/08-gc-generations.md)
-9. [Allocation / Boxing](docs/runtime-concurrency/09-allocation-and-boxing.md) · [확인 문제](quizzes/runtime-concurrency/09-allocation-and-boxing.md)
-10. [Managed Memory Leak](docs/runtime-concurrency/10-managed-memory-leak.md) · [확인 문제](quizzes/runtime-concurrency/10-managed-memory-leak.md)
-11. [IDisposable / Resource Lifetime](docs/runtime-concurrency/11-idisposable-resource-lifetime.md) · [확인 문제](quizzes/runtime-concurrency/11-idisposable-resource-lifetime.md)
-12. [Async Stream / Channel](docs/runtime-concurrency/12-async-streams-and-channels.md) · [확인 문제](quizzes/runtime-concurrency/12-async-streams-and-channels.md)
-13. [ThreadPool Starvation 진단](docs/runtime-concurrency/13-threadpool-starvation-diagnostics.md) · [확인 문제](quizzes/runtime-concurrency/13-threadpool-starvation-diagnostics.md)
-14. [ExecutionContext / Context Flow](docs/runtime-concurrency/14-executioncontext-context-flow.md) · [확인 문제](quizzes/runtime-concurrency/14-executioncontext-context-flow.md)
-15. [Runtime Observability](docs/runtime-concurrency/15-runtime-observability.md) · [확인 문제](quizzes/runtime-concurrency/15-runtime-observability.md)
-16. [Runtime & Concurrency 총정리 — 60초 답변](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md) · [Mock Interview](quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
 
 ## 데이터베이스 트랙
 
@@ -89,11 +85,11 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 - [OS 19번](docs/operating-systems/19-tcp-in-the-os.md)
 - [학습 기록](progress/learning-log.md)
 
-## 다음 트랙
+## 다음 시스템 설계 주제
 
-System Design으로 이동합니다: 요구사항 정의 / Capacity Estimation → Stateless Service → Cache → Queue → Load Balancing → DB Scaling → Consistency / Availability → Idempotency → Rate Limiting → Distributed Lock → Observability → Failure Mode 추론 순으로 진행합니다.
+DB Scaling / Read-Write Pattern → Consistency / Availability → Distributed Idempotency → Rate Limiting → Distributed Lock → Service Boundary → Observability → Graceful Degradation → Failure Mode 추론 순으로 진행합니다.
 
-Runtime & Concurrency는 40문항 Mock Interview와 최소 1회 재시험을 통과하기 전까지 Completed로 처리하지 않습니다.
+기존 OS / Networking / Database / Runtime은 Quiz와 Re-test를 통과하기 전까지 Prepared 상태를 유지합니다.
 
 - [전체 로드맵](ROADMAP.md)
 
