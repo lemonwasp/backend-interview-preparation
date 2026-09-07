@@ -40,13 +40,17 @@
 
 ## 현재 학습
 
-- [02. 사용자 모드, 커널 모드, System Call](docs/operating-systems/02-user-kernel-mode-system-call.md)
-- [02. 이해도 확인 문제](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
+- [05. Context Switching](docs/operating-systems/05-context-switching.md)
+- [05. 이해도 확인 문제](quizzes/operating-systems/05-context-switching.md)
 
-### 이전 학습
+## OS 학습 목록
 
-- [01. 운영체제와 커널](docs/operating-systems/01-os-and-kernel.md)
-- [01. 이해도 확인 문제](quizzes/operating-systems/01-os-and-kernel.md)
+1. [운영체제와 커널](docs/operating-systems/01-os-and-kernel.md) · [확인 문제](quizzes/operating-systems/01-os-and-kernel.md)
+2. [사용자 모드, 커널 모드, System Call](docs/operating-systems/02-user-kernel-mode-system-call.md) · [확인 문제](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
+3. [Process와 Thread](docs/operating-systems/03-process-vs-thread.md) · [확인 문제](quizzes/operating-systems/03-process-vs-thread.md)
+4. [Process Address Space](docs/operating-systems/04-process-address-space.md) · [확인 문제](quizzes/operating-systems/04-process-address-space.md)
+5. [Context Switching](docs/operating-systems/05-context-switching.md) · [확인 문제](quizzes/operating-systems/05-context-switching.md)
+
 - [전체 로드맵](ROADMAP.md)
 - [학습 기록](progress/learning-log.md)
 
