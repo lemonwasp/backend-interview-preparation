@@ -18,7 +18,7 @@ The repository uses a Feynman-style learning loop:
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
-| Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, sharding, connection pools, ORM, migrations, pagination, caching |
+| Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, sharding, connection pools, ORM, migrations, pagination, caching, backup, recovery, CDC |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
 
@@ -39,14 +39,14 @@ A topic is complete only when I can:
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
 | Networking | 30 topics prepared; mock interview pending | Review |
-| Databases | Cache Consistency | Learning |
-| Runtime & Concurrency | Not started | Pending |
+| Databases | 25 topics prepared; mock interview pending | Review |
+| Runtime & Concurrency | Next track | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [20. Cache Consistency](docs/databases/20-cache-consistency.md)
-- [Knowledge Check](quizzes/databases/20-cache-consistency.md)
+- [25. Database Review — 60-second Answers](docs/databases/25-database-review-60-second-answers.md)
+- [Database Mock Interview](quizzes/databases/25-database-review-60-second-answers.md)
 
 ## Database Lessons
 
@@ -70,6 +70,11 @@ A topic is complete only when I can:
 18. [Schema Migration](docs/databases/18-schema-migration.md) · [Quiz](quizzes/databases/18-schema-migration.md)
 19. [Pagination and Large Data Access](docs/databases/19-pagination-large-data-access.md) · [Quiz](quizzes/databases/19-pagination-large-data-access.md)
 20. [Cache Consistency](docs/databases/20-cache-consistency.md) · [Quiz](quizzes/databases/20-cache-consistency.md)
+21. [Backup and PITR](docs/databases/21-backup-and-pitr.md) · [Quiz](quizzes/databases/21-backup-and-pitr.md)
+22. [WAL, Checkpoint and Crash Recovery](docs/databases/22-wal-checkpoint-crash-recovery.md) · [Quiz](quizzes/databases/22-wal-checkpoint-crash-recovery.md)
+23. [Database Failure Scenarios](docs/databases/23-database-failure-scenarios.md) · [Quiz](quizzes/databases/23-database-failure-scenarios.md)
+24. [Transactional Outbox and CDC](docs/databases/24-transactional-outbox-and-cdc.md) · [Quiz](quizzes/databases/24-transactional-outbox-and-cdc.md)
+25. [Database Review — 60-second Answers](docs/databases/25-database-review-60-second-answers.md) · [Mock Interview](quizzes/databases/25-database-review-60-second-answers.md)
 
 ## Networking Track
 
@@ -86,9 +91,11 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 - [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
-## Next Database Topics
+## Next Track
 
-Backup and point-in-time recovery, WAL/checkpoints and crash recovery, database failure scenarios, Outbox/CDC, and a database review checkpoint before moving to Runtime & Concurrency.
+Runtime & Concurrency: runtime process model, thread pools, Task/Future/Promise, async/await internals, synchronization primitives, concurrent collections, cancellation, GC generations, allocation/boxing, memory leaks, backpressure and runtime observability.
+
+Before marking Databases complete, pass the database mock interview and perform at least one re-test.
 
 ## Language Policy
 
