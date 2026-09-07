@@ -68,6 +68,11 @@
 | 2026-09-08 | Database | Unique Constraint / Upsert | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Replication / Read Replica | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Database | Partitioning / Sharding | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | DB Connection Pool / Transaction Boundary | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | ORM / N+1 | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Schema Migration | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Pagination / Large Data Access | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Database | Cache Consistency | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -81,29 +86,29 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 15개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 20개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Database 설계·확장 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Database 운영·애플리케이션 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. Normalization은 Functional Dependency에 따라 중복과 Insert/Update/Delete Anomaly를 줄이는 설계 원칙이며, Denormalization은 읽기 성능을 위해 의도적으로 중복을 허용하는 trade-off다.
-2. 주문 당시 가격처럼 역사적 Snapshot은 현재 Product 가격과 다른 사실이므로 단순 중복으로 보고 제거하면 안 된다.
-3. Optimistic Lock은 Version Check로 마지막에 충돌을 감지하고 Pessimistic Lock은 먼저 Lock을 잡아 충돌을 차단한다.
-4. Hot Row에서는 Optimistic Retry Storm과 Pessimistic Lock Wait/Deadlock 중 어떤 비용이 더 큰지 판단해야 한다.
-5. `SELECT 후 INSERT`는 Check-then-act Race가 있으므로 Unique Constraint 같은 DB invariant가 최종 방어선이 되어야 한다.
-6. Upsert는 존재 여부 확인과 변경을 DB 동시성 제어 안에서 처리하지만 모든 복잡한 invariant를 해결하는 것은 아니다.
-7. Async Read Replica는 Replication Lag 때문에 stale read가 가능하므로 read-after-write consistency가 필요한 요청은 별도 Routing 정책이 필요하다.
-8. Replica는 논리적 삭제와 잘못된 변경도 복제할 수 있으므로 Backup/PITR을 대체하지 않는다.
-9. Partitioning은 보통 한 DB 시스템 안에서 데이터를 나누고 Sharding은 여러 독립 DB Node에 데이터를 분산한다.
-10. Shard Key는 데이터와 트래픽을 고르게 분산하면서 자주 함께 접근하는 데이터를 같은 Shard에 두도록 설계해야 한다.
-11. Sharding의 가장 큰 비용은 Cross-shard Join, Aggregate, Transaction, Unique Constraint와 Rebalancing 복잡도다.
-12. Replication은 같은 데이터를 복사하고 Sharding은 데이터를 분할하며 실제 시스템에서는 Shard별 Replica 구조로 함께 사용할 수 있다.
+1. DB Connection Pool은 연결 재사용 최적화이면서 DB 동시성을 제한하는 보호 장치이며 Pool Size는 전체 App Instance 수와 DB capacity를 함께 봐야 한다.
+2. Long Transaction은 Lock, MVCC version, Connection을 오래 점유해 Pool Exhaustion과 Deadlock을 키울 수 있다.
+3. 외부 API 호출처럼 느리고 불확실한 Network I/O를 Local DB Transaction 안에 오래 포함하지 않는 것이 기본 원칙이다.
+4. ORM은 SQL을 없애지 않으며 N+1은 부모 1회 조회 뒤 연관 데이터를 N회 추가 조회하는 전형적 성능 문제다.
+5. N+1은 Fetch Join/Eager Loading, Batch Loading, Projection으로 줄일 수 있지만 무조건 JOIN하면 Cartesian Explosion이 생길 수 있다.
+6. 안전한 Schema Migration은 Expand → Migrate → Contract로 구버전/신버전 App의 동시 운영을 고려해야 한다.
+7. 큰 Table의 DDL과 Backfill은 Lock, I/O, WAL/Redo, Replica Lag을 키울 수 있으므로 batch와 monitoring이 필요하다.
+8. 깊은 OFFSET Pagination은 많은 Row를 읽고 버릴 수 있고 Keyset Pagination은 마지막 정렬 Key 이후부터 탐색해 비용 증가를 줄인다.
+9. Keyset Pagination에서는 stable ordering을 위해 created_at과 unique id 같은 tie-breaker를 함께 사용하는 것이 중요하다.
+10. Cache-Aside는 Cache miss 시 DB에서 읽어 채우고 Write 시 DB 변경 후 Cache invalidate를 수행하는 대표 패턴이다.
+11. DB와 외부 Cache는 하나의 Atomic Transaction이 아니므로 invalidation 실패와 stale data를 TTL, retry, Outbox/Event, reconciliation 등으로 관리해야 한다.
+12. Cache Stampede는 인기 Key 동시 만료로 DB에 요청이 몰리는 현상이며 single-flight, TTL jitter, stale-while-revalidate 등으로 완화할 수 있다.
 
 ## Next Action
 
-1. [Normalization Quiz](../quizzes/databases/11-normalization.md)
-2. [Optimistic / Pessimistic Locking Quiz](../quizzes/databases/12-optimistic-vs-pessimistic-locking.md)
-3. [Unique Constraint / Upsert Quiz](../quizzes/databases/13-unique-constraint-and-upsert.md)
-4. [Replication / Read Replica Quiz](../quizzes/databases/14-replication-and-read-replicas.md)
-5. [Partitioning / Sharding Quiz](../quizzes/databases/15-partitioning-and-sharding.md)
-6. 다음 문서: DB Connection Pool / Transaction Boundary → ORM / N+1 → Schema Migration → Pagination / Large Data Access → Cache Consistency
+1. [DB Connection Pool / Transaction Boundary Quiz](../quizzes/databases/16-db-connection-pool-transaction-boundary.md)
+2. [ORM / N+1 Quiz](../quizzes/databases/17-orm-n-plus-one.md)
+3. [Schema Migration Quiz](../quizzes/databases/18-schema-migration.md)
+4. [Pagination / Large Data Access Quiz](../quizzes/databases/19-pagination-large-data-access.md)
+5. [Cache Consistency Quiz](../quizzes/databases/20-cache-consistency.md)
+6. 다음 문서: Backup / PITR → WAL / Checkpoint / Crash Recovery → DB Failure Scenarios → Outbox / CDC → Database Review
 7. Networking Mock Interview와 OS Quiz는 별도 복습 세션에서 Prepared를 Completed로 전환
