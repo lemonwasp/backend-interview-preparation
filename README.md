@@ -18,7 +18,7 @@ The repository uses a Feynman-style learning loop:
 | Area | Topics |
 |---|---|
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
-| Networking | TCP/IP, HTTP, DNS, sockets, load balancing |
+| Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing |
 | Databases | Indexes, transactions, isolation, locking, query execution |
 | Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
 | System Design | Caching, queues, replication, sharding, reliability |
@@ -39,15 +39,15 @@ A topic is complete only when I can:
 | Area | Current topic | Status |
 |---|---|---|
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
-| Networking | Flow Control & Congestion Control | Learning |
+| Networking | HTTP/3 & QUIC | Learning |
 | Databases | Not started | Pending |
 | Runtime & Concurrency | Not started | Pending |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [05. TCP Flow Control and Congestion Control](docs/networking/05-flow-congestion-control.md)
-- [Knowledge Check](quizzes/networking/05-flow-congestion-control.md)
+- [10. HTTP/3 & QUIC](docs/networking/10-http-3-quic.md)
+- [Knowledge Check](quizzes/networking/10-http-3-quic.md)
 
 ## Networking Lessons
 
@@ -56,20 +56,23 @@ A topic is complete only when I can:
 3. [TCP Termination and TIME_WAIT](docs/networking/03-tcp-termination-time-wait.md) · [Quiz](quizzes/networking/03-tcp-termination-time-wait.md)
 4. [TCP Retransmission and RTO](docs/networking/04-tcp-retransmission-rto.md) · [Quiz](quizzes/networking/04-tcp-retransmission-rto.md)
 5. [TCP Flow Control and Congestion Control](docs/networking/05-flow-congestion-control.md) · [Quiz](quizzes/networking/05-flow-congestion-control.md)
+6. [UDP vs TCP](docs/networking/06-udp-vs-tcp.md) · [Quiz](quizzes/networking/06-udp-vs-tcp.md)
+7. [DNS](docs/networking/07-dns.md) · [Quiz](quizzes/networking/07-dns.md)
+8. [HTTP/1.1](docs/networking/08-http-1-1.md) · [Quiz](quizzes/networking/08-http-1-1.md)
+9. [HTTP/2](docs/networking/09-http-2.md) · [Quiz](quizzes/networking/09-http-2.md)
+10. [HTTP/3 & QUIC](docs/networking/10-http-3-quic.md) · [Quiz](quizzes/networking/10-http-3-quic.md)
 
 ## Operating Systems Track
 
-The OS track currently contains 19 prepared topics from OS/kernel fundamentals through file descriptors, DMA, zero-copy, socket internals and TCP processing inside the OS. The documents are prepared, but most quizzes and re-tests are still pending, so the track is not marked complete.
+The OS track contains 19 prepared topics from OS/kernel fundamentals through file descriptors, DMA, zero-copy, socket internals and TCP processing inside the OS. Most quizzes and re-tests are still pending, so the track remains in review rather than complete.
 
-Start review from:
-
-- [01. Operating System and Kernel](docs/operating-systems/01-os-and-kernel.md)
-- [19. TCP Processing Inside the OS](docs/operating-systems/19-tcp-in-the-os.md)
+- [OS first topic](docs/operating-systems/01-os-and-kernel.md)
+- [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
 ## Next Networking Topics
 
-UDP vs TCP, DNS, HTTP/1.1, HTTP/2, HTTP/3 and QUIC, TLS, proxies, reverse proxies and load balancing.
+TLS/HTTPS, certificates and PKI, proxies and reverse proxies, load balancing, CDN and caching, WebSocket and gRPC.
 
 ## Language Policy
 
