@@ -20,7 +20,7 @@
 
 | 영역 | 주요 주제 |
 |---|---|
-| 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O |
+| 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
 | 네트워크 | TCP/IP, HTTP, DNS, Socket, Load Balancing |
 | 데이터베이스 | Index, Transaction, Isolation, Lock, Query |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
@@ -40,8 +40,8 @@
 
 ## 현재 학습
 
-- [14. I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md)
-- [14. 이해도 확인 문제](quizzes/operating-systems/14-io-multiplexing.md)
+- [19. TCP가 OS에서 처리되는 과정](docs/operating-systems/19-tcp-in-the-os.md)
+- [19. 이해도 확인 문제](quizzes/operating-systems/19-tcp-in-the-os.md)
 
 ## OS 학습 목록
 
@@ -59,6 +59,15 @@
 12. [Paging / Page Fault](docs/operating-systems/12-paging-page-fault.md) · [확인 문제](quizzes/operating-systems/12-paging-page-fault.md)
 13. [Page Cache / File I/O](docs/operating-systems/13-page-cache-file-io.md) · [확인 문제](quizzes/operating-systems/13-page-cache-file-io.md)
 14. [I/O Multiplexing](docs/operating-systems/14-io-multiplexing.md) · [확인 문제](quizzes/operating-systems/14-io-multiplexing.md)
+15. [File Descriptor](docs/operating-systems/15-file-descriptor.md) · [확인 문제](quizzes/operating-systems/15-file-descriptor.md)
+16. [Interrupt / DMA](docs/operating-systems/16-interrupt-and-dma.md) · [확인 문제](quizzes/operating-systems/16-interrupt-and-dma.md)
+17. [Zero-copy / sendfile](docs/operating-systems/17-zero-copy-and-sendfile.md) · [확인 문제](quizzes/operating-systems/17-zero-copy-and-sendfile.md)
+18. [Socket Internals](docs/operating-systems/18-socket-internals.md) · [확인 문제](quizzes/operating-systems/18-socket-internals.md)
+19. [TCP가 OS에서 처리되는 과정](docs/operating-systems/19-tcp-in-the-os.md) · [확인 문제](quizzes/operating-systems/19-tcp-in-the-os.md)
+
+## 다음 파트
+
+Networking Fundamentals로 넘어갑니다: TCP/IP 계층, TCP handshake/teardown, retransmission/congestion control, DNS, HTTP/1.1~HTTP/3, TLS, Proxy와 Load Balancing.
 
 - [전체 로드맵](ROADMAP.md)
 - [학습 기록](progress/learning-log.md)
