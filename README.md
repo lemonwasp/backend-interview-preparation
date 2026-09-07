@@ -44,11 +44,17 @@ A topic is complete only when I can:
 ├── docs/
 │   └── operating-systems/
 │       ├── 01-os-and-kernel.md
-│       └── 02-user-kernel-mode-system-call.md
+│       ├── 02-user-kernel-mode-system-call.md
+│       ├── 03-process-vs-thread.md
+│       ├── 04-process-address-space.md
+│       └── 05-context-switching.md
 ├── quizzes/
 │   └── operating-systems/
 │       ├── 01-os-and-kernel.md
-│       └── 02-user-kernel-mode-system-call.md
+│       ├── 02-user-kernel-mode-system-call.md
+│       ├── 03-process-vs-thread.md
+│       ├── 04-process-address-space.md
+│       └── 05-context-switching.md
 └── progress/
     └── learning-log.md
 ```
@@ -57,7 +63,7 @@ A topic is complete only when I can:
 
 | Area | Current topic | Status |
 |---|---|---|
-| Operating Systems | User/Kernel Mode & System Calls | Learning |
+| Operating Systems | Context Switching | Learning |
 | Networking | Not started | Pending |
 | Databases | Not started | Pending |
 | Runtime & Concurrency | Not started | Pending |
@@ -65,13 +71,16 @@ A topic is complete only when I can:
 
 ## Current Lesson
 
-- [02. User Mode, Kernel Mode and System Calls](docs/operating-systems/02-user-kernel-mode-system-call.md)
-- [Knowledge Check](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
+- [05. Context Switching](docs/operating-systems/05-context-switching.md)
+- [Knowledge Check](quizzes/operating-systems/05-context-switching.md)
 
-### Previous Lesson
+### OS Lessons
 
-- [01. Operating System and Kernel](docs/operating-systems/01-os-and-kernel.md)
-- [Knowledge Check](quizzes/operating-systems/01-os-and-kernel.md)
+1. [Operating System and Kernel](docs/operating-systems/01-os-and-kernel.md) · [Quiz](quizzes/operating-systems/01-os-and-kernel.md)
+2. [User Mode, Kernel Mode and System Calls](docs/operating-systems/02-user-kernel-mode-system-call.md) · [Quiz](quizzes/operating-systems/02-user-kernel-mode-system-call.md)
+3. [Process vs Thread](docs/operating-systems/03-process-vs-thread.md) · [Quiz](quizzes/operating-systems/03-process-vs-thread.md)
+4. [Process Address Space](docs/operating-systems/04-process-address-space.md) · [Quiz](quizzes/operating-systems/04-process-address-space.md)
+5. [Context Switching](docs/operating-systems/05-context-switching.md) · [Quiz](quizzes/operating-systems/05-context-switching.md)
 
 ## Language Policy
 
