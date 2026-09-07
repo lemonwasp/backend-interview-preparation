@@ -88,6 +88,11 @@
 | 2026-09-08 | Runtime | GC Generations | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Runtime | Allocation / Boxing | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Runtime | Managed Memory Leak | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | IDisposable / Resource Lifetime | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Async Stream / Channel | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | ThreadPool Starvation Diagnostics | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | ExecutionContext / Context Flow | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Runtime Observability | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -101,29 +106,30 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 10개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 15개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Runtime 두 번째 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Runtime 세 번째 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. Concurrent Collection은 내부 자료구조의 동시 접근을 안전하게 하지만 여러 연산을 묶은 비즈니스 Atomicity까지 자동 보장하지 않는다.
-2. `ConcurrentDictionary.GetOrAdd`의 factory는 경쟁 상황에서 여러 번 실행될 수 있으므로 중복 불가 Side Effect를 넣으면 안 된다.
-3. Thread-safe는 Process 내부 동시성 보장이고 Distributed-safe는 여러 Instance 간 coordination 문제이므로 서로 다르다.
-4. Timeout은 기다리는 시간 정책이고 Cancellation은 작업 중단을 요청하는 cooperative mechanism이다.
-5. timeout이 발생해 caller가 포기했다고 underlying work가 자동으로 멈추는 것은 아니므로 token propagation이 중요하다.
-6. Cancellation은 이미 발생한 DB COMMIT이나 외부 Side Effect를 자동 Rollback하지 않는다.
-7. .NET GC는 Gen 0/1/2 구조로 대부분의 객체가 짧게 산다는 특성을 활용하며 GC Root에서 reachable한 객체는 수집하지 않는다.
-8. 큰 이미지/byte buffer는 LOH와 memory pressure를 키울 수 있고 MemoryStream 최적화는 disk I/O 감소와 memory 사용 증가의 trade-off가 있다.
-9. Allocation Rate가 높으면 Heap Size가 안정적이어도 GC 빈도와 CPU 비용이 증가할 수 있다.
-10. Boxing은 Value Type을 object/interface 형태로 다루면서 allocation이 생길 수 있는 대표 패턴이고 hot path에서 누적 비용이 커질 수 있다.
-11. Managed Memory Leak은 필요 없는 객체가 static collection, event handler, timer, unbounded cache 등으로 계속 reachable한 상태다.
-12. Memory 문제 진단에서는 RSS, GC Heap, Gen 2, LOH, allocation rate를 구분하고 heap dump의 retention path를 확인해야 한다.
+1. GC는 managed memory를 회수하지만 file handle, socket, DB connection 같은 제한된 외부 자원의 적시 해제를 대신하지 않으므로 `IDisposable`과 `using`이 필요하다.
+2. `Dispose()`는 object memory를 직접 없애는 것이 아니라 owned resource를 deterministic하게 반환하는 것이다.
+3. `HttpClient`는 매 요청마다 생성/폐기하면 connection churn을 만들 수 있으므로 일반적인 서버에서는 factory나 장수명 재사용 전략을 고려한다.
+4. `IAsyncEnumerable<T>`는 전체 결과를 materialize하지 않고 항목을 준비되는 대로 비동기적으로 전달하며 자동 병렬 처리를 의미하지 않는다.
+5. `Channel<T>`은 in-process producer/consumer coordination 도구이며 bounded capacity를 사용하면 backpressure를 걸 수 있다.
+6. ThreadPool Starvation은 CPU Saturation과 다르며 sync-over-async, blocking I/O, 긴 lock wait로 CPU가 남아도 queue가 밀릴 수 있다.
+7. Starvation 진단에서는 ThreadPool queue/thread count, completed work rate, CPU, request latency, lock/connection wait을 함께 본다.
+8. `ExecutionContext`는 async 흐름을 넘어 logical context를 전달하고 `SynchronizationContext`는 continuation scheduling과 관련된 별도 개념이다.
+9. ASP.NET Core에서는 classic UI/ASP.NET식 SynchronizationContext deadlock과 조건이 다르지만 `.Result` / `.Wait()`는 여전히 blocking과 scalability 문제를 만든다.
+10. trace/correlation context는 `Activity`, OpenTelemetry와 연결되며 ambient context는 tenant/user 정보와 결합될 때 보안상 신중히 다뤄야 한다.
+11. Runtime Observability는 metrics, logs, traces와 CPU, GC, allocation, ThreadPool, lock 지표를 연결해 병목을 찾는 과정이다.
+12. memory 문제에서는 RSS와 managed heap을 구분하고, latency 문제에서는 평균뿐 아니라 p95/p99와 queueing을 확인한 뒤 profile-before-optimize 원칙을 따른다.
 
 ## Next Action
 
-1. [Concurrent Collections Quiz](../quizzes/runtime-concurrency/06-concurrent-collections.md)
-2. [Cancellation / Timeout Quiz](../quizzes/runtime-concurrency/07-cancellation-and-timeout.md)
-3. [GC Generations Quiz](../quizzes/runtime-concurrency/08-gc-generations.md)
-4. [Allocation / Boxing Quiz](../quizzes/runtime-concurrency/09-allocation-and-boxing.md)
-5. [Managed Memory Leak Quiz](../quizzes/runtime-concurrency/10-managed-memory-leak.md)
-6. 다음 문서: IDisposable / Resource Lifetime → Async Stream / Channel → ThreadPool Starvation 진단 → ExecutionContext → Runtime Observability
-7. OS / Networking / Database Mock Interview는 별도 복습 세션에서 Prepared를 Completed로 전환
+1. [IDisposable / Resource Lifetime Quiz](../quizzes/runtime-concurrency/11-idisposable-resource-lifetime.md)
+2. [Async Stream / Channel Quiz](../quizzes/runtime-concurrency/12-async-streams-and-channels.md)
+3. [ThreadPool Starvation Diagnostics Quiz](../quizzes/runtime-concurrency/13-threadpool-starvation-diagnostics.md)
+4. [ExecutionContext / Context Flow Quiz](../quizzes/runtime-concurrency/14-executioncontext-context-flow.md)
+5. [Runtime Observability Quiz](../quizzes/runtime-concurrency/15-runtime-observability.md)
+6. 다음 문서: Runtime & Concurrency 60초 답변 총정리 + Mock Interview
+7. 이후 신규 개념 준비는 System Design으로 이동
+8. OS / Networking / Database / Runtime은 Quiz와 Re-test를 통해 Prepared를 실제 Completed로 전환
