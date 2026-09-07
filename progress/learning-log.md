@@ -6,6 +6,9 @@
 |---|---|---|---|---|---|---|
 | 2026-09-05 | OS | OS and Kernel | Completed | Pending | Pending | Learning |
 | 2026-09-07 | OS | User/Kernel Mode & System Calls | Prepared | Pending | Pending | Learning |
+| 2026-09-07 | OS | Process vs Thread | Prepared | Pending | Pending | Learning |
+| 2026-09-07 | OS | Process Address Space | Prepared | Pending | Pending | Learning |
+| 2026-09-07 | OS | Context Switching | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -19,6 +22,16 @@
 
 ## Next Action
 
-1. [OS와 Kernel 확인 문제](../quizzes/operating-systems/01-os-and-kernel.md)에 자료 없이 답합니다.
-2. [User/Kernel Mode와 System Call 확인 문제](../quizzes/operating-systems/02-user-kernel-mode-system-call.md)에 답합니다.
-3. Mode Switch와 Context Switch를 자신의 말로 구분하지 못하면 해당 부분을 다시 학습합니다.
+순서대로 자료 없이 답합니다.
+
+1. [OS와 Kernel](../quizzes/operating-systems/01-os-and-kernel.md)
+2. [User/Kernel Mode와 System Call](../quizzes/operating-systems/02-user-kernel-mode-system-call.md)
+3. [Process와 Thread](../quizzes/operating-systems/03-process-vs-thread.md)
+4. [Process Address Space](../quizzes/operating-systems/04-process-address-space.md)
+5. [Context Switching](../quizzes/operating-systems/05-context-switching.md)
+
+특히 다음 세 문장을 자신의 말로 설명할 수 있는지 확인합니다.
+
+- 같은 Process의 Thread는 Heap을 공유하지만 Stack은 각자 가진다.
+- 같은 Virtual Address라도 Process마다 다른 Physical Page에 매핑될 수 있다.
+- System Call의 Mode Switch와 Thread 간 Context Switch는 같은 개념이 아니다.
