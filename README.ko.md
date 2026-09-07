@@ -40,13 +40,13 @@
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
 | 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
-| 런타임·동시성 | Runtime Observability | 학습 중 |
-| 시스템 설계 | 시작 전 | 대기 |
+| 런타임·동시성 | 16개 주제 준비, Mock Interview 대기 | 복습 |
+| 시스템 설계 | 다음 트랙 | 대기 |
 
 ## 현재 학습
 
-- [15. Runtime Observability](docs/runtime-concurrency/15-runtime-observability.md)
-- [15. 이해도 확인 문제](quizzes/runtime-concurrency/15-runtime-observability.md)
+- [16. Runtime & Concurrency 총정리 — 60초 답변](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
+- [Runtime & Concurrency Mock Interview](quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
 
 ## 런타임·동시성 학습 목록
 
@@ -65,6 +65,7 @@
 13. [ThreadPool Starvation 진단](docs/runtime-concurrency/13-threadpool-starvation-diagnostics.md) · [확인 문제](quizzes/runtime-concurrency/13-threadpool-starvation-diagnostics.md)
 14. [ExecutionContext / Context Flow](docs/runtime-concurrency/14-executioncontext-context-flow.md) · [확인 문제](quizzes/runtime-concurrency/14-executioncontext-context-flow.md)
 15. [Runtime Observability](docs/runtime-concurrency/15-runtime-observability.md) · [확인 문제](quizzes/runtime-concurrency/15-runtime-observability.md)
+16. [Runtime & Concurrency 총정리 — 60초 답변](docs/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md) · [Mock Interview](quizzes/runtime-concurrency/16-runtime-concurrency-review-60-second-answers.md)
 
 ## 데이터베이스 트랙
 
@@ -88,9 +89,11 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 - [OS 19번](docs/operating-systems/19-tcp-in-the-os.md)
 - [학습 기록](progress/learning-log.md)
 
-## 다음 런타임 주제
+## 다음 트랙
 
-Runtime & Concurrency 총정리와 Mock Interview를 만든 뒤 신규 주제 준비는 System Design으로 이동합니다. 기존 OS / Networking / Database / Runtime은 Quiz와 Re-test를 통과하기 전까지 Prepared 상태를 유지합니다.
+System Design으로 이동합니다: 요구사항 정의 / Capacity Estimation → Stateless Service → Cache → Queue → Load Balancing → DB Scaling → Consistency / Availability → Idempotency → Rate Limiting → Distributed Lock → Observability → Failure Mode 추론 순으로 진행합니다.
+
+Runtime & Concurrency는 40문항 Mock Interview와 최소 1회 재시험을 통과하기 전까지 Completed로 처리하지 않습니다.
 
 - [전체 로드맵](ROADMAP.md)
 
