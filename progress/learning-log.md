@@ -5,6 +5,7 @@
 | Date | Area | Topic | Explanation | Quiz | Re-test | Status |
 |---|---|---|---|---|---|---|
 | 2026-09-05 | OS | OS and Kernel | Completed | Pending | Pending | Learning |
+| 2026-09-07 | OS | User/Kernel Mode & System Calls | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -18,5 +19,6 @@
 
 ## Next Action
 
-[OS와 Kernel 확인 문제](../quizzes/operating-systems/01-os-and-kernel.md)에
-자료 없이 답한 뒤, 부족한 부분을 보강합니다.
+1. [OS와 Kernel 확인 문제](../quizzes/operating-systems/01-os-and-kernel.md)에 자료 없이 답합니다.
+2. [User/Kernel Mode와 System Call 확인 문제](../quizzes/operating-systems/02-user-kernel-mode-system-call.md)에 답합니다.
+3. Mode Switch와 Context Switch를 자신의 말로 구분하지 못하면 해당 부분을 다시 학습합니다.
