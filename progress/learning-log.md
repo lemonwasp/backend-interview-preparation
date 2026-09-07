@@ -23,6 +23,11 @@
 | 2026-09-08 | OS | Zero-copy / sendfile | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | OS | Socket Internals | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | OS | TCP Processing Inside the OS | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | TCP/IP Layers | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | TCP 3-way Handshake | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | TCP Termination / TIME_WAIT | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | TCP Retransmission / RTO | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Network | Flow Control / Congestion Control | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -36,21 +41,22 @@
 
 ## Current Checkpoint
 
-OS 문서는 19개 주제까지 준비되었습니다. 아직 대부분 Quiz와 Re-test가 Pending이므로 문서 생성 자체를 학습 완료로 간주하지 않습니다.
+OS 문서는 19개 주제까지 준비되었고 Networking 문서는 5개 주제까지 준비되었습니다. 대부분 Quiz와 Re-test가 Pending이므로 문서 생성 자체는 완료 증거가 아닙니다.
 
-다음 다섯 문장을 자료 없이 설명할 수 있어야 OS → Networking 전환이 가능합니다.
+Networking에서 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. File Descriptor는 Process-local integer handle이며 Kernel resource 자체가 아니다.
-2. DMA는 NIC/Storage와 RAM 사이의 데이터 전송에서 CPU의 직접 복사 부담을 줄인다.
-3. Zero-copy는 물리적 데이터 이동이 0이라는 뜻이 아니라 불필요한 CPU-mediated copy를 줄이는 최적화다.
-4. `send()` 성공은 상대 애플리케이션의 수신 완료와 같은 의미가 아니다.
-5. TCP 수신 경로는 크게 NIC → DMA → Kernel TCP/IP stack → Socket buffer → Application으로 설명할 수 있다.
+1. TCP/IP에서 Application / Transport / Internet / Link 계층의 책임 차이
+2. SYN → SYN/ACK → ACK가 양방향 연결과 Sequence Number를 동기화하는 과정
+3. TIME_WAIT가 마지막 ACK 재전송과 오래된 Segment 격리에 필요한 이유
+4. TCP가 RTO와 Duplicate ACK를 이용해 Loss를 복구하는 방식
+5. Flow Control은 Receiver 보호, Congestion Control은 Network 보호라는 차이
+6. `rwnd`와 `cwnd` 중 더 강한 제한이 Sender의 전송량에 영향을 준다는 점
 
 ## Next Action
 
-1. [File Descriptor Quiz](../quizzes/operating-systems/15-file-descriptor.md)
-2. [Interrupt / DMA Quiz](../quizzes/operating-systems/16-interrupt-and-dma.md)
-3. [Zero-copy / sendfile Quiz](../quizzes/operating-systems/17-zero-copy-and-sendfile.md)
-4. [Socket Internals Quiz](../quizzes/operating-systems/18-socket-internals.md)
-5. [TCP Processing Quiz](../quizzes/operating-systems/19-tcp-in-the-os.md)
-6. 이후 Networking Fundamentals로 진행
+1. [TCP/IP Layers Quiz](../quizzes/networking/01-tcp-ip-layers.md)
+2. [TCP Handshake Quiz](../quizzes/networking/02-tcp-three-way-handshake.md)
+3. [TCP Termination / TIME_WAIT Quiz](../quizzes/networking/03-tcp-termination-time-wait.md)
+4. [Retransmission / RTO Quiz](../quizzes/networking/04-tcp-retransmission-rto.md)
+5. [Flow / Congestion Control Quiz](../quizzes/networking/05-flow-congestion-control.md)
+6. 다음 문서: UDP vs TCP → DNS → HTTP
