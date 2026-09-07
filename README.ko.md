@@ -21,7 +21,7 @@
 | 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, 실시간 통신, RPC, API Gateway, Resilience, Connection 관리 |
 | 데이터베이스 | 관계형 모델, Index, Query 실행, Transaction, Isolation, MVCC, Lock, Normalization, Constraint, Replication, Sharding, Connection Pool, ORM, Migration, Pagination, Cache, Backup, Recovery, CDC |
 | 런타임·동시성 | CLR/Runtime Model, Thread Pool, Task, async/await, Synchronization, Concurrent Collection, Cancellation, GC, Allocation, Memory/Resource Lifetime, Async Stream, Context Flow, Observability |
-| 시스템 설계 | 요구사항, Capacity Estimation, Stateless Service, Cache, Queue, Load Balancing, Scaling, Consistency, Reliability |
+| 시스템 설계 | 요구사항, Capacity Estimation, Stateless Service, Cache, Queue, Load Balancing, DB Scaling, Consistency, Idempotency, Rate Limiting, Distributed Lock, Reliability |
 
 ## 완료 기준
 
@@ -41,12 +41,12 @@
 | 네트워크 | 30개 주제 준비, Mock Interview 대기 | 복습 |
 | 데이터베이스 | 25개 주제 준비, Mock Interview 대기 | 복습 |
 | 런타임·동시성 | 16개 주제 준비, Mock Interview 대기 | 복습 |
-| 시스템 설계 | Load Balancing / Horizontal Scaling | 학습 중 |
+| 시스템 설계 | Distributed Lock | 학습 중 |
 
 ## 현재 학습
 
-- [05. Load Balancing / Horizontal Scaling](docs/system-design/05-load-balancing-horizontal-scaling.md)
-- [05. 이해도 확인 문제](quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+- [10. Distributed Lock](docs/system-design/10-distributed-lock.md)
+- [10. 이해도 확인 문제](quizzes/system-design/10-distributed-lock.md)
 
 ## 시스템 설계 학습 목록
 
@@ -55,6 +55,11 @@
 3. [Cache Design](docs/system-design/03-cache-design.md) · [확인 문제](quizzes/system-design/03-cache-design.md)
 4. [Message Queue](docs/system-design/04-message-queue.md) · [확인 문제](quizzes/system-design/04-message-queue.md)
 5. [Load Balancing / Horizontal Scaling](docs/system-design/05-load-balancing-horizontal-scaling.md) · [확인 문제](quizzes/system-design/05-load-balancing-horizontal-scaling.md)
+6. [Database Scaling / Read-Write Pattern](docs/system-design/06-database-scaling-read-write-patterns.md) · [확인 문제](quizzes/system-design/06-database-scaling-read-write-patterns.md)
+7. [Consistency / Availability](docs/system-design/07-consistency-and-availability.md) · [확인 문제](quizzes/system-design/07-consistency-and-availability.md)
+8. [Distributed Idempotency](docs/system-design/08-distributed-idempotency.md) · [확인 문제](quizzes/system-design/08-distributed-idempotency.md)
+9. [Rate Limiting](docs/system-design/09-rate-limiting.md) · [확인 문제](quizzes/system-design/09-rate-limiting.md)
+10. [Distributed Lock](docs/system-design/10-distributed-lock.md) · [확인 문제](quizzes/system-design/10-distributed-lock.md)
 
 ## 런타임·동시성 트랙
 
@@ -87,7 +92,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 시스템 설계 주제
 
-DB Scaling / Read-Write Pattern → Consistency / Availability → Distributed Idempotency → Rate Limiting → Distributed Lock → Service Boundary → Observability → Graceful Degradation → Failure Mode 추론 순으로 진행합니다.
+Service Boundary / Ownership → Observability / SLO → Graceful Degradation → Failure Mode 추론 → Multi-region / Disaster Recovery → System Design 총정리 / Mock Interview 순으로 진행합니다.
 
 기존 OS / Networking / Database / Runtime은 Quiz와 Re-test를 통과하기 전까지 Prepared 상태를 유지합니다.
 
