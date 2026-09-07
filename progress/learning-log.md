@@ -83,6 +83,11 @@
 | 2026-09-08 | Runtime | Task / Future / Promise | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Runtime | async / await Internals | Prepared | Pending | Pending | Learning |
 | 2026-09-08 | Runtime | Synchronization Primitives | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Concurrent Collections | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Cancellation / Timeout | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | GC Generations | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Allocation / Boxing | Prepared | Pending | Pending | Learning |
+| 2026-09-08 | Runtime | Managed Memory Leak | Prepared | Pending | Pending | Learning |
 
 ## Evidence Rules
 
@@ -96,27 +101,29 @@
 
 ## Current Checkpoint
 
-OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 첫 5개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
+OS는 19개, Networking은 29개 개념 + 1개 총정리, Database는 24개 개념 + 1개 총정리, Runtime & Concurrency는 10개 주제까지 준비되었습니다. 문서 생성 자체는 학습 완료 증거가 아닙니다.
 
-Runtime 첫 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
+Runtime 두 번째 묶음에서는 다음을 자료 없이 설명할 수 있어야 합니다.
 
-1. CLR은 OS를 대체하는 것이 아니라 OS Process/Virtual Memory/Thread 위에서 managed code, GC, JIT/AOT, ThreadPool 같은 기능을 제공한다.
-2. `new`는 매번 OS syscall을 의미하지 않고 CLR managed heap 내부에서 빠르게 할당될 수 있다.
-3. ThreadPool은 Thread 생성/종료 비용을 줄이기 위해 worker를 재사용하지만 blocking이 많으면 starvation이 발생할 수 있다.
-4. Task는 Thread가 아니라 비동기 작업의 완료와 결과를 표현하는 추상화다.
-5. `Task.WhenAll`은 여러 작업의 대기 시간을 겹칠 수 있지만 여러 OS Thread의 병렬 실행을 의미하지 않는다.
-6. C# `async/await`는 compiler-generated state machine과 continuation으로 구현되며 `await` 자체가 새 Thread를 만들지 않는다.
-7. `.Result` / `.Wait()` 같은 sync-over-async는 worker를 block해 scalability를 낮추고 ThreadPool starvation을 만들 수 있다.
-8. `lock`은 mutual exclusion, `SemaphoreSlim`은 동시 실행 개수 제한, `Interlocked`는 단순 atomic operation에 적합하다.
-9. `volatile`은 visibility/order 의미가 있지만 `counter++` 같은 compound operation을 atomic하게 만들지 않는다.
-10. process 내부 `lock`은 여러 App Instance 간 race를 막지 못하므로 DB Constraint/Transaction/Distributed Coordination이 필요하다.
+1. Concurrent Collection은 내부 자료구조의 동시 접근을 안전하게 하지만 여러 연산을 묶은 비즈니스 Atomicity까지 자동 보장하지 않는다.
+2. `ConcurrentDictionary.GetOrAdd`의 factory는 경쟁 상황에서 여러 번 실행될 수 있으므로 중복 불가 Side Effect를 넣으면 안 된다.
+3. Thread-safe는 Process 내부 동시성 보장이고 Distributed-safe는 여러 Instance 간 coordination 문제이므로 서로 다르다.
+4. Timeout은 기다리는 시간 정책이고 Cancellation은 작업 중단을 요청하는 cooperative mechanism이다.
+5. timeout이 발생해 caller가 포기했다고 underlying work가 자동으로 멈추는 것은 아니므로 token propagation이 중요하다.
+6. Cancellation은 이미 발생한 DB COMMIT이나 외부 Side Effect를 자동 Rollback하지 않는다.
+7. .NET GC는 Gen 0/1/2 구조로 대부분의 객체가 짧게 산다는 특성을 활용하며 GC Root에서 reachable한 객체는 수집하지 않는다.
+8. 큰 이미지/byte buffer는 LOH와 memory pressure를 키울 수 있고 MemoryStream 최적화는 disk I/O 감소와 memory 사용 증가의 trade-off가 있다.
+9. Allocation Rate가 높으면 Heap Size가 안정적이어도 GC 빈도와 CPU 비용이 증가할 수 있다.
+10. Boxing은 Value Type을 object/interface 형태로 다루면서 allocation이 생길 수 있는 대표 패턴이고 hot path에서 누적 비용이 커질 수 있다.
+11. Managed Memory Leak은 필요 없는 객체가 static collection, event handler, timer, unbounded cache 등으로 계속 reachable한 상태다.
+12. Memory 문제 진단에서는 RSS, GC Heap, Gen 2, LOH, allocation rate를 구분하고 heap dump의 retention path를 확인해야 한다.
 
 ## Next Action
 
-1. [Runtime Process Model Quiz](../quizzes/runtime-concurrency/01-runtime-process-model.md)
-2. [Thread Pool Quiz](../quizzes/runtime-concurrency/02-thread-pool.md)
-3. [Task / Future / Promise Quiz](../quizzes/runtime-concurrency/03-task-future-promise.md)
-4. [async / await Internals Quiz](../quizzes/runtime-concurrency/04-async-await-internals.md)
-5. [Synchronization Primitives Quiz](../quizzes/runtime-concurrency/05-synchronization-primitives.md)
-6. 다음 문서: Concurrent Collections → Cancellation / Timeout → GC Generations → Allocation / Boxing → Managed Memory Leak
+1. [Concurrent Collections Quiz](../quizzes/runtime-concurrency/06-concurrent-collections.md)
+2. [Cancellation / Timeout Quiz](../quizzes/runtime-concurrency/07-cancellation-and-timeout.md)
+3. [GC Generations Quiz](../quizzes/runtime-concurrency/08-gc-generations.md)
+4. [Allocation / Boxing Quiz](../quizzes/runtime-concurrency/09-allocation-and-boxing.md)
+5. [Managed Memory Leak Quiz](../quizzes/runtime-concurrency/10-managed-memory-leak.md)
+6. 다음 문서: IDisposable / Resource Lifetime → Async Stream / Channel → ThreadPool Starvation 진단 → ExecutionContext → Runtime Observability
 7. OS / Networking / Database Mock Interview는 별도 복습 세션에서 Prepared를 Completed로 전환
