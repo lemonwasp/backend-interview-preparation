@@ -21,7 +21,7 @@
 | 영역 | 주요 주제 |
 |---|---|
 | 운영체제 | 프로세스, 스레드, 메모리, 동시성, I/O, Socket |
-| 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, CDN, Cache, WebSocket, SSE, gRPC, API Gateway |
+| 네트워크 | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, Proxy, Load Balancing, CDN, Cache, WebSocket, SSE, gRPC, API Gateway, Resilience |
 | 데이터베이스 | Index, Transaction, Isolation, Lock, Query |
 | 런타임·동시성 | Thread Pool, 비동기 I/O, GC, 동기화 |
 | 시스템 설계 | Cache, Queue, Replication, Sharding, Reliability |
@@ -41,15 +41,15 @@
 | 영역 | 현재 주제 | 상태 |
 |---|---|---|
 | 운영체제 | 19개 문서 준비, Quiz/Re-test 대기 | 복습 |
-| 네트워크 | API Gateway | 학습 중 |
+| 네트워크 | Bulkhead / Resilience Patterns | 학습 중 |
 | 데이터베이스 | 시작 전 | 대기 |
 | 런타임·동시성 | 시작 전 | 대기 |
 | 시스템 설계 | 시작 전 | 대기 |
 
 ## 현재 학습
 
-- [20. API Gateway](docs/networking/20-api-gateway.md)
-- [20. 이해도 확인 문제](quizzes/networking/20-api-gateway.md)
+- [25. Bulkhead / Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md)
+- [25. 이해도 확인 문제](quizzes/networking/25-bulkhead-resilience-patterns.md)
 
 ## 네트워크 학습 목록
 
@@ -73,6 +73,11 @@
 18. [gRPC](docs/networking/18-grpc.md) · [확인 문제](quizzes/networking/18-grpc.md)
 19. [REST vs RPC](docs/networking/19-rest-vs-rpc.md) · [확인 문제](quizzes/networking/19-rest-vs-rpc.md)
 20. [API Gateway](docs/networking/20-api-gateway.md) · [확인 문제](quizzes/networking/20-api-gateway.md)
+21. [Rate Limiting](docs/networking/21-rate-limiting.md) · [확인 문제](quizzes/networking/21-rate-limiting.md)
+22. [Timeout Budget](docs/networking/22-timeout-budget.md) · [확인 문제](quizzes/networking/22-timeout-budget.md)
+23. [Retry / Exponential Backoff / Jitter](docs/networking/23-retry-backoff-jitter.md) · [확인 문제](quizzes/networking/23-retry-backoff-jitter.md)
+24. [Circuit Breaker](docs/networking/24-circuit-breaker.md) · [확인 문제](quizzes/networking/24-circuit-breaker.md)
+25. [Bulkhead / Resilience Patterns](docs/networking/25-bulkhead-resilience-patterns.md) · [확인 문제](quizzes/networking/25-bulkhead-resilience-patterns.md)
 
 ## 운영체제 트랙
 
@@ -84,7 +89,7 @@ OS는 운영체제·커널 기초부터 File Descriptor, DMA, Zero-copy, Socket 
 
 ## 다음 네트워크 주제
 
-Rate Limiting → Timeout Budget → Retry / Exponential Backoff → Circuit Breaker → Bulkhead → Idempotency Key와 Resilience Pattern 순으로 진행합니다.
+Idempotency Key → Backpressure 심화 → Connection Pooling → NAT / Ephemeral Port를 정리한 뒤, Networking 복습 체크포인트를 두고 Database로 넘어갑니다.
 
 - [전체 로드맵](ROADMAP.md)
 
