@@ -19,7 +19,7 @@ The repository uses a Feynman-style learning loop:
 | Operating Systems | Processes, threads, memory, concurrency, I/O, sockets |
 | Networking | TCP/IP, UDP, DNS, HTTP, QUIC, TLS, proxies, load balancing, realtime transport, RPC, gateways, resilience, connection management |
 | Databases | Relational model, indexes, query execution, transactions, isolation, MVCC, locking, normalization, constraints, replication, sharding, connection pools, ORM, migrations, pagination, caching, backup, recovery, CDC |
-| Runtime & Concurrency | Thread pools, async I/O, GC, synchronization |
+| Runtime & Concurrency | CLR/runtime model, thread pools, Task, async/await, synchronization, GC, allocation, concurrent collections |
 | System Design | Caching, queues, replication, sharding, reliability |
 
 ## Learning Standard
@@ -40,41 +40,28 @@ A topic is complete only when I can:
 | Operating Systems | 19 topics prepared; quizzes pending | Review |
 | Networking | 30 topics prepared; mock interview pending | Review |
 | Databases | 25 topics prepared; mock interview pending | Review |
-| Runtime & Concurrency | Next track | Pending |
+| Runtime & Concurrency | Synchronization Primitives | Learning |
 | System Design | Not started | Pending |
 
 ## Current Lesson
 
-- [25. Database Review — 60-second Answers](docs/databases/25-database-review-60-second-answers.md)
+- [05. Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md)
+- [Knowledge Check](quizzes/runtime-concurrency/05-synchronization-primitives.md)
+
+## Runtime & Concurrency Lessons
+
+1. [Runtime Process Model](docs/runtime-concurrency/01-runtime-process-model.md) · [Quiz](quizzes/runtime-concurrency/01-runtime-process-model.md)
+2. [Thread Pool](docs/runtime-concurrency/02-thread-pool.md) · [Quiz](quizzes/runtime-concurrency/02-thread-pool.md)
+3. [Task / Future / Promise](docs/runtime-concurrency/03-task-future-promise.md) · [Quiz](quizzes/runtime-concurrency/03-task-future-promise.md)
+4. [async / await Internals](docs/runtime-concurrency/04-async-await-internals.md) · [Quiz](quizzes/runtime-concurrency/04-async-await-internals.md)
+5. [Synchronization Primitives](docs/runtime-concurrency/05-synchronization-primitives.md) · [Quiz](quizzes/runtime-concurrency/05-synchronization-primitives.md)
+
+## Database Track
+
+The Database track contains 24 concept lessons plus one 60-second-answer review and a 40-question mock interview. It remains in review until the mock interview and re-test requirements are met.
+
+- [Database Review](docs/databases/25-database-review-60-second-answers.md)
 - [Database Mock Interview](quizzes/databases/25-database-review-60-second-answers.md)
-
-## Database Lessons
-
-1. [Relational Model and Keys](docs/databases/01-relational-model-and-keys.md) · [Quiz](quizzes/databases/01-relational-model-and-keys.md)
-2. [B-Tree Index](docs/databases/02-b-tree-index.md) · [Quiz](quizzes/databases/02-b-tree-index.md)
-3. [Clustered vs Non-clustered Index](docs/databases/03-clustered-vs-nonclustered-index.md) · [Quiz](quizzes/databases/03-clustered-vs-nonclustered-index.md)
-4. [Query Execution and EXPLAIN](docs/databases/04-query-execution-and-explain.md) · [Quiz](quizzes/databases/04-query-execution-and-explain.md)
-5. [Transaction and ACID](docs/databases/05-transaction-and-acid.md) · [Quiz](quizzes/databases/05-transaction-and-acid.md)
-6. [Transaction Isolation Levels](docs/databases/06-isolation-levels.md) · [Quiz](quizzes/databases/06-isolation-levels.md)
-7. [Concurrency Anomalies](docs/databases/07-concurrency-anomalies.md) · [Quiz](quizzes/databases/07-concurrency-anomalies.md)
-8. [MVCC](docs/databases/08-mvcc.md) · [Quiz](quizzes/databases/08-mvcc.md)
-9. [Database Locks](docs/databases/09-database-locks.md) · [Quiz](quizzes/databases/09-database-locks.md)
-10. [Database Deadlocks](docs/databases/10-deadlocks.md) · [Quiz](quizzes/databases/10-deadlocks.md)
-11. [Normalization](docs/databases/11-normalization.md) · [Quiz](quizzes/databases/11-normalization.md)
-12. [Optimistic vs Pessimistic Locking](docs/databases/12-optimistic-vs-pessimistic-locking.md) · [Quiz](quizzes/databases/12-optimistic-vs-pessimistic-locking.md)
-13. [Unique Constraint and Upsert](docs/databases/13-unique-constraint-and-upsert.md) · [Quiz](quizzes/databases/13-unique-constraint-and-upsert.md)
-14. [Replication and Read Replicas](docs/databases/14-replication-and-read-replicas.md) · [Quiz](quizzes/databases/14-replication-and-read-replicas.md)
-15. [Partitioning and Sharding](docs/databases/15-partitioning-and-sharding.md) · [Quiz](quizzes/databases/15-partitioning-and-sharding.md)
-16. [DB Connection Pool and Transaction Boundary](docs/databases/16-db-connection-pool-transaction-boundary.md) · [Quiz](quizzes/databases/16-db-connection-pool-transaction-boundary.md)
-17. [ORM and N+1](docs/databases/17-orm-n-plus-one.md) · [Quiz](quizzes/databases/17-orm-n-plus-one.md)
-18. [Schema Migration](docs/databases/18-schema-migration.md) · [Quiz](quizzes/databases/18-schema-migration.md)
-19. [Pagination and Large Data Access](docs/databases/19-pagination-large-data-access.md) · [Quiz](quizzes/databases/19-pagination-large-data-access.md)
-20. [Cache Consistency](docs/databases/20-cache-consistency.md) · [Quiz](quizzes/databases/20-cache-consistency.md)
-21. [Backup and PITR](docs/databases/21-backup-and-pitr.md) · [Quiz](quizzes/databases/21-backup-and-pitr.md)
-22. [WAL, Checkpoint and Crash Recovery](docs/databases/22-wal-checkpoint-crash-recovery.md) · [Quiz](quizzes/databases/22-wal-checkpoint-crash-recovery.md)
-23. [Database Failure Scenarios](docs/databases/23-database-failure-scenarios.md) · [Quiz](quizzes/databases/23-database-failure-scenarios.md)
-24. [Transactional Outbox and CDC](docs/databases/24-transactional-outbox-and-cdc.md) · [Quiz](quizzes/databases/24-transactional-outbox-and-cdc.md)
-25. [Database Review — 60-second Answers](docs/databases/25-database-review-60-second-answers.md) · [Mock Interview](quizzes/databases/25-database-review-60-second-answers.md)
 
 ## Networking Track
 
@@ -91,11 +78,9 @@ The OS track contains 19 prepared topics from OS/kernel fundamentals through fil
 - [OS topic 19](docs/operating-systems/19-tcp-in-the-os.md)
 - [Learning Log](progress/learning-log.md)
 
-## Next Track
+## Next Runtime Topics
 
-Runtime & Concurrency: runtime process model, thread pools, Task/Future/Promise, async/await internals, synchronization primitives, concurrent collections, cancellation, GC generations, allocation/boxing, memory leaks, backpressure and runtime observability.
-
-Before marking Databases complete, pass the database mock interview and perform at least one re-test.
+Concurrent collections, cancellation and timeouts, GC generations, allocation/boxing, managed memory leaks, `IDisposable` and resource lifetime, async streams/channels, ThreadPool starvation diagnostics and runtime observability.
 
 ## Language Policy
 
